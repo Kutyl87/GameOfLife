@@ -21,6 +21,17 @@ FetchContent_Declare(
 FetchContent_GetProperties(bx)
 if(NOT bgfx_POPULATED)
     FetchContent_Populate(bx)
-    execute_process(COMMAND make -C ${bgfx_SOURCE_DIR})
+    execute_process(COMMAND make -C ${bx_SOURCE_DIR})
+endif()
+Include(FetchContent)
+FetchContent_Declare(
+    bimg
+    GIT_REPOSITORY https://github.com/bkaradzic/bimg.git
+    GIT_TAG master
+)
+FetchContent_GetProperties(bimg)
+if(NOT bgfx_POPULATED)
+    FetchContent_Populate(bimg)
+    execute_process(COMMAND make -C ${bimg_SOURCE_DIR})
 endif()
 add_executable(bgfx_map ${SOURCE_FILES})
