@@ -12,36 +12,33 @@ if(NOT bgfx_POPULATED)
     FetchContent_Populate(bgfx)
     execute_process(COMMAND make -C ${bgfx_SOURCE_DIR})
 endif()
-Include(FetchContent)
 FetchContent_Declare(
     bx
     GIT_REPOSITORY https://github.com/bkaradzic/bx.git
     GIT_TAG master
 )
 FetchContent_GetProperties(bx)
-if(NOT bgfx_POPULATED)
+if(NOT bx_POPULATED)
     FetchContent_Populate(bx)
     execute_process(COMMAND make -C ${bx_SOURCE_DIR})
 endif()
-Include(FetchContent)
 FetchContent_Declare(
     bimg
     GIT_REPOSITORY https://github.com/bkaradzic/bimg.git
     GIT_TAG master
 )
 FetchContent_GetProperties(bimg)
-if(NOT bgfx_POPULATED)
+if(NOT bimg_POPULATED)
     FetchContent_Populate(bimg)
     execute_process(COMMAND make -C ${bimg_SOURCE_DIR})
 endif()
-Include(FetchContent)
 FetchContent_Declare(
     bnet
     GIT_REPOSITORY https://github.com/bkaradzic/bnet.git
     GIT_TAG master
 )
 FetchContent_GetProperties(bnet)
-if(NOT bgfx_POPULATED)
+if(NOT bnet_POPULATED)
     FetchContent_Populate(bnet)
     execute_process(COMMAND make -C ${bnet_SOURCE_DIR})
 endif()
