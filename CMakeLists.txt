@@ -1,8 +1,26 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(bgfx_map VERSION 0.1.0)
-add_executable(bgfx_map main.cpp)
+set(SOURCE_FILES main.cpp)
 Include(FetchContent)
 FetchContent_Declare(
     bgfx
-    GIT_REPOSITORY 
+    GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
+    GIT_TAG master
 )
+FetchContent_GetProperties(bgfx)
+if(NOT bgfx_POPULATED)
+    FetchContent_Populate(bgfx)
+    execute_process(COMMAND make -C ${bgfx_SOURCE_DIR})
+endif()
+Include(FetchContent)
+FetchContent_Declare(
+    bx
+    GIT_REPOSITORY https://github.com/bkaradzic/bx.git
+    GIT_TAG master
+)
+FetchContent_GetProperties(bx)
+if(NOT bgfx_POPULATED)
+    FetchContent_Populate(bx)
+    execute_process(COMMAND make -C ${bgfx_SOURCE_DIR})
+endif()
+add_executable(bgfx_map ${SOURCE_FILES})
