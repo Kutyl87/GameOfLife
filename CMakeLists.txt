@@ -13,7 +13,6 @@ if(NOT bx_POPULATED)
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bx_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bx)
-    execute_process(COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bx/)
 endif()
 FetchContent_Declare(
     bimg
@@ -26,7 +25,6 @@ if(NOT bimg_POPULATED)
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bimg_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bimg)
-    execute_process(COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bimg/)
 endif()
 FetchContent_Declare(
     bgfx
@@ -44,7 +42,6 @@ if(NOT bnet_POPULATED)
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bnet_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bnet)
-    execute_process(COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bnet/)
 endif()
 add_executable(bgfx_map ${SOURCE_FILES})
 FetchContent_GetProperties(bgfx)
@@ -53,5 +50,17 @@ if(NOT bgfx_POPULATED)
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bgfx_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bgfx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bgfx)
-    execute_process(COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bgfx/)
 endif()
+add_custom_target(make_bx
+    COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bx/
+)
+add_custom_target(make_bimg
+    COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bimg/
+)
+add_custom_target(make_bnet
+    COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bnet/
+)
+add_custom_target(make_bgfx
+    COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bgfx/
+)
+add_dependencies(bgfx_map make_bx make_bimg make_bnet make_bgfx)
