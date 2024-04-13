@@ -9,7 +9,9 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(bx)
 if(NOT bx_POPULATED)
+    message("Started cloning BX ...")
     FetchContent_Populate(bx)
+    message("Finished cloning BX")
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bx_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bx)
@@ -21,16 +23,13 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(bimg)
 if(NOT bimg_POPULATED)
+    message("Started cloning BIMG ...")
     FetchContent_Populate(bimg)
+    message("Finished cloning BIMG")
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bimg_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bimg)
 endif()
-FetchContent_Declare(
-    bgfx
-    GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
-    GIT_TAG master
-)
 FetchContent_Declare(
     bnet
     GIT_REPOSITORY https://github.com/bkaradzic/bnet.git
@@ -38,19 +37,28 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(bnet)
 if(NOT bnet_POPULATED)
+    message("Started cloning BNET ...")
     FetchContent_Populate(bnet)
+    message("Finished cloning BNET")
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bnet_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bnet)
 endif()
-add_executable(bgfx_map ${SOURCE_FILES})
+FetchContent_Declare(
+    bgfx
+    GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
+    GIT_TAG master
+)
 FetchContent_GetProperties(bgfx)
 if(NOT bgfx_POPULATED)
+    message("Started cloning BGFX ...")
     FetchContent_Populate(bgfx)
+    message("Finished cloning BGFX")
     execute_process(COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${bgfx_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bgfx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bgfx)
 endif()
+add_executable(bgfx_map ${SOURCE_FILES})
 add_custom_target(make_bx
     COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bx/
 )
