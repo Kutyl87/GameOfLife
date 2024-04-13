@@ -20,7 +20,10 @@ FetchContent_Declare(
 FetchContent_GetProperties(bx)
 if(NOT bx_POPULATED)
     FetchContent_Populate(bx)
-    execute_process(COMMAND make -C ${bx_SOURCE_DIR})
+    execute_process(COMMAND git submodule update --init --recursive
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
+    execute_process(COMMAND ${bx_SOURCE_DIR}/tools/bin/darwin/genie vs2017
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
 endif()
 FetchContent_Declare(
     bimg
@@ -30,7 +33,10 @@ FetchContent_Declare(
 FetchContent_GetProperties(bimg)
 if(NOT bimg_POPULATED)
     FetchContent_Populate(bimg)
-    execute_process(COMMAND make -C ${bimg_SOURCE_DIR})
+    execute_process(COMMAND git submodule update --init --recursive
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
+    execute_process(COMMAND ${bx_SOURCE_DIR}/tools/bin/darwin/genie vs2017
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
 endif()
 FetchContent_Declare(
     bnet
@@ -40,6 +46,9 @@ FetchContent_Declare(
 FetchContent_GetProperties(bnet)
 if(NOT bnet_POPULATED)
     FetchContent_Populate(bnet)
-    execute_process(COMMAND make -C ${bnet_SOURCE_DIR})
+    execute_process(COMMAND git submodule update --init --recursive
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
+    execute_process(COMMAND ${bx_SOURCE_DIR}/tools/bin/darwin/genie vs2017
+    WORKING_DIRECTORY ${bx_SOURCE_DIR})
 endif()
 add_executable(bgfx_map ${SOURCE_FILES})
