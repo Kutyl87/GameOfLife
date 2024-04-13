@@ -34,4 +34,15 @@ if(NOT bgfx_POPULATED)
     FetchContent_Populate(bimg)
     execute_process(COMMAND make -C ${bimg_SOURCE_DIR})
 endif()
+Include(FetchContent)
+FetchContent_Declare(
+    bnet
+    GIT_REPOSITORY https://github.com/bkaradzic/bnet.git
+    GIT_TAG master
+)
+FetchContent_GetProperties(bnet)
+if(NOT bgfx_POPULATED)
+    FetchContent_Populate(bnet)
+    execute_process(COMMAND make -C ${bnet_SOURCE_DIR})
+endif()
 add_executable(bgfx_map ${SOURCE_FILES})
