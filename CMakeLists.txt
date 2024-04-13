@@ -50,8 +50,8 @@ add_executable(bgfx_map ${SOURCE_FILES})
 FetchContent_GetProperties(bgfx)
 if(NOT bgfx_POPULATED)
     FetchContent_Populate(bgfx)
-    # execute_process(COMMAND git submodule update --init --recursive
-    # WORKING_DIRECTORY ${bgfx_SOURCE_DIR})
+    execute_process(COMMAND git submodule update --init --recursive
+    WORKING_DIRECTORY ${bgfx_SOURCE_DIR})
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bgfx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bgfx)
     execute_process(COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bgfx/)
 endif()
