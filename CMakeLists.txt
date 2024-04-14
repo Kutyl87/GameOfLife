@@ -74,8 +74,8 @@ target_link_directories(bgfx_map PRIVATE
 target_link_libraries(bgfx_map 
                         OpenGL::GL
                         glfw
-                        bx${MODE}
                         bgfx${MODE}
+                        bx${MODE}
                         bimg${MODE}
                         )
 add_dependencies(bgfx_map make_bx make_bimg make_bgfx)
