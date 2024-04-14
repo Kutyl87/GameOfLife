@@ -78,4 +78,7 @@ target_link_libraries(bgfx_map
                         bx${MODE}
                         bimg${MODE}
                         )
+if(APPLE)
+    target_link_libraries(bgfx_map "-framework CoreFoundation" "-framework IOKit -framework Metal -framework Foundation -framework QuartzCore -framework AppKit")
+endif()  
 add_dependencies(bgfx_map make_bx make_bimg make_bgfx)
