@@ -1,9 +1,16 @@
-#include <GLFW/glfw3.h>
-#include <GLFW/glfw3native.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/bx.h>
 #include <stdio.h>
+#if BX_PLATFORM_LINUX
+#define GLFW_EXPOSE_NATIVE_X11
+#elif BX_PLATFORM_WINDOWS
+#define GLFW_EXPOSE_NATIVE_WIN32
+#elif BX_PLATFORM_OSX
+#define GLFW_EXPOSE_NATIVE_COCOA
+#endif
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
 static bool s_showStats = false;
 
 static void glfw_errorCallback(int error, const char *description) {
@@ -33,6 +40,15 @@ int main(int argc, char **argv) {
   bgfx::renderFrame();
   // Initialize bgfx using the native window handle and window resolution.
   bgfx::Init init;
+
+  #if BX_PLATFORM_LINUX || BX_PLATFORM_BSD
+    init.platformData.ndt = glfwGetX11Display();
+    init.platformData.nwh = (void*)(uintptr_t)glfwGetX11Window(window);
+  #elif BX_PLATFORM_OSX
+    init.platformData.nwh = glfwGetCocoaWindow(window);
+  #elif BX_PLATFORM_WINDOWS
+    init.platformData.nwh = glfwGetWin32Window(window);
+  #endif
   int width, height;
   glfwGetWindowSize(window, &width, &height);
   init.resolution.width = (uint32_t)width;
