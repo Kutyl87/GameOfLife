@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(bgfx_map VERSION 0.1.0)
 set(SOURCE_FILES main.cpp)
+set(MODE Debug)
+add_definitions(-D BX_CONFIG_DEBUG=1)
 Include(FetchContent)
 FetchContent_Declare(
     bx
@@ -31,20 +33,6 @@ if(NOT bimg_POPULATED)
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bimg)
 endif()
 FetchContent_Declare(
-    bnet
-    GIT_REPOSITORY https://github.com/bkaradzic/bnet.git
-    GIT_TAG master
-)
-FetchContent_GetProperties(bnet)
-if(NOT bnet_POPULATED)
-    message("Started cloning BNET ...")
-    FetchContent_Populate(bnet)
-    message("Finished cloning BNET")
-    execute_process(COMMAND git submodule update --init --recursive
-    WORKING_DIRECTORY ${bnet_SOURCE_DIR})
-    execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bimg_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bnet)
-endif()
-FetchContent_Declare(
     bgfx
     GIT_REPOSITORY https://github.com/bkaradzic/bgfx.git
     GIT_TAG master
@@ -59,16 +47,35 @@ if(NOT bgfx_POPULATED)
     execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${bgfx_SOURCE_DIR} ${CMAKE_BINARY_DIR}/_deps/bgfx)
 endif()
 add_executable(bgfx_map ${SOURCE_FILES})
+set_target_properties(bgfx_map
+    PROPERTIES
+        CXX_STANDARD 17
+        CXX_STANDARD_REQUIRED ON
+)
 add_custom_target(make_bx
     COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bx/
 )
 add_custom_target(make_bimg
     COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bimg/
 )
-add_custom_target(make_bnet
-    COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bnet/
-)
 add_custom_target(make_bgfx
     COMMAND make ${PLATFORM} -C ${CMAKE_BINARY_DIR}/_deps/bgfx/
 )
-add_dependencies(bgfx_map make_bx make_bimg make_bnet make_bgfx)
+find_package(OpenGL REQUIRED)
+find_package(glfw3 3.3 REQUIRED)
+target_include_directories(bgfx_map PRIVATE 
+                           ${CMAKE_BINARY_DIR}/_deps/bx/include
+                           ${CMAKE_BINARY_DIR}/_deps/bgfx/include
+                           ${CMAKE_BINARY_DIR}/_deps/bimg/include)
+target_link_directories(bgfx_map PRIVATE
+    ${CMAKE_BINARY_DIR}/_deps/bx/.build/${PLATFORM}/bin
+    ${CMAKE_BINARY_DIR}/_deps/bgfx/.build/${PLATFORM}/bin
+    ${CMAKE_BINARY_DIR}/_deps/bimg/.build/${PLATFORM}/bin)
+target_link_libraries(bgfx_map 
+                        OpenGL::GL
+                        glfw
+                        bx${MODE}
+                        bgfx${MODE}
+                        bimg${MODE}
+                        )
+add_dependencies(bgfx_map make_bx make_bimg make_bgfx)
