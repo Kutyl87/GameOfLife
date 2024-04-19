@@ -9,25 +9,28 @@ jobs:
     steps:
       - name: 
         uses: actions/checkout@v3
+      - name:
+        run: sudo apt-get update && sudo apt-get install -y scons
       - name: Build Application
         run: |
           scons
       - name: Upload artiffact
-        uses: actions/download-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
-            name: Built_app
-            path: app.tar
+            name: built_app
+            path: .
   test:
+    needs: build
     runs-on : ubuntu-latest
     steps:
         - name: Download artifact
           uses: actions/download-artifact@v2
           with:
-            name: app.tar
+            name: built_app
             path: /tmp
         - name: Tests
           run: |
-            cd tests && cd build && ./tests
+            cd /tmp && cd tests && cd build  &&  sudo chmod +x tests && ./tests
 
 
         
