@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y scons
       - name: Build Application
         run: |
-          scons
+          scons platform=linux
       - name: Upload artiffact
         uses: actions/upload-artifact@v2
         with:
