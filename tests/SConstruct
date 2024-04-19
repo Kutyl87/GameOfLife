@@ -1,6 +1,5 @@
 import os
 import subprocess
-subprocess.run(['git', 'submodule', 'update', '--init', '--recursive'])
 os.makedirs('../Catch2/.build', exist_ok=True)
 os.chdir('../Catch2/.build')
 subprocess.run(['cmake', '..'])
@@ -13,4 +12,5 @@ env.Append(CPPPATH=["../Catch2/.build/generated-includes", "../Catch2/src"])
 env.Append(LIBPATH=["../Catch2/.build/src"])
 env.Append(LIBS=["Catch2Main", "Catch2"])
 test_sources = Glob('*.cpp')
-env.Program(target = 'build/tests', source = test_sources)
+target = env.Program(target = 'build/tests', source = test_sources)
+Return('target')
