@@ -2,8 +2,8 @@
 
 struct Net : torch::nn::Module {
   Net() {
-    fc1 = register_module("fc1", torch::nn::Linear(2, 3));
-    fc2 = register_module("fc2", torch::nn::Linear(3, 2));
+    fc1 = register_module("fc1", torch::nn::Linear(2, 10));
+    fc2 = register_module("fc2", torch::nn::Linear(10, 2));
     fc3 = register_module("fc3", torch::nn::Linear(2, 1));
   }
 
@@ -33,18 +33,13 @@ void train(std::shared_ptr<Net> net, torch::Tensor inputs, torch::Tensor targets
     }
   }
 }
-
 void save(std::shared_ptr<Net> net, const std::string& path) {
   torch::save(net, path);
 }
 
 int main() {
   auto net = std::make_shared<Net>();
-
   torch::Tensor inputs = torch::tensor({{0,0}, {0,1}, {1,0}, {1,1}}).to(torch::kFloat);
   torch::Tensor targets = torch::tensor({{0}, {1}, {1}, {0}}).to(torch::kFloat);
-
   train(net, inputs, targets, 5000);
-
-  save(net, "net.pt");
 }
