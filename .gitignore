@@ -3,3 +3,5 @@
 build
 **/*.o
 **/.scons*
+**/*.so
+src/**/*.os
