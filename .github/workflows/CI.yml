@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 
+      - name: Checkout
         uses: actions/checkout@v3
       - name:
         run: sudo apt-get update && sudo apt-get install -y scons
@@ -23,6 +23,9 @@ jobs:
         with:
             name: test_artifact
             path: tests/build/tests
+      - name: Train Neural Network
+        run: |
+            cd  ArtifficalInteligenceModels && cd build && sudo chmod +x ai && ./ai
   test:
     needs: build
     runs-on : ubuntu-latest
@@ -35,6 +38,5 @@ jobs:
         - name: Tests
           run: |
             cd /tmp && sudo chmod +x tests && ./tests
-
 
         

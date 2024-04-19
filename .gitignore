@@ -5,3 +5,4 @@ build
 **/.scons*
 **/*.so
 src/**/*.os
+ArtifficalInteligenceModels/libtorch
