@@ -4,13 +4,14 @@ import os
 env = Environment(CXX='g++')
 env.Append(CXXFLAGS=['-std=c++17', '-Wall', '-Wextra', '-pedantic', '-Werror'])
 app_source = Glob('*.cpp')
-env.Program(target = 'build/app', source = app_source)
-SConscript("tests/SConstruct")
+main = env.Program(target = 'build/app', source = app_source)
+tests = SConscript("tests/SConstruct")
 
 opts = Variables([], ARGUMENTS)
 
 # Gets the standard flags CC, CCX, etc.
 env = DefaultEnvironment()
+env = SConscript("godot-cpp/SConstruct", exports='env')
 
 # Define our options
 opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r', 'release']))
@@ -98,6 +99,8 @@ else:
 
 cpp_library += '.' + str(bits)
 
+os.makedirs(env['target_path'], exist_ok=True)
+
 # make sure our binding library is properly includes
 env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
 env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
@@ -107,7 +110,8 @@ env.Append(LIBS=[cpp_library])
 env.Append(CPPPATH=['src/'])
 sources = Glob('src/*.cpp')
 
-library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
+godot_library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
+Default(main, tests, godot_library)
 
 # Generates help for the -h scons option.
 Help(opts.GenerateHelpText(env))
