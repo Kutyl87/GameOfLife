@@ -3,6 +3,11 @@ on:
   push:
     branches:
         - feature-GithubActions
+        - Integration
+  pull_request:
+    branches:
+        - main
+        - develop
 jobs:
   build:
     runs-on: ubuntu-latest
