@@ -2,8 +2,7 @@ name: CI
 on:
   push:
     branches:
-        - feature-GithubActions
-        - Integration
+        - "**"
   pull_request:
     branches:
         - main
