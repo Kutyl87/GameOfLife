@@ -1,0 +1,5 @@
+env = Environment(CXX='g++')
+env.Append(CXXFLAGS=['-std=c++17', '-Wall', '-Wextra', '-pedantic', '-Werror'])
+app_source = Glob('*.cpp')
+env.Program(target = 'build/app', source = app_source)
+SConscript("tests/SConstruct")
