@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: nn_artifact
-            path: ArtifficalInteligenceModels/build/ai
+            path: ArtifficalInteligenceModels/
   test:
     needs: build
     runs-on : ubuntu-latest
@@ -51,6 +51,6 @@ jobs:
             path: /tmp
         - name: Tests
           run: |
-            cd /tmp && sudo chmod +x ai && ./ai
+            cd /tmp && ls && cd ArtifficalInteligenceModels/ && cd build && bsudo chmod +x ai && ./ai
 
         
