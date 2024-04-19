@@ -14,7 +14,7 @@ opts = Variables([], ARGUMENTS)
 # Gets the standard flags CC, CCX, etc.
 env = DefaultEnvironment()
 env = SConscript("godot-cpp/SConstruct", exports='env')
-
+nn = SConscript("ArtifficalInteligenceModels/SConstruct")
 # Define our options
 opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r', 'release']))
 opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
@@ -113,7 +113,7 @@ env.Append(CPPPATH=['src/'])
 sources = Glob('src/*.cpp')
 
 godot_library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
-Default(main, tests, godot_library)
+Default(main, tests, nn, godot_library)
 
 # Generates help for the -h scons option.
 Help(opts.GenerateHelpText(env))
