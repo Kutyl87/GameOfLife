@@ -7,10 +7,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Run a multi-line script
+      - name: 
+        uses: actions/checkout@v3
+      - name: Build Application
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          scons
+      - name: Upload artiffact
+        uses: actions/download-artifact@v2
+        with:
+            name: Built_app
+            path: app.tar
+  test:
+    runs-on : ubuntu-latest
+    steps:
+        - name: Download artifact
+          uses: actions/download-artifact@v2
+          with:
+            name: app.tar
+            path: /tmp
+        - name: Tests
+          run: |
+            cd tests && cd build && ./tests
+
+
+        
