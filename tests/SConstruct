@@ -1,6 +1,5 @@
 import os
 import subprocess
-# subprocess.run(['git', 'submodule', 'update', '--init', '--recursive'])
 os.makedirs('../Catch2/.build', exist_ok=True)
 os.chdir('../Catch2/.build')
 subprocess.run(['cmake', '..'])

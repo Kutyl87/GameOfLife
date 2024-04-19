@@ -1,6 +1,8 @@
 #!python
 import os
+import subprocess
 
+subprocess.run(['git', 'submodule', 'update', '--init', '--recursive'])
 env = Environment(CXX='g++')
 env.Append(CXXFLAGS=['-std=c++17', '-Wall', '-Wextra', '-pedantic', '-Werror'])
 app_source = Glob('*.cpp')
