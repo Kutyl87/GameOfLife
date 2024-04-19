@@ -1,10 +1,12 @@
 import os
-os.system('wget https://download.pytorch.org/libtorch/nightly/cpu/libtorch-shared-with-deps-latest.zip')
-os.system('unzip libtorch-shared-with-deps-latest.zip')
-# env = Environment(
-#     CPPPATH= ['libtorch/include', 'libtorch/include/torch/csrc/api/include'],
-#     LIBPATH=['libtorch/lib'],
-#     LIBS=['torch', 'torch_cpu', 'c10'],
-#     CXXFLAGS=['-std=c++17'], 
-# )
-# env.Program(target='build/ai', source='TorchNN.cpp')
+import platform
+arch = platform.machine()
+if not os.path.exists('libtorch'):
+    os.system('wget https://download.pytorch.org/libtorch/nightly/cpu/libtorch-shared-with-deps-latest.zip')
+env = Environment(
+    CPPPATH= ['libtorch/include', 'libtorch/include/torch/csrc/api/include'],
+    LIBPATH=['libtorch/lib'],
+    LIBS=['torch', 'torch_cpu', 'c10'],
+    CXXFLAGS=['-std=c++17'], 
+)
+env.Program(target='build/ai', source='TorchNN.cpp')
