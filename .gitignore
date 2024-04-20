@@ -1,2 +1,8 @@
 **/.DS_Store
+**/.vscode/
 build
+**/*.o
+**/.scons*
+**/*.so
+src/**/*.os
+ArtifficalInteligenceModels/libtorch

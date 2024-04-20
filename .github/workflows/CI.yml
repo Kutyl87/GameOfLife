@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches:
+        - "**"
+  pull_request:
+    branches:
+        - main
+        - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name:
+        run: sudo apt-get update && sudo apt-get install -y scons
+      - name: Build Application
+        run: |
+          scons platform=linux
+      - name: Upload artiffact
+        uses: actions/upload-artifact@v2
+        with:
+            name: test_artifact
+            path: tests/build/tests
+      - name: Train Neural Network
+        run: |
+            cd  ArtifficalInteligenceModels && cd build && sudo chmod +x ai && ./ai
+  test:
+    needs: build
+    runs-on : ubuntu-latest
+    steps:
+        - name: Download artifact
+          uses: actions/download-artifact@v2
+          with:
+            name: test_artifact
+            path: /tmp
+        - name: Tests
+          run: |
+            cd /tmp && sudo chmod +x tests && ./tests
+
+        
