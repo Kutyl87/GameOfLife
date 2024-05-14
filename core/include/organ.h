@@ -1,12 +1,12 @@
 
 class Organ {
 public:
-	Organ(float agingRate, float health) : aging_rate(agingRate), health(health) {}
+	Organ(float agingRate, float health) : agingRate(agingRate), health(health) {}
+
 	float getAgingRate();
 	float getHealth();
-	float getDamage(float damage);
-	float regenerateHealth(float health);
-	~Organ();
+	void getDamage(float damage);
+	void regenerateHealth(float health);
 
 private:
 	float agingRate;
