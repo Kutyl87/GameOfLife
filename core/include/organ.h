@@ -1,7 +1,6 @@
 
 class Organ {
 public:
-	Organ();
 	Organ(float agingRate, float health) : aging_rate(agingRate), health(health) {}
 	float getAgingRate();
 	float getHealth();
