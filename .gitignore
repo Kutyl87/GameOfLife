@@ -3,6 +3,7 @@
 **/.idea/
 build
 **/*.o
+**/*.a
 **/.scons*
 **/*.so
 src/**/*.os
