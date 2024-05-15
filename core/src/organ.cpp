@@ -8,7 +8,7 @@ float Organ::getHealth() {
 	return health;
 }
 
-void Organ::getDamage(float damage) {
+void Organ::takeDamage(float damage) {
 	health -= damage;
 }
 

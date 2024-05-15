@@ -5,7 +5,7 @@ public:
 
 	float getAgingRate();
 	float getHealth();
-	void getDamage(float damage);
+	void takeDamage(float damage);
 	void regenerateHealth(float health);
 
 private:
