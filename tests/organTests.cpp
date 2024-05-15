@@ -18,3 +18,9 @@ TEST_CASE("Organ getDamage", "[Organ]") {
 	organ.getDamage(10);
 	REQUIRE(organ.getHealth() == 90);
 }
+
+TEST_CASE("Organ regenerateHealth", "[Organ]") {
+	Organ organ(0.5, 100);
+	organ.regenerateHealth(10);
+	REQUIRE(organ.getHealth() == 110);
+}
