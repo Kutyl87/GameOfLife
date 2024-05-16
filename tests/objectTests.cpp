@@ -33,7 +33,7 @@ TEST_CASE("Object setRotation", "Object") {
 	REQUIRE(object.getRotation() == std::array<float, 3>{4.0f, 5.0f, 6.0f});
 }
 
-TEST_CASE("Object setRotation", "Object") {
+TEST_CASE("Object setParent", "Object") {
 	std::shared_ptr<Object> sharedPtr = std::make_shared<Object>(
 		std::array<float, 3>{1.0f, 2.0f, 3.0f}, std::array<float, 3>{0.0f, 0.0f, 0.0f}, std::weak_ptr<Object>{});
 	std::weak_ptr<Object> weakPtr = sharedPtr;
