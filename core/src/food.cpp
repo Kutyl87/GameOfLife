@@ -11,3 +11,15 @@ float Food::getValuePerUnit() const {
 float Food::getToxinLevel() const {
 	return toxinLevel;
 }
+
+void Food::setSize(float size) {
+	this->size = size;
+}
+
+void Food::setValuePerUnit(float valuePerUnit) {
+	this->valuePerUnit = valuePerUnit;
+}
+
+void Food::setToxinLevel(float toxinLevel) {
+	this->toxinLevel = toxinLevel;
+}
