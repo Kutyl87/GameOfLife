@@ -6,6 +6,9 @@ public:
 	float getSize() const;
 	float getValuePerUnit() const;
 	float getToxinLevel() const;
+	void setSize(float size);
+	void setValuePerUnit(float valuePerUnit);
+	void setToxinLevel(float toxinLevel);
 
 private:
 	float size;

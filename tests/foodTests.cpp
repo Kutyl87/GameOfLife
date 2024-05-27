@@ -13,5 +13,23 @@ TEST_CASE("Food getValuePerUnit", "[Food]") {
 
 TEST_CASE("Food getToxinLevel", "[Food]") {
 	Food food = Food(3.0, 2.0, 3.0);
+	REQUIRE(food.getToxinLevel() == 3.0);
+}
+
+TEST_CASE("Food setSize", "[Food]") {
+	Food food = Food(3.0, 2.0, 3.0);
+	food.setSize(2.0);
+	REQUIRE(food.getSize() == 2.0);
+}
+
+TEST_CASE("Food setValuePerUnit", "[Food]") {
+	Food food = Food(3.0, 2.0, 3.0);
+	food.setValuePerUnit(3.0);
+	REQUIRE(food.getValuePerUnit() == 3.0);
+}
+
+TEST_CASE("Food setToxinLevel", "[Food]") {
+	Food food = Food(3.0, 2.0, 3.0);
+	food.setToxinLevel(2.0);
 	REQUIRE(food.getToxinLevel() == 2.0);
 }
