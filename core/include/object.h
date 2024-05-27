@@ -12,6 +12,7 @@ public:
 	void setPosition(std::array<float, 3> position);
 	void setRotation(std::array<float, 3> rotation);
 	void setParent(std::weak_ptr<Object> parent);
+	bool operator==(const Object& other) const;
 
 private:
 	std::array<float, 3> position;
