@@ -7,3 +7,7 @@ float Food::getSize() const {
 float Food::getValuePerUnit() const {
 	return valuePerUnit;
 }
+
+float Food::getToxinLevel() const {
+	return toxinLevel;
+}
