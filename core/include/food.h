@@ -4,6 +4,7 @@ public:
 		: size(size), valuePerUnit(valuePerUnit), toxinLevel(toxinLevel) {}
 
 	float getSize() const;
+	float getValuePerUnit() const;
 
 private:
 	float size;
