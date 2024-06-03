@@ -5,6 +5,8 @@
 // Don't forget to update the following #include statements after adding in new classes.
 #include "ball.h"
 #include "main.h"
+#include "height_map_mesh.h"
+#include "height_map_static_body.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options * o) {
     godot::Godot::gdnative_init(o);
@@ -18,5 +20,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
     godot::Godot::nativescript_init(handle);
 
     godot::register_class<godot::Ball>();
-
+    godot::register_tool_class<godot::HeightMapMesh>();
+    godot::register_tool_class<godot::HeightMapStaticBody>();
 }

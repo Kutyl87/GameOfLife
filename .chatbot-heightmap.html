@@ -1,0 +1,2183 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format('woff');
+}
+
+@media (prefers-color-scheme: dark) {
+  body,
+  [data-theme="dark"] {
+    /*dark*/
+    color-scheme: dark;
+    --color-prettylights-syntax-comment: #8b949e;
+    --color-prettylights-syntax-constant: #79c0ff;
+    --color-prettylights-syntax-entity: #d2a8ff;
+    --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+    --color-prettylights-syntax-entity-tag: #7ee787;
+    --color-prettylights-syntax-keyword: #ff7b72;
+    --color-prettylights-syntax-string: #a5d6ff;
+    --color-prettylights-syntax-variable: #ffa657;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+    --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+    --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+    --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+    --color-prettylights-syntax-carriage-return-bg: #b62324;
+    --color-prettylights-syntax-string-regexp: #7ee787;
+    --color-prettylights-syntax-markup-list: #f2cc60;
+    --color-prettylights-syntax-markup-heading: #1f6feb;
+    --color-prettylights-syntax-markup-italic: #c9d1d9;
+    --color-prettylights-syntax-markup-bold: #c9d1d9;
+    --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+    --color-prettylights-syntax-markup-deleted-bg: #67060c;
+    --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+    --color-prettylights-syntax-markup-inserted-bg: #033a16;
+    --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+    --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+    --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+    --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+    --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+    --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+    --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+    --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+    --color-fg-default: #e6edf3;
+    --color-fg-muted: #848d97;
+    --color-fg-subtle: #6e7681;
+    --color-canvas-default: #0d1117;
+    --color-canvas-subtle: #161b22;
+    --color-border-default: #30363d;
+    --color-border-muted: #21262d;
+    --color-neutral-muted: rgba(110,118,129,0.4);
+    --color-accent-fg: #2f81f7;
+    --color-accent-emphasis: #1f6feb;
+    --color-success-fg: #3fb950;
+    --color-success-emphasis: #238636;
+    --color-attention-fg: #d29922;
+    --color-attention-emphasis: #9e6a03;
+    --color-attention-subtle: rgba(187,128,9,0.15);
+    --color-danger-fg: #f85149;
+    --color-danger-emphasis: #da3633;
+    --color-done-fg: #a371f7;
+    --color-done-emphasis: #8957e5;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body,
+  [data-theme="light"] {
+    /*light*/
+    color-scheme: light;
+    --color-prettylights-syntax-comment: #57606a;
+    --color-prettylights-syntax-constant: #0550ae;
+    --color-prettylights-syntax-entity: #6639ba;
+    --color-prettylights-syntax-storage-modifier-import: #24292f;
+    --color-prettylights-syntax-entity-tag: #116329;
+    --color-prettylights-syntax-keyword: #cf222e;
+    --color-prettylights-syntax-string: #0a3069;
+    --color-prettylights-syntax-variable: #953800;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+    --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+    --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+    --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+    --color-prettylights-syntax-carriage-return-bg: #cf222e;
+    --color-prettylights-syntax-string-regexp: #116329;
+    --color-prettylights-syntax-markup-list: #3b2300;
+    --color-prettylights-syntax-markup-heading: #0550ae;
+    --color-prettylights-syntax-markup-italic: #24292f;
+    --color-prettylights-syntax-markup-bold: #24292f;
+    --color-prettylights-syntax-markup-deleted-text: #82071e;
+    --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+    --color-prettylights-syntax-markup-inserted-text: #116329;
+    --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+    --color-prettylights-syntax-markup-changed-text: #953800;
+    --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+    --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+    --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+    --color-prettylights-syntax-meta-diff-range: #8250df;
+    --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+    --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+    --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+    --color-fg-default: #1F2328;
+    --color-fg-muted: #656d76;
+    --color-fg-subtle: #6e7781;
+    --color-canvas-default: #ffffff;
+    --color-canvas-subtle: #f6f8fa;
+    --color-border-default: #d0d7de;
+    --color-border-muted: hsla(210,18%,87%,1);
+    --color-neutral-muted: rgba(175,184,193,0.2);
+    --color-accent-fg: #0969da;
+    --color-accent-emphasis: #0969da;
+    --color-success-fg: #1a7f37;
+    --color-success-emphasis: #1f883d;
+    --color-attention-fg: #9a6700;
+    --color-attention-emphasis: #9a6700;
+    --color-attention-subtle: #fff8c5;
+    --color-danger-fg: #d1242f;
+    --color-danger-emphasis: #cf222e;
+    --color-done-fg: #8250df;
+    --color-done-emphasis: #8250df;
+  }
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--color-canvas-default);
+}
+
+.markdown-body .octicon-link:before {
+  font: normal normal normal 16px/1 octicons-link;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  content: '\f05c';
+  vertical-align: middle;
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  color: var(--color-fg-default);
+  background-color: var(--color-canvas-default);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body h1:hover .anchor .octicon-link:before,
+.markdown-body h2:hover .anchor .octicon-link:before,
+.markdown-body h3:hover .anchor .octicon-link:before,
+.markdown-body h4:hover .anchor .octicon-link:before,
+.markdown-body h5:hover .anchor .octicon-link:before,
+.markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+}
+
+.markdown-body details,
+.markdown-body figcaption,
+.markdown-body figure {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body [hidden] {
+  display: none !important;
+}
+
+.markdown-body a {
+  background-color: transparent;
+  color: var(--color-accent-fg);
+  text-decoration: none;
+}
+
+.markdown-body abbr[title] {
+  border-bottom: none;
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+
+.markdown-body dfn {
+  font-style: italic;
+}
+
+.markdown-body h1 {
+  margin: .67em 0;
+  font-weight: var(--base-text-weight-semibold, 600);
+  padding-bottom: .3em;
+  font-size: 2em;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+
+.markdown-body mark {
+  background-color: var(--color-attention-subtle);
+  color: var(--color-fg-default);
+}
+
+.markdown-body small {
+  font-size: 90%;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body sup {
+  top: -0.5em;
+}
+
+.markdown-body img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: var(--color-canvas-default);
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.markdown-body figure {
+  margin: 1em 40px;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid var(--color-border-muted);
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--color-border-default);
+  border: 0;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body [type=button],
+.markdown-body [type=reset],
+.markdown-body [type=submit] {
+  -webkit-appearance: button;
+  appearance: button;
+}
+
+.markdown-body [type=checkbox],
+.markdown-body [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body [type=number]::-webkit-inner-spin-button,
+.markdown-body [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+.markdown-body [type=search]::-webkit-search-cancel-button,
+.markdown-body [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: .54;
+}
+
+.markdown-body ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  appearance: button;
+  font: inherit;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body ::placeholder {
+  color: var(--color-fg-subtle);
+  opacity: 1;
+}
+
+.markdown-body hr::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body details:not([open])>*:not(summary) {
+  display: none !important;
+}
+
+.markdown-body a:focus,
+.markdown-body [role=button]:focus,
+.markdown-body input[type=radio]:focus,
+.markdown-body input[type=checkbox]:focus {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+.markdown-body a:focus:not(:focus-visible),
+.markdown-body [role=button]:focus:not(:focus-visible),
+.markdown-body input[type=radio]:focus:not(:focus-visible),
+.markdown-body input[type=checkbox]:focus:not(:focus-visible) {
+  outline: solid 1px transparent;
+}
+
+.markdown-body a:focus-visible,
+.markdown-body [role=button]:focus-visible,
+.markdown-body input[type=radio]:focus-visible,
+.markdown-body input[type=checkbox]:focus-visible {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+.markdown-body a:not([class]):focus,
+.markdown-body a:not([class]):focus-visible,
+.markdown-body input[type=radio]:focus,
+.markdown-body input[type=radio]:focus-visible,
+.markdown-body input[type=checkbox]:focus,
+.markdown-body input[type=checkbox]:focus-visible {
+  outline-offset: 0;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  line-height: 10px;
+  color: var(--color-fg-default);
+  vertical-align: middle;
+  background-color: var(--color-canvas-subtle);
+  border: solid 1px var(--color-neutral-muted);
+  border-bottom-color: var(--color-neutral-muted);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 var(--color-neutral-muted);
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: var(--base-text-weight-semibold, 600);
+  line-height: 1.25;
+}
+
+.markdown-body h2 {
+  font-weight: var(--base-text-weight-semibold, 600);
+  padding-bottom: .3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--color-border-muted);
+}
+
+.markdown-body h3 {
+  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: .85em;
+  color: var(--color-fg-muted);
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: var(--color-fg-muted);
+  border-left: .25em solid var(--color-border-default);
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body tt,
+.markdown-body code,
+.markdown-body samp {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+  word-wrap: normal;
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-body input::-webkit-outer-spin-button,
+.markdown-body input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.markdown-body .mr-2 {
+  margin-right: var(--base-size-8, 8px) !important;
+}
+
+.markdown-body::before {
+  display: table;
+  content: "";
+}
+
+.markdown-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .absent {
+  color: var(--color-danger-fg);
+}
+
+.markdown-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: var(--color-fg-default);
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 tt,
+.markdown-body h1 code,
+.markdown-body h2 tt,
+.markdown-body h2 code,
+.markdown-body h3 tt,
+.markdown-body h3 code,
+.markdown-body h4 tt,
+.markdown-body h4 code,
+.markdown-body h5 tt,
+.markdown-body h5 code,
+.markdown-body h6 tt,
+.markdown-body h6 code {
+  padding: 0 .2em;
+  font-size: inherit;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2,
+.markdown-body summary h3,
+.markdown-body summary h4,
+.markdown-body summary h5,
+.markdown-body summary h6 {
+  display: inline-block;
+}
+
+.markdown-body summary h1 .anchor,
+.markdown-body summary h2 .anchor,
+.markdown-body summary h3 .anchor,
+.markdown-body summary h4 .anchor,
+.markdown-body summary h5 .anchor,
+.markdown-body summary h6 .anchor {
+  margin-left: -40px;
+}
+
+.markdown-body summary h1,
+.markdown-body summary h2 {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.markdown-body ul.no-list,
+.markdown-body ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.markdown-body ol[type="a s"] {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body ol[type="A s"] {
+  list-style-type: upper-alpha;
+}
+
+.markdown-body ol[type="i s"] {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol[type="I s"] {
+  list-style-type: upper-roman;
+}
+
+.markdown-body ol[type="1"] {
+  list-style-type: decimal;
+}
+
+.markdown-body div>ol:not([type]) {
+  list-style-type: decimal;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table th {
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid var(--color-border-default);
+}
+
+.markdown-body table td>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table tr {
+  background-color: var(--color-canvas-default);
+  border-top: 1px solid var(--color-border-muted);
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: var(--color-canvas-subtle);
+}
+
+.markdown-body table img {
+  background-color: transparent;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: transparent;
+}
+
+.markdown-body span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+.markdown-body span.frame>span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-default);
+}
+
+.markdown-body span.frame span img {
+  display: block;
+  float: left;
+}
+
+.markdown-body span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: var(--color-fg-default);
+}
+
+.markdown-body span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-center>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.markdown-body span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.markdown-body span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.markdown-body span.align-right>span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+.markdown-body span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-left span {
+  margin: 13px 0 0;
+}
+
+.markdown-body span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+.markdown-body span.float-right>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+.markdown-body code,
+.markdown-body tt {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: var(--color-neutral-muted);
+  border-radius: 6px;
+}
+
+.markdown-body code br,
+.markdown-body tt br {
+  display: none;
+}
+
+.markdown-body del code {
+  text-decoration: inherit;
+}
+
+.markdown-body samp {
+  font-size: 85%;
+}
+
+.markdown-body pre code {
+  font-size: 100%;
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  color: var(--color-fg-default);
+  background-color: var(--color-canvas-subtle);
+  border-radius: 6px;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body .csv-data td,
+.markdown-body .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.markdown-body .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: var(--color-canvas-default);
+  border: 0;
+}
+
+.markdown-body .csv-data tr {
+  border-top: 0;
+}
+
+.markdown-body .csv-data th {
+  font-weight: var(--base-text-weight-semibold, 600);
+  background: var(--color-canvas-subtle);
+  border-top: 0;
+}
+
+.markdown-body [data-footnote-ref]::before {
+  content: "[";
+}
+
+.markdown-body [data-footnote-ref]::after {
+  content: "]";
+}
+
+.markdown-body .footnotes {
+  font-size: 12px;
+  color: var(--color-fg-muted);
+  border-top: 1px solid var(--color-border-default);
+}
+
+.markdown-body .footnotes ol {
+  padding-left: 16px;
+}
+
+.markdown-body .footnotes ol ul {
+  display: inline-block;
+  padding-left: 16px;
+  margin-top: 16px;
+}
+
+.markdown-body .footnotes li {
+  position: relative;
+}
+
+.markdown-body .footnotes li:target::before {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -24px;
+  pointer-events: none;
+  content: "";
+  border: 2px solid var(--color-accent-emphasis);
+  border-radius: 6px;
+}
+
+.markdown-body .footnotes li:target {
+  color: var(--color-fg-default);
+}
+
+.markdown-body .footnotes .data-footnote-backref g-emoji {
+  font-family: monospace;
+}
+
+.markdown-body .pl-c {
+  color: var(--color-prettylights-syntax-comment);
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: var(--color-prettylights-syntax-constant);
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: var(--color-prettylights-syntax-entity);
+}
+
+.markdown-body .pl-smi,
+.markdown-body .pl-s .pl-s1 {
+  color: var(--color-prettylights-syntax-storage-modifier-import);
+}
+
+.markdown-body .pl-ent {
+  color: var(--color-prettylights-syntax-entity-tag);
+}
+
+.markdown-body .pl-k {
+  color: var(--color-prettylights-syntax-keyword);
+}
+
+.markdown-body .pl-s,
+.markdown-body .pl-pds,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sre,
+.markdown-body .pl-sr .pl-sra {
+  color: var(--color-prettylights-syntax-string);
+}
+
+.markdown-body .pl-v,
+.markdown-body .pl-smw {
+  color: var(--color-prettylights-syntax-variable);
+}
+
+.markdown-body .pl-bu {
+  color: var(--color-prettylights-syntax-brackethighlighter-unmatched);
+}
+
+.markdown-body .pl-ii {
+  color: var(--color-prettylights-syntax-invalid-illegal-text);
+  background-color: var(--color-prettylights-syntax-invalid-illegal-bg);
+}
+
+.markdown-body .pl-c2 {
+  color: var(--color-prettylights-syntax-carriage-return-text);
+  background-color: var(--color-prettylights-syntax-carriage-return-bg);
+}
+
+.markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: var(--color-prettylights-syntax-string-regexp);
+}
+
+.markdown-body .pl-ml {
+  color: var(--color-prettylights-syntax-markup-list);
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  font-weight: bold;
+  color: var(--color-prettylights-syntax-markup-heading);
+}
+
+.markdown-body .pl-mi {
+  font-style: italic;
+  color: var(--color-prettylights-syntax-markup-italic);
+}
+
+.markdown-body .pl-mb {
+  font-weight: bold;
+  color: var(--color-prettylights-syntax-markup-bold);
+}
+
+.markdown-body .pl-md {
+  color: var(--color-prettylights-syntax-markup-deleted-text);
+  background-color: var(--color-prettylights-syntax-markup-deleted-bg);
+}
+
+.markdown-body .pl-mi1 {
+  color: var(--color-prettylights-syntax-markup-inserted-text);
+  background-color: var(--color-prettylights-syntax-markup-inserted-bg);
+}
+
+.markdown-body .pl-mc {
+  color: var(--color-prettylights-syntax-markup-changed-text);
+  background-color: var(--color-prettylights-syntax-markup-changed-bg);
+}
+
+.markdown-body .pl-mi2 {
+  color: var(--color-prettylights-syntax-markup-ignored-text);
+  background-color: var(--color-prettylights-syntax-markup-ignored-bg);
+}
+
+.markdown-body .pl-mdr {
+  font-weight: bold;
+  color: var(--color-prettylights-syntax-meta-diff-range);
+}
+
+.markdown-body .pl-ba {
+  color: var(--color-prettylights-syntax-brackethighlighter-angle);
+}
+
+.markdown-body .pl-sg {
+  color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+}
+
+.markdown-body .pl-corl {
+  text-decoration: underline;
+  color: var(--color-prettylights-syntax-constant-other-reference-link);
+}
+
+.markdown-body g-emoji {
+  display: inline-block;
+  min-width: 1ch;
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1em;
+  font-style: normal !important;
+  font-weight: var(--base-text-weight-normal, 400);
+  line-height: 1;
+  vertical-align: -0.075em;
+}
+
+.markdown-body g-emoji img {
+  width: 1em;
+  height: 1em;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item label {
+  font-weight: var(--base-text-weight-normal, 400);
+}
+
+.markdown-body .task-list-item.enabled label {
+  cursor: pointer;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 4px;
+}
+
+.markdown-body .task-list-item .handle {
+  display: none;
+}
+
+.markdown-body .task-list-item-checkbox {
+  margin: 0 .2em .25em -1.4em;
+  vertical-align: middle;
+}
+
+.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+  margin: 0 -1.6em .25em .2em;
+}
+
+.markdown-body .contains-task-list {
+  position: relative;
+}
+
+.markdown-body .contains-task-list:hover .task-list-item-convert-container,
+.markdown-body .contains-task-list:focus-within .task-list-item-convert-container {
+  display: block;
+  width: auto;
+  height: 24px;
+  overflow: visible;
+  clip: auto;
+}
+
+.markdown-body ::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
+}
+
+.markdown-body .markdown-alert {
+  padding: var(--base-size-8, 8px) var(--base-size-16, 16px);
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid var(--color-border-default);
+}
+
+.markdown-body .markdown-alert>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body .markdown-alert>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body .markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: var(--base-text-weight-medium, 500);
+  align-items: center;
+  line-height: 1;
+}
+
+.markdown-body .markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-accent-emphasis);
+}
+
+.markdown-body .markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-accent-fg);
+}
+
+.markdown-body .markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-done-emphasis);
+}
+
+.markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-done-fg);
+}
+
+.markdown-body .markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-attention-emphasis);
+}
+
+.markdown-body .markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-attention-fg);
+}
+
+.markdown-body .markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-success-emphasis);
+}
+
+.markdown-body .markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-success-fg);
+}
+
+.markdown-body .markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-danger-emphasis);
+}
+
+.markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-danger-fg);
+}
+</style><title>.chatbot-heightmap</title></head><body><article class="markdown-body"><p>Sure, I'll provide you with a basic example of how to create an ArrayMesh from a height map using Godot's GDNative C++ API.</p>
+<p>Here's a step-by-step guide to creating a Godot C++ module that generates an ArrayMesh from a height map.</p>
+<div class="markdown-heading"><h3 class="heading-element">1. Set Up GDNative C++ Environment</h3><a id="user-content-1-set-up-gdnative-c-environment" class="anchor" aria-label="Permalink: 1. Set Up GDNative C++ Environment" href="#1-set-up-gdnative-c-environment"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>First, ensure you have set up your GDNative C++ environment. This includes having Godot, SCons, and the GDNative headers set up correctly.</p>
+<div class="markdown-heading"><h3 class="heading-element">2. Create the GDNative C++ Module</h3><a id="user-content-2-create-the-gdnative-c-module" class="anchor" aria-label="Permalink: 2. Create the GDNative C++ Module" href="#2-create-the-gdnative-c-module"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Create a new GDNative C++ module. Here's an example of the files you might need:</p>
+<ul>
+<li><code>height_map_mesh.h</code></li>
+<li><code>height_map_mesh.cpp</code></li>
+<li><code>config.py</code></li>
+<li><code>SCsub</code></li>
+<li><code>height_map_mesh.gdnlib</code></li>
+<li><code>height_map_mesh.gdns</code></li>
+</ul>
+<div class="markdown-heading"><h3 class="heading-element">3. Implement the GDNative C++ Code</h3><a id="user-content-3-implement-the-gdnative-c-code" class="anchor" aria-label="Permalink: 3. Implement the GDNative C++ Code" href="#3-implement-the-gdnative-c-code"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.h</code></h4><a id="user-content-height_map_meshh" class="anchor" aria-label="Permalink: height_map_mesh.h" href="#height_map_meshh"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">ifndef</span> HEIGHT_MAP_MESH_H
+#<span class="pl-k">define</span> <span class="pl-en">HEIGHT_MAP_MESH_H</span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Godot.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Reference.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ArrayMesh.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Image.hpp<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">namespace</span> <span class="pl-en">godot</span> {
+
+<span class="pl-k">class</span> <span class="pl-en">HeightMapMesh</span> : <span class="pl-k">public</span> <span class="pl-en">Reference</span> {
+    <span class="pl-en">GODOT_CLASS</span>(HeightMapMesh, Reference)
+
+<span class="pl-k">public:</span>
+    <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">_register_methods</span>();
+
+    <span class="pl-en">HeightMapMesh</span>();
+    <span class="pl-en">~HeightMapMesh</span>();
+
+    <span class="pl-k">void</span> <span class="pl-en">_init</span>(); <span class="pl-c"><span class="pl-c">//</span> Our initializer called by Godot</span>
+
+    Ref&lt;ArrayMesh&gt; <span class="pl-en">create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height);
+
+<span class="pl-k">private:</span>
+    <span class="pl-k">void</span> <span class="pl-en">generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height);
+    <span class="pl-k">void</span> <span class="pl-en">generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices);
+};
+
+}
+
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> HEIGHT_MAP_MESH_H</span></pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.cpp</code></h4><a id="user-content-height_map_meshcpp" class="anchor" aria-label="Permalink: height_map_mesh.cpp" href="#height_map_meshcpp"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">godot</span><span class="pl-k">;</span>
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_register_methods</span>() {
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>create_mesh_from_heightmap<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::create_mesh_from_heightmap);
+}
+
+<span class="pl-en">HeightMapMesh::HeightMapMesh</span>() {}
+<span class="pl-en">HeightMapMesh::~HeightMapMesh</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_init</span>() {}
+
+Ref&lt;ArrayMesh&gt; <span class="pl-en">HeightMapMesh::create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height) {
+    Ref&lt;ArrayMesh&gt; mesh = <span class="pl-c1">ArrayMesh::_new</span>();
+
+    PoolVector3Array vertices;
+    PoolVector3Array normals;
+    PoolIntArray indices;
+
+    heightmap-&gt;<span class="pl-c1">lock</span>();
+
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    <span class="pl-c1">generate_vertices</span>(heightmap, vertices, normals, max_height);
+    <span class="pl-c1">generate_indices</span>(width, height, indices);
+
+    heightmap-&gt;<span class="pl-c1">unlock</span>();
+
+    Array arrays;
+    arrays.<span class="pl-c1">resize</span>(Mesh::ARRAY_MAX);
+    arrays[Mesh::ARRAY_VERTEX] = vertices;
+    arrays[Mesh::ARRAY_NORMAL] = normals;
+    arrays[Mesh::ARRAY_INDEX] = indices;
+
+    mesh-&gt;<span class="pl-c1">add_surface_from_arrays</span>(Mesh::PRIMITIVE_TRIANGLES, arrays);
+
+    <span class="pl-k">return</span> mesh;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height) {
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    vertices.<span class="pl-c1">resize</span>(width * height);
+    normals.<span class="pl-c1">resize</span>(width * height);
+
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width; ++x) {
+            <span class="pl-k">float</span> height_value = heightmap-&gt;<span class="pl-c1">get_pixel</span>(x, y).<span class="pl-smi">r</span> * max_height;
+            Vector3 <span class="pl-smi">vertex</span>(x, height_value, y);
+            vertices.<span class="pl-c1">set</span>(y * width + x, vertex);
+
+            <span class="pl-c"><span class="pl-c">//</span> For simplicity, normals are set to Vector3(0, 1, 0)</span>
+            normals.<span class="pl-c1">set</span>(y * width + x, <span class="pl-c1">Vector3</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">0</span>));
+        }
+    }
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices) {
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height - <span class="pl-c1">1</span>; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width - <span class="pl-c1">1</span>; ++x) {
+            <span class="pl-k">int</span> top_left = y * width + x;
+            <span class="pl-k">int</span> bottom_left = (y + <span class="pl-c1">1</span>) * width + x;
+            <span class="pl-k">int</span> top_right = y * width + (x + <span class="pl-c1">1</span>);
+            <span class="pl-k">int</span> bottom_right = (y + <span class="pl-c1">1</span>) * width + (x + <span class="pl-c1">1</span>);
+
+            indices.<span class="pl-c1">append</span>(top_left);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(top_right);
+
+            indices.<span class="pl-c1">append</span>(top_right);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(bottom_right);
+        }
+    }
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">4. Configuration Files</h3><a id="user-content-4-configuration-files" class="anchor" aria-label="Permalink: 4. Configuration Files" href="#4-configuration-files"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>config.py</code></h4><a id="user-content-configpy" class="anchor" aria-label="Permalink: config.py" href="#configpy"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>This file configures SCons to build your GDNative module.</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">def</span> <span class="pl-en">can_build</span>(<span class="pl-s1">env</span>, <span class="pl-s1">platform</span>):
+    <span class="pl-k">return</span> <span class="pl-c1">True</span>
+
+<span class="pl-k">def</span> <span class="pl-en">configure</span>(<span class="pl-s1">env</span>):
+    <span class="pl-k">pass</span>
+
+<span class="pl-k">def</span> <span class="pl-en">get_opts</span>():
+    <span class="pl-k">return</span> []
+
+<span class="pl-k">def</span> <span class="pl-en">get_flags</span>():
+    <span class="pl-k">return</span> []
+
+<span class="pl-k">def</span> <span class="pl-en">get_env</span>():
+    <span class="pl-k">return</span> {}
+
+<span class="pl-k">def</span> <span class="pl-en">get_doc_path</span>():
+    <span class="pl-k">return</span> <span class="pl-s">"doc_classes"</span></pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>SCsub</code></h4><a id="user-content-scsub" class="anchor" aria-label="Permalink: SCsub" href="#scsub"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>This file tells SCons how to compile the C++ code.</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-v">Import</span>(<span class="pl-s">"env"</span>)
+
+<span class="pl-s1">env_shared</span> <span class="pl-c1">=</span> <span class="pl-s1">env</span>.<span class="pl-v">Clone</span>()
+<span class="pl-s1">env_shared</span>.<span class="pl-en">add_source_files</span>(<span class="pl-s1">env</span>.<span class="pl-s1">modules_sources</span>, <span class="pl-s">"height_map_mesh.cpp"</span>)</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">5. Godot Configuration Files</h3><a id="user-content-5-godot-configuration-files" class="anchor" aria-label="Permalink: 5. Godot Configuration Files" href="#5-godot-configuration-files"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.gdnlib</code></h4><a id="user-content-height_map_meshgdnlib" class="anchor" aria-label="Permalink: height_map_mesh.gdnlib" href="#height_map_meshgdnlib"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>This file links your GDNative library with Godot.</p>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[general]</span>
+
+<span class="pl-k">singleton</span>=false
+<span class="pl-k">load_once</span>=true
+<span class="pl-k">symbol_prefix</span>=<span class="pl-s"><span class="pl-pds">"</span>godot_<span class="pl-pds">"</span></span>
+<span class="pl-k">reloadable</span>=true
+
+<span class="pl-en">[entry]</span>
+
+<span class="pl-k">OSX.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_mesh.dylib<span class="pl-pds">"</span></span>
+<span class="pl-k">Windows.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/height_map_mesh.dll<span class="pl-pds">"</span></span>
+<span class="pl-k">X11.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_mesh.so<span class="pl-pds">"</span></span>
+
+<span class="pl-en">[dependencies]</span>
+
+<span class="pl-k">OSX.64</span>=[  ]
+<span class="pl-k">Windows.64</span>=[  ]
+<span class="pl-k">X11.64</span>=[  ]</pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.gdns</code></h4><a id="user-content-height_map_meshgdns" class="anchor" aria-label="Permalink: height_map_mesh.gdns" href="#height_map_meshgdns"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>This file defines the script class in Godot.</p>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[gd_resource type="NativeScript" load_steps=2 format=2]</span>
+
+<span class="pl-en">[ext_resource path="res://height_map_mesh.gdnlib" type="GDNativeLibrary" id=1]</span>
+
+<span class="pl-en">[resource]</span>
+
+<span class="pl-k">resource_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapMesh<span class="pl-pds">"</span></span>
+<span class="pl-k">class_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapMesh<span class="pl-pds">"</span></span>
+<span class="pl-k">library</span> = ExtResource( 1 )</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">6. Using the Module in Godot</h3><a id="user-content-6-using-the-module-in-godot" class="anchor" aria-label="Permalink: 6. Using the Module in Godot" href="#6-using-the-module-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>To use this module in Godot, you can create a new script in GDScript that interacts with your GDNative C++ class.</p>
+<div class="markdown-heading"><h4 class="heading-element">Example GDScript</h4><a id="user-content-example-gdscript" class="anchor" aria-label="Permalink: Example GDScript" href="#example-gdscript"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-gdscript"><pre><span class="pl-k">extends</span> <span class="pl-en">Spatial</span>
+
+<span class="pl-k">var</span> <span class="pl-smi">height_map_mesh</span> <span class="pl-k">=</span> <span class="pl-k">preload</span>(<span class="pl-s">"res://height_map_mesh.gdns"</span>).<span class="pl-c1">new</span>()
+
+<span class="pl-k">func</span> <span class="pl-en">_ready</span>():
+    <span class="pl-k">var</span> <span class="pl-smi">heightmap</span> <span class="pl-k">=</span> <span class="pl-c1">load</span>(<span class="pl-s">"res://path_to_your_heightmap_image.png"</span>)
+    <span class="pl-k">var</span> <span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">create_mesh_from_heightmap</span>(<span class="pl-smi">heightmap</span>, <span class="pl-c1">10.0</span>)
+    
+    <span class="pl-k">var</span> <span class="pl-smi">mesh_instance</span> <span class="pl-k">=</span> <span class="pl-en">MeshInstance</span>.<span class="pl-c1">new</span>()
+    <span class="pl-smi">mesh_instance</span>.<span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">mesh</span>
+    <span class="pl-c1">add_child</span>(<span class="pl-smi">mesh_instance</span>)</pre></div>
+<p>Make sure to replace <code>"res://path_to_your_heightmap_image.png"</code> with the actual path to your height map image.</p>
+<div class="markdown-heading"><h3 class="heading-element">7. Building the Project</h3><a id="user-content-7-building-the-project" class="anchor" aria-label="Permalink: 7. Building the Project" href="#7-building-the-project"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Run <code>scons platform=&lt;your_platform&gt;</code> in the terminal to build the project. Make sure to adjust <code>&lt;your_platform&gt;</code> to your operating system (e.g., <code>windows</code>, <code>linux</code>, or <code>osx</code>).</p>
+<p>This should cover the basics of creating an ArrayMesh from a height map using GDNative C++. You can extend the functionality by improving normal generation, handling different height map formats, and more.</p>
+<p>Yes, it is possible to choose the heightmap file in the Godot editor by using an <code>EditorInspectorPlugin</code> to add custom properties to your script. This will allow you to select the heightmap image file directly from the Godot editor. Here's how you can achieve this:</p>
+<div class="markdown-heading"><h3 class="heading-element">Step-by-Step Guide</h3><a id="user-content-step-by-step-guide" class="anchor" aria-label="Permalink: Step-by-Step Guide" href="#step-by-step-guide"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ol>
+<li>
+<p><strong>Create a new script that extends <code>EditorInspectorPlugin</code>.</strong></p>
+</li>
+<li>
+<p><strong>Modify your existing C++ code to add a method for setting the heightmap file path.</strong></p>
+</li>
+<li>
+<p><strong>Integrate this into your Godot project using GDScript and the Godot editor.</strong></p>
+</li>
+</ol>
+<div class="markdown-heading"><h3 class="heading-element">1. Create the Editor Inspector Plugin</h3><a id="user-content-1-create-the-editor-inspector-plugin" class="anchor" aria-label="Permalink: 1. Create the Editor Inspector Plugin" href="#1-create-the-editor-inspector-plugin"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Create a new script called <code>height_map_plugin.gd</code>:</p>
+<div class="highlight highlight-source-gdscript"><pre><span class="pl-k">extends</span> <span class="pl-en">EditorInspectorPlugin</span>
+
+<span class="pl-k">func</span> <span class="pl-en">_can_handle</span>(<span class="pl-smi">object</span>):
+    <span class="pl-k">return</span> <span class="pl-smi">object</span> <span class="pl-k">is</span> <span class="pl-en">HeightMapMesh</span>
+
+<span class="pl-k">func</span> <span class="pl-en">_parse_begin</span>(<span class="pl-smi">object</span>):
+    <span class="pl-c1">add_custom_control</span>(<span class="pl-c1">create_heightmap_control</span>(<span class="pl-smi">object</span>))
+
+<span class="pl-k">func</span> <span class="pl-en">create_heightmap_control</span>(<span class="pl-smi">object</span>):
+    <span class="pl-k">var</span> <span class="pl-smi">vbox</span> <span class="pl-k">=</span> <span class="pl-en">VBoxContainer</span>.<span class="pl-c1">new</span>()
+
+    <span class="pl-k">var</span> <span class="pl-smi">file_dialog</span> <span class="pl-k">=</span> <span class="pl-en">FileDialog</span>.<span class="pl-c1">new</span>()
+    <span class="pl-smi">file_dialog</span>.<span class="pl-smi">mode</span> <span class="pl-k">=</span> <span class="pl-en">FileDialog</span>.<span class="pl-c1">MODE_OPEN_FILE</span>
+    <span class="pl-smi">file_dialog</span>.<span class="pl-smi">access</span> <span class="pl-k">=</span> <span class="pl-en">FileDialog</span>.<span class="pl-c1">ACCESS_FILESYSTEM</span>
+    <span class="pl-smi">file_dialog</span>.<span class="pl-smi">filters</span> <span class="pl-k">=</span> [<span class="pl-s">"*.png ; PNG Images"</span>, <span class="pl-s">"*.jpg ; JPG Images"</span>]
+    <span class="pl-smi">vbox</span>.<span class="pl-c1">add_child</span>(<span class="pl-smi">file_dialog</span>)
+
+    <span class="pl-k">var</span> <span class="pl-smi">load_button</span> <span class="pl-k">=</span> <span class="pl-en">Button</span>.<span class="pl-c1">new</span>()
+    <span class="pl-smi">load_button</span>.<span class="pl-smi">text</span> <span class="pl-k">=</span> <span class="pl-s">"Load Heightmap"</span>
+    <span class="pl-smi">load_button</span>.<span class="pl-c1">connect</span>(<span class="pl-s">"pressed"</span>, <span class="pl-c1">self</span>, <span class="pl-s">"_on_load_button_pressed"</span>, [<span class="pl-smi">file_dialog</span>, <span class="pl-smi">object</span>])
+    <span class="pl-smi">vbox</span>.<span class="pl-c1">add_child</span>(<span class="pl-smi">load_button</span>)
+
+    <span class="pl-k">return</span> <span class="pl-smi">vbox</span>
+
+<span class="pl-k">func</span> <span class="pl-en">_on_load_button_pressed</span>(<span class="pl-smi">file_dialog</span>, <span class="pl-smi">object</span>):
+    <span class="pl-smi">file_dialog</span>.<span class="pl-c1">popup_centered</span>()
+
+    <span class="pl-smi">file_dialog</span>.<span class="pl-c1">connect</span>(<span class="pl-s">"file_selected"</span>, <span class="pl-c1">self</span>, <span class="pl-s">"_on_file_selected"</span>, [<span class="pl-smi">object</span>])
+
+<span class="pl-k">func</span> <span class="pl-en">_on_file_selected</span>(<span class="pl-smi">path</span>, <span class="pl-smi">object</span>):
+    <span class="pl-smi">object</span>.<span class="pl-c1">set_heightmap_path</span>(<span class="pl-smi">path</span>)</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">2. Modify Your C++ Code</h3><a id="user-content-2-modify-your-c-code" class="anchor" aria-label="Permalink: 2. Modify Your C++ Code" href="#2-modify-your-c-code"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Add a method to set the heightmap path in your C++ code. Update <code>height_map_mesh.h</code>:</p>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">ifndef</span> HEIGHT_MAP_MESH_H
+#<span class="pl-k">define</span> <span class="pl-en">HEIGHT_MAP_MESH_H</span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Godot.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Reference.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ArrayMesh.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Image.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>String.hpp<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">namespace</span> <span class="pl-en">godot</span> {
+
+<span class="pl-k">class</span> <span class="pl-en">HeightMapMesh</span> : <span class="pl-k">public</span> <span class="pl-en">Reference</span> {
+    <span class="pl-en">GODOT_CLASS</span>(HeightMapMesh, Reference)
+
+<span class="pl-k">public:</span>
+    <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">_register_methods</span>();
+
+    <span class="pl-en">HeightMapMesh</span>();
+    <span class="pl-en">~HeightMapMesh</span>();
+
+    <span class="pl-k">void</span> <span class="pl-en">_init</span>(); <span class="pl-c"><span class="pl-c">//</span> Our initializer called by Godot</span>
+
+    <span class="pl-k">void</span> <span class="pl-en">set_heightmap_path</span>(String path);
+    Ref&lt;ArrayMesh&gt; <span class="pl-en">create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height);
+
+<span class="pl-k">private:</span>
+    <span class="pl-k">void</span> <span class="pl-en">generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height);
+    <span class="pl-k">void</span> <span class="pl-en">generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices);
+
+    String heightmap_path;
+};
+
+}
+
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> HEIGHT_MAP_MESH_H</span></pre></div>
+<p>Update <code>height_map_mesh.cpp</code>:</p>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">godot</span><span class="pl-k">;</span>
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_register_methods</span>() {
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>create_mesh_from_heightmap<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::create_mesh_from_heightmap);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>set_heightmap_path<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::set_heightmap_path);
+}
+
+<span class="pl-en">HeightMapMesh::HeightMapMesh</span>() {}
+<span class="pl-en">HeightMapMesh::~HeightMapMesh</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_init</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::set_heightmap_path</span>(String path) {
+    heightmap_path = path;
+}
+
+Ref&lt;ArrayMesh&gt; <span class="pl-en">HeightMapMesh::create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height) {
+    Ref&lt;ArrayMesh&gt; mesh = <span class="pl-c1">ArrayMesh::_new</span>();
+
+    PoolVector3Array vertices;
+    PoolVector3Array normals;
+    PoolIntArray indices;
+
+    heightmap-&gt;<span class="pl-c1">lock</span>();
+
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    <span class="pl-c1">generate_vertices</span>(heightmap, vertices, normals, max_height);
+    <span class="pl-c1">generate_indices</span>(width, height, indices);
+
+    heightmap-&gt;<span class="pl-c1">unlock</span>();
+
+    Array arrays;
+    arrays.<span class="pl-c1">resize</span>(Mesh::ARRAY_MAX);
+    arrays[Mesh::ARRAY_VERTEX] = vertices;
+    arrays[Mesh::ARRAY_NORMAL] = normals;
+    arrays[Mesh::ARRAY_INDEX] = indices;
+
+    mesh-&gt;<span class="pl-c1">add_surface_from_arrays</span>(Mesh::PRIMITIVE_TRIANGLES, arrays);
+
+    <span class="pl-k">return</span> mesh;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height) {
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    vertices.<span class="pl-c1">resize</span>(width * height);
+    normals.<span class="pl-c1">resize</span>(width * height);
+
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width; ++x) {
+            <span class="pl-k">float</span> height_value = heightmap-&gt;<span class="pl-c1">get_pixel</span>(x, y).<span class="pl-smi">r</span> * max_height;
+            Vector3 <span class="pl-smi">vertex</span>(x, height_value, y);
+            vertices.<span class="pl-c1">set</span>(y * width + x, vertex);
+
+            <span class="pl-c"><span class="pl-c">//</span> For simplicity, normals are set to Vector3(0, 1, 0)</span>
+            normals.<span class="pl-c1">set</span>(y * width + x, <span class="pl-c1">Vector3</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">0</span>));
+        }
+    }
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices) {
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height - <span class="pl-c1">1</span>; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width - <span class="pl-c1">1</span>; ++x) {
+            <span class="pl-k">int</span> top_left = y * width + x;
+            <span class="pl-k">int</span> bottom_left = (y + <span class="pl-c1">1</span>) * width + x;
+            <span class="pl-k">int</span> top_right = y * width + (x + <span class="pl-c1">1</span>);
+            <span class="pl-k">int</span> bottom_right = (y + <span class="pl-c1">1</span>) * width + (x + <span class="pl-c1">1</span>);
+
+            indices.<span class="pl-c1">append</span>(top_left);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(top_right);
+
+            indices.<span class="pl-c1">append</span>(top_right);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(bottom_right);
+        }
+    }
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">3. Integrate in Godot</h3><a id="user-content-3-integrate-in-godot" class="anchor" aria-label="Permalink: 3. Integrate in Godot" href="#3-integrate-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Make sure your plugin is registered in Godot. Add the following to your <code>project.godot</code> file:</p>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[editor_plugins]</span>
+<span class="pl-k">enabled</span>=PoolStringArray( <span class="pl-s"><span class="pl-pds">"</span>res://height_map_plugin.gd<span class="pl-pds">"</span></span> )</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">4. Use the Plugin in Godot Editor</h3><a id="user-content-4-use-the-plugin-in-godot-editor" class="anchor" aria-label="Permalink: 4. Use the Plugin in Godot Editor" href="#4-use-the-plugin-in-godot-editor"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Now, when you attach the <code>HeightMapMesh</code> script to a node, you will see the custom controls in the Inspector panel where you can choose a heightmap file.</p>
+<div class="markdown-heading"><h3 class="heading-element">Example GDScript for using the module</h3><a id="user-content-example-gdscript-for-using-the-module" class="anchor" aria-label="Permalink: Example GDScript for using the module" href="#example-gdscript-for-using-the-module"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-gdscript"><pre><span class="pl-k">extends</span> <span class="pl-en">Spatial</span>
+
+<span class="pl-k">var</span> <span class="pl-smi">height_map_mesh</span> <span class="pl-k">=</span> <span class="pl-k">preload</span>(<span class="pl-s">"res://height_map_mesh.gdns"</span>).<span class="pl-c1">new</span>()
+
+<span class="pl-k">func</span> <span class="pl-en">_ready</span>():
+    <span class="pl-k">var</span> <span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">create_mesh_from_heightmap</span>(<span class="pl-c1">load</span>(<span class="pl-smi">height_map_mesh</span>.<span class="pl-smi">heightmap_path</span>), <span class="pl-c1">10.0</span>)
+    
+    <span class="pl-k">var</span> <span class="pl-smi">mesh_instance</span> <span class="pl-k">=</span> <span class="pl-en">MeshInstance</span>.<span class="pl-c1">new</span>()
+    <span class="pl-smi">mesh_instance</span>.<span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">mesh</span>
+    <span class="pl-c1">add_child</span>(<span class="pl-smi">mesh_instance</span>)</pre></div>
+<p>This setup allows you to select the heightmap file in the Godot editor and use it to generate a mesh at runtime. The custom inspector plugin provides a user-friendly way to set the heightmap path.</p>
+<p>Yes, you can create an <code>EditorInspectorPlugin</code> in C++ for Godot. This allows you to extend the Godot editor and create custom controls for your nodes or resources. Here’s a step-by-step guide to creating a custom <code>EditorInspectorPlugin</code> in C++ to allow selection of a heightmap file:</p>
+<div class="markdown-heading"><h3 class="heading-element">Step-by-Step Guide</h3><a id="user-content-step-by-step-guide-1" class="anchor" aria-label="Permalink: Step-by-Step Guide" href="#step-by-step-guide-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ol>
+<li>
+<p><strong>Create the GDNative C++ Module for <code>EditorInspectorPlugin</code></strong>.</p>
+</li>
+<li>
+<p><strong>Modify your existing C++ code to integrate with the <code>EditorInspectorPlugin</code></strong>.</p>
+</li>
+</ol>
+<div class="markdown-heading"><h3 class="heading-element">1. Create the GDNative C++ Module for <code>EditorInspectorPlugin</code>
+</h3><a id="user-content-1-create-the-gdnative-c-module-for-editorinspectorplugin" class="anchor" aria-label="Permalink: 1. Create the GDNative C++ Module for EditorInspectorPlugin" href="#1-create-the-gdnative-c-module-for-editorinspectorplugin"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_plugin.h</code></h4><a id="user-content-height_map_pluginh" class="anchor" aria-label="Permalink: height_map_plugin.h" href="#height_map_pluginh"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">ifndef</span> HEIGHT_MAP_PLUGIN_H
+#<span class="pl-k">define</span> <span class="pl-en">HEIGHT_MAP_PLUGIN_H</span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>editor/editor_inspector_plugin.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>editor/editor_plugin.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>FileDialog.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>VBoxContainer.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Button.hpp<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">namespace</span> <span class="pl-en">godot</span> {
+
+<span class="pl-k">class</span> <span class="pl-en">HeightMapInspectorPlugin</span> : <span class="pl-k">public</span> <span class="pl-en">EditorInspectorPlugin</span> {
+    <span class="pl-en">GODOT_CLASS</span>(HeightMapInspectorPlugin, EditorInspectorPlugin)
+
+<span class="pl-k">public:</span>
+    <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">_register_methods</span>();
+
+    <span class="pl-en">HeightMapInspectorPlugin</span>();
+    <span class="pl-en">~HeightMapInspectorPlugin</span>();
+
+    <span class="pl-k">void</span> <span class="pl-en">_init</span>();
+    <span class="pl-k">bool</span> <span class="pl-en">_can_handle</span>(Object *object) <span class="pl-k">override</span>;
+    <span class="pl-k">void</span> <span class="pl-en">_parse_begin</span>(Object *object) <span class="pl-k">override</span>;
+
+    <span class="pl-k">void</span> <span class="pl-en">_on_load_button_pressed</span>(Object *object, FileDialog *file_dialog);
+    <span class="pl-k">void</span> <span class="pl-en">_on_file_selected</span>(String path, Object *object);
+
+<span class="pl-k">private:</span>
+    Ref&lt;FileDialog&gt; file_dialog;
+};
+
+}
+
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> HEIGHT_MAP_PLUGIN_H</span></pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_plugin.cpp</code></h4><a id="user-content-height_map_plugincpp" class="anchor" aria-label="Permalink: height_map_plugin.cpp" href="#height_map_plugincpp"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_plugin.h<span class="pl-pds">"</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">godot</span><span class="pl-k">;</span>
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapInspectorPlugin::_register_methods</span>() {
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>_can_handle<span class="pl-pds">"</span></span>, &amp;HeightMapInspectorPlugin::_can_handle);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>_parse_begin<span class="pl-pds">"</span></span>, &amp;HeightMapInspectorPlugin::_parse_begin);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>_on_load_button_pressed<span class="pl-pds">"</span></span>, &amp;HeightMapInspectorPlugin::_on_load_button_pressed);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>_on_file_selected<span class="pl-pds">"</span></span>, &amp;HeightMapInspectorPlugin::_on_file_selected);
+}
+
+<span class="pl-en">HeightMapInspectorPlugin::HeightMapInspectorPlugin</span>() {}
+<span class="pl-en">HeightMapInspectorPlugin::~HeightMapInspectorPlugin</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapInspectorPlugin::_init</span>() {}
+
+<span class="pl-k">bool</span> <span class="pl-en">HeightMapInspectorPlugin::_can_handle</span>(Object *object) {
+    <span class="pl-k">return</span> Object::cast_to&lt;HeightMapMesh&gt;(object) != <span class="pl-c1">nullptr</span>;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapInspectorPlugin::_parse_begin</span>(Object *object) {
+    VBoxContainer *vbox = <span class="pl-c1">VBoxContainer::_new</span>();
+    file_dialog = <span class="pl-c1">FileDialog::_new</span>();
+    file_dialog-&gt;<span class="pl-c1">set_mode</span>(FileDialog::MODE_OPEN_FILE);
+    file_dialog-&gt;<span class="pl-c1">set_access</span>(FileDialog::ACCESS_FILESYSTEM);
+    file_dialog-&gt;<span class="pl-c1">clear_filters</span>();
+    file_dialog-&gt;<span class="pl-c1">add_filter</span>(<span class="pl-s"><span class="pl-pds">"</span>*.png ; PNG Images<span class="pl-pds">"</span></span>);
+    file_dialog-&gt;<span class="pl-c1">add_filter</span>(<span class="pl-s"><span class="pl-pds">"</span>*.jpg ; JPG Images<span class="pl-pds">"</span></span>);
+    vbox-&gt;<span class="pl-c1">add_child</span>(file_dialog);
+
+    <span class="pl-bu">Button</span> *load_button = <span class="pl-bu">Button</span><span class="pl-c1">::_new</span>();
+    load_button-&gt;<span class="pl-c1">set_text</span>(<span class="pl-s"><span class="pl-pds">"</span>Load Heightmap<span class="pl-pds">"</span></span>);
+    load_button-&gt;<span class="pl-c1">connect</span>(<span class="pl-s"><span class="pl-pds">"</span>pressed<span class="pl-pds">"</span></span>, <span class="pl-c1">this</span>, <span class="pl-s"><span class="pl-pds">"</span>_on_load_button_pressed<span class="pl-pds">"</span></span>, <span class="pl-c1">varray</span>(object, file_dialog));
+    vbox-&gt;<span class="pl-c1">add_child</span>(load_button);
+
+    <span class="pl-c1">add_custom_control</span>(vbox);
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapInspectorPlugin::_on_load_button_pressed</span>(Object *object, FileDialog *file_dialog) {
+    file_dialog-&gt;<span class="pl-c1">popup_centered</span>();
+    file_dialog-&gt;<span class="pl-c1">connect</span>(<span class="pl-s"><span class="pl-pds">"</span>file_selected<span class="pl-pds">"</span></span>, <span class="pl-c1">this</span>, <span class="pl-s"><span class="pl-pds">"</span>_on_file_selected<span class="pl-pds">"</span></span>, <span class="pl-c1">varray</span>(object));
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapInspectorPlugin::_on_file_selected</span>(String path, Object *object) {
+    HeightMapMesh *mesh = Object::cast_to&lt;HeightMapMesh&gt;(object);
+    <span class="pl-k">if</span> (mesh) {
+        mesh-&gt;<span class="pl-c1">set_heightmap_path</span>(path);
+    }
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">2. Modify Your Existing C++ Code to Integrate with the <code>EditorInspectorPlugin</code>
+</h3><a id="user-content-2-modify-your-existing-c-code-to-integrate-with-the-editorinspectorplugin" class="anchor" aria-label="Permalink: 2. Modify Your Existing C++ Code to Integrate with the EditorInspectorPlugin" href="#2-modify-your-existing-c-code-to-integrate-with-the-editorinspectorplugin"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Make sure your <code>HeightMapMesh</code> class includes a method to set the heightmap path and save it.</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.h</code></h4><a id="user-content-height_map_meshh-1" class="anchor" aria-label="Permalink: height_map_mesh.h" href="#height_map_meshh-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">ifndef</span> HEIGHT_MAP_MESH_H
+#<span class="pl-k">define</span> <span class="pl-en">HEIGHT_MAP_MESH_H</span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Godot.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Reference.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ArrayMesh.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Image.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>String.hpp<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">namespace</span> <span class="pl-en">godot</span> {
+
+<span class="pl-k">class</span> <span class="pl-en">HeightMapMesh</span> : <span class="pl-k">public</span> <span class="pl-en">Reference</span> {
+    <span class="pl-en">GODOT_CLASS</span>(HeightMapMesh, Reference)
+
+<span class="pl-k">public:</span>
+    <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">_register_methods</span>();
+
+    <span class="pl-en">HeightMapMesh</span>();
+    <span class="pl-en">~HeightMapMesh</span>();
+
+    <span class="pl-k">void</span> <span class="pl-en">_init</span>(); <span class="pl-c"><span class="pl-c">//</span> Our initializer called by Godot</span>
+
+    <span class="pl-k">void</span> <span class="pl-en">set_heightmap_path</span>(String path);
+    Ref&lt;ArrayMesh&gt; <span class="pl-en">create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height);
+
+<span class="pl-k">private:</span>
+    <span class="pl-k">void</span> <span class="pl-en">generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height);
+    <span class="pl-k">void</span> <span class="pl-en">generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices);
+
+    String heightmap_path;
+};
+
+}
+
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> HEIGHT_MAP_MESH_H</span></pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.cpp</code></h4><a id="user-content-height_map_meshcpp-1" class="anchor" aria-label="Permalink: height_map_mesh.cpp" href="#height_map_meshcpp-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">godot</span><span class="pl-k">;</span>
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_register_methods</span>() {
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>create_mesh_from_heightmap<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::create_mesh_from_heightmap);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>set_heightmap_path<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::set_heightmap_path);
+}
+
+<span class="pl-en">HeightMapMesh::HeightMapMesh</span>() {}
+<span class="pl-en">HeightMapMesh::~HeightMapMesh</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_init</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::set_heightmap_path</span>(String path) {
+    heightmap_path = path;
+}
+
+Ref&lt;ArrayMesh&gt; <span class="pl-en">HeightMapMesh::create_mesh_from_heightmap</span>(Ref&lt;Image&gt; heightmap, <span class="pl-k">float</span> max_height) {
+    Ref&lt;ArrayMesh&gt; mesh = <span class="pl-c1">ArrayMesh::_new</span>();
+
+    PoolVector3Array vertices;
+    PoolVector3Array normals;
+    PoolIntArray indices;
+
+    heightmap-&gt;<span class="pl-c1">lock</span>();
+
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    <span class="pl-c1">generate_vertices</span>(heightmap, vertices, normals, max_height);
+    <span class="pl-c1">generate_indices</span>(width, height, indices);
+
+    heightmap-&gt;<span class="pl-c1">unlock</span>();
+
+    Array arrays;
+    arrays.<span class="pl-c1">resize</span>(Mesh::ARRAY_MAX);
+    arrays[Mesh::ARRAY_VERTEX] = vertices;
+    arrays[Mesh::ARRAY_NORMAL] = normals;
+    arrays[Mesh::ARRAY_INDEX] = indices;
+
+    mesh-&gt;<span class="pl-c1">add_surface_from_arrays</span>(Mesh::PRIMITIVE_TRIANGLES, arrays);
+
+    <span class="pl-k">return</span> mesh;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height) {
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    vertices.<span class="pl-c1">resize</span>(width * height);
+    normals.<span class="pl-c1">resize</span>(width * height);
+
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width; ++x) {
+            <span class="pl-k">float</span> height_value = heightmap-&gt;<span class="pl-c1">get_pixel</span>(x, y).<span class="pl-smi">r</span> * max_height;
+            Vector3 <span class="pl-smi">vertex</span>(x, height_value, y);
+            vertices.<span class="pl-c1">set</span>(y * width + x, vertex);
+
+            <span class="pl-c"><span class="pl-c">//</span> For simplicity, normals are set to Vector3(0, 1, 0)</span>
+            normals.<span class="pl-c1">set</span>(y * width + x, <span class="pl-c1">Vector3</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">0</span>));
+        }
+    }
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices) {
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height - <span class="pl-c1">1</span>; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width - <span class="pl-c1">1</span>; ++x) {
+            <span class="pl-k">int</span> top_left = y * width + x;
+            <span class="pl-k">int</span> bottom_left = (y + <span class="pl-c1">1</span>) * width + x;
+            <span class="pl-k">int</span> top_right = y * width + (x + <span class="pl-c1">1</span>);
+            <span class="pl-k">int</span> bottom_right = (y + <span class="pl-c1">1</span>) * width + (x + <span class="pl-c1">1</span>);
+
+            indices.<span class="pl-c1">append</span>(top_left);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(top_right);
+
+            indices.<span class="pl-c1">append</span>(top_right);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(bottom_right);
+        }
+    }
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">3. Register the Plugin and Use It in Godot</h3><a id="user-content-3-register-the-plugin-and-use-it-in-godot" class="anchor" aria-label="Permalink: 3. Register the Plugin and Use It in Godot" href="#3-register-the-plugin-and-use-it-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>In your GDNative initialization code, register the plugin:</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>gdexample.cpp</code></h4><a id="user-content-gdexamplecpp" class="anchor" aria-label="Permalink: gdexample.cpp" href="#gdexamplecpp"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_plugin.h<span class="pl-pds">"</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_init</span>(godot_gdnative_init_options *o) {
+    <span class="pl-c1">Godot::gdnative_init</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_terminate</span>(godot_gdnative_terminate_options *o) {
+    <span class="pl-c1">Godot::gdnative_terminate</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_nativescript_init</span>(<span class="pl-k">void</span> *handle) {
+    <span class="pl-c1">Godot::nativescript_init</span>(handle);
+
+    register_class&lt;HeightMapMesh&gt;();
+    register_class&lt;HeightMapInspectorPlugin&gt;();
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">4. Using the Plugin in Godot</h3><a id="user-content-4-using-the-plugin-in-godot" class="anchor" aria-label="Permalink: 4. Using the Plugin in Godot" href="#4-using-the-plugin-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Make sure to create a <code>gdnlib</code> and <code>gdns</code> file for the <code>HeightMapInspectorPlugin</code> just like you did for <code>HeightMapMesh</code>.</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_plugin.gdnlib</code></h4><a id="user-content-height_map_plugingdnlib" class="anchor" aria-label="Permalink: height_map_plugin.gdnlib" href="#height_map_plugingdnlib"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[general]</span>
+
+<span class="pl-k">singleton</span>=false
+<span class="pl-k">load_once</span>=true
+<span class="pl-k">symbol_prefix</span>=<span class="pl-s"><span class="pl-pds">"</span>godot_<span class="pl-pds">"</span></span>
+<span class="pl-k">reloadable</span>=true
+
+<span class="pl-en">[entry]</span>
+
+<span class="pl-k">OSX.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_plugin.dylib<span class="pl-pds">"</span></span>
+<span class="pl-k">Windows.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/height_map_plugin.dll<span class="pl-pds">"</span></span>
+<span class="pl-k">X11.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_plugin.so<span class="pl-pds">"</span></span>
+
+<span class="pl-en">[dependencies]</span>
+
+<span class="pl-k">OSX.64</span>=[  ]
+<span class="pl-k">Windows.64</span>=[  ]
+<span class="pl-k">X11.64</span>=[  ]</pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_plugin.gdns</code></h4><a id="user-content-height_map_plugingdns" class="anchor" aria-label="Permalink: height_map_plugin.gdns" href="#height_map_plugingdns"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[gd_resource type="NativeScript" load_steps=2 format=2]</span>
+
+<span class="pl-en">[ext_resource path="res://height_map_plugin.gdnlib" type="GDNativeLibrary" id=1]</span>
+
+<span class="pl-en">[resource]</span>
+
+<span class="pl-k">resource_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapInspectorPlugin<span class="pl-pds">"</span></span>
+<span class="pl-k">class_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapInspectorPlugin<span class="pl-pds">"</span></span>
+<span class="pl-k">library</span> = ExtResource( 1 )</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">5. Enable the Plugin in Godot Editor</h3><a id="user-content-5-enable-the-plugin-in-godot-editor" class="anchor" aria-label="Permalink: 5. Enable the Plugin in Godot Editor" href="#5-enable-the-plugin-in-godot-editor"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Go to <code>Project -&gt; Project Settings -&gt; Plugins</code> and enable your custom inspector plugin.</p>
+<p>Now, when you select a node or resource that uses <code>HeightMapMesh</code>, the custom controls should appear in the inspector, allowing you to select a heightmap file from the file system.</p>
+<p>Yes, you can have <code>HeightMapMesh</code> inherit from <code>ArrayMesh</code> so that it can be used directly in a <code>MeshInstance</code> in Godot. This way, the <code>HeightMapMesh</code> can be treated as a regular mesh resource and used seamlessly within the Godot scene system.</p>
+<p>Here's how you can modify the previous setup to make <code>HeightMapMesh</code> inherit from <code>ArrayMesh</code> and integrate it with a <code>MeshInstance</code>.</p>
+<div class="markdown-heading"><h3 class="heading-element">Step-by-Step Guide</h3><a id="user-content-step-by-step-guide-2" class="anchor" aria-label="Permalink: Step-by-Step Guide" href="#step-by-step-guide-2"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ol>
+<li>
+<p><strong>Update the <code>HeightMapMesh</code> class to inherit from <code>ArrayMesh</code>.</strong></p>
+</li>
+<li>
+<p><strong>Modify the C++ code to handle mesh generation within <code>HeightMapMesh</code>.</strong></p>
+</li>
+<li>
+<p><strong>Use the <code>HeightMapMesh</code> in a <code>MeshInstance</code> in Godot.</strong></p>
+</li>
+</ol>
+<div class="markdown-heading"><h3 class="heading-element">1. Update the <code>HeightMapMesh</code> Class</h3><a id="user-content-1-update-the-heightmapmesh-class" class="anchor" aria-label="Permalink: 1. Update the HeightMapMesh Class" href="#1-update-the-heightmapmesh-class"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Modify the <code>HeightMapMesh</code> class to inherit from <code>ArrayMesh</code> instead of <code>Reference</code>.</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.h</code></h4><a id="user-content-height_map_meshh-2" class="anchor" aria-label="Permalink: height_map_mesh.h" href="#height_map_meshh-2"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">ifndef</span> HEIGHT_MAP_MESH_H
+#<span class="pl-k">define</span> <span class="pl-en">HEIGHT_MAP_MESH_H</span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Godot.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ArrayMesh.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>Image.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>String.hpp<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">namespace</span> <span class="pl-en">godot</span> {
+
+<span class="pl-k">class</span> <span class="pl-en">HeightMapMesh</span> : <span class="pl-k">public</span> <span class="pl-en">ArrayMesh</span> {
+    <span class="pl-en">GODOT_CLASS</span>(HeightMapMesh, ArrayMesh)
+
+<span class="pl-k">public:</span>
+    <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">_register_methods</span>();
+
+    <span class="pl-en">HeightMapMesh</span>();
+    <span class="pl-en">~HeightMapMesh</span>();
+
+    <span class="pl-k">void</span> <span class="pl-en">_init</span>(); <span class="pl-c"><span class="pl-c">//</span> Our initializer called by Godot</span>
+
+    <span class="pl-k">void</span> <span class="pl-en">set_heightmap_path</span>(String path);
+    <span class="pl-k">void</span> <span class="pl-en">generate_mesh_from_heightmap</span>(<span class="pl-k">float</span> max_height);
+
+<span class="pl-k">private:</span>
+    <span class="pl-k">void</span> <span class="pl-en">generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height);
+    <span class="pl-k">void</span> <span class="pl-en">generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices);
+
+    String heightmap_path;
+};
+
+}
+
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> HEIGHT_MAP_MESH_H</span></pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.cpp</code></h4><a id="user-content-height_map_meshcpp-2" class="anchor" aria-label="Permalink: height_map_mesh.cpp" href="#height_map_meshcpp-2"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">godot</span><span class="pl-k">;</span>
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_register_methods</span>() {
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>generate_mesh_from_heightmap<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::generate_mesh_from_heightmap);
+    <span class="pl-c1">register_method</span>(<span class="pl-s"><span class="pl-pds">"</span>set_heightmap_path<span class="pl-pds">"</span></span>, &amp;HeightMapMesh::set_heightmap_path);
+}
+
+<span class="pl-en">HeightMapMesh::HeightMapMesh</span>() {}
+<span class="pl-en">HeightMapMesh::~HeightMapMesh</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::_init</span>() {}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::set_heightmap_path</span>(String path) {
+    heightmap_path = path;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_mesh_from_heightmap</span>(<span class="pl-k">float</span> max_height) {
+    Ref&lt;Image&gt; heightmap = <span class="pl-c1">ResourceLoader::get_singleton</span>()-&gt;<span class="pl-c1">load</span>(heightmap_path);
+
+    <span class="pl-k">if</span> (!heightmap.<span class="pl-c1">is_valid</span>()) {
+        <span class="pl-c1">Godot::print</span>(<span class="pl-s"><span class="pl-pds">"</span>Invalid heightmap image.<span class="pl-pds">"</span></span>);
+        <span class="pl-k">return</span>;
+    }
+
+    PoolVector3Array vertices;
+    PoolVector3Array normals;
+    PoolIntArray indices;
+
+    heightmap-&gt;<span class="pl-c1">lock</span>();
+
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    <span class="pl-c1">generate_vertices</span>(heightmap, vertices, normals, max_height);
+    <span class="pl-c1">generate_indices</span>(width, height, indices);
+
+    heightmap-&gt;<span class="pl-c1">unlock</span>();
+
+    Array arrays;
+    arrays.<span class="pl-c1">resize</span>(Mesh::ARRAY_MAX);
+    arrays[Mesh::ARRAY_VERTEX] = vertices;
+    arrays[Mesh::ARRAY_NORMAL] = normals;
+    arrays[Mesh::ARRAY_INDEX] = indices;
+
+    <span class="pl-c1">add_surface_from_arrays</span>(Mesh::PRIMITIVE_TRIANGLES, arrays);
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_vertices</span>(Ref&lt;Image&gt; heightmap, PoolVector3Array &amp;vertices, PoolVector3Array &amp;normals, <span class="pl-k">float</span> max_height) {
+    <span class="pl-k">int</span> width = heightmap-&gt;<span class="pl-c1">get_width</span>();
+    <span class="pl-k">int</span> height = heightmap-&gt;<span class="pl-c1">get_height</span>();
+
+    vertices.<span class="pl-c1">resize</span>(width * height);
+    normals.<span class="pl-c1">resize</span>(width * height);
+
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width; ++x) {
+            <span class="pl-k">float</span> height_value = heightmap-&gt;<span class="pl-c1">get_pixel</span>(x, y).<span class="pl-smi">r</span> * max_height;
+            Vector3 <span class="pl-smi">vertex</span>(x, height_value, y);
+            vertices.<span class="pl-c1">set</span>(y * width + x, vertex);
+
+            <span class="pl-c"><span class="pl-c">//</span> For simplicity, normals are set to Vector3(0, 1, 0)</span>
+            normals.<span class="pl-c1">set</span>(y * width + x, <span class="pl-c1">Vector3</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">0</span>));
+        }
+    }
+}
+
+<span class="pl-k">void</span> <span class="pl-en">HeightMapMesh::generate_indices</span>(<span class="pl-k">int</span> width, <span class="pl-k">int</span> height, PoolIntArray &amp;indices) {
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> y = <span class="pl-c1">0</span>; y &lt; height - <span class="pl-c1">1</span>; ++y) {
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; width - <span class="pl-c1">1</span>; ++x) {
+            <span class="pl-k">int</span> top_left = y * width + x;
+            <span class="pl-k">int</span> bottom_left = (y + <span class="pl-c1">1</span>) * width + x;
+            <span class="pl-k">int</span> top_right = y * width + (x + <span class="pl-c1">1</span>);
+            <span class="pl-k">int</span> bottom_right = (y + <span class="pl-c1">1</span>) * width + (x + <span class="pl-c1">1</span>);
+
+            indices.<span class="pl-c1">append</span>(top_left);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(top_right);
+
+            indices.<span class="pl-c1">append</span>(top_right);
+            indices.<span class="pl-c1">append</span>(bottom_left);
+            indices.<span class="pl-c1">append</span>(bottom_right);
+        }
+    }
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">2. Update the Plugin Class (Optional)</h3><a id="user-content-2-update-the-plugin-class-optional" class="anchor" aria-label="Permalink: 2. Update the Plugin Class (Optional)" href="#2-update-the-plugin-class-optional"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>If you want to use an <code>EditorInspectorPlugin</code> to choose the heightmap file, the previously provided <code>height_map_plugin.h</code> and <code>height_map_plugin.cpp</code> can be used with slight modifications to interact with the <code>HeightMapMesh</code>.</p>
+<div class="markdown-heading"><h3 class="heading-element">3. Register the Plugin and Use It in Godot</h3><a id="user-content-3-register-the-plugin-and-use-it-in-godot-1" class="anchor" aria-label="Permalink: 3. Register the Plugin and Use It in Godot" href="#3-register-the-plugin-and-use-it-in-godot-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Make sure your <code>HeightMapMesh</code> class and the <code>HeightMapInspectorPlugin</code> are registered in your GDNative initialization code:</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>gdexample.cpp</code></h4><a id="user-content-gdexamplecpp-1" class="anchor" aria-label="Permalink: gdexample.cpp" href="#gdexamplecpp-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_plugin.h<span class="pl-pds">"</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_init</span>(godot_gdnative_init_options *o) {
+    <span class="pl-c1">Godot::gdnative_init</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_terminate</span>(godot_gdnative_terminate_options *o) {
+    <span class="pl-c1">Godot::gdnative_terminate</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_nativescript_init</span>(<span class="pl-k">void</span> *handle) {
+    <span class="pl-c1">Godot::nativescript_init</span>(handle);
+
+    register_class&lt;HeightMapMesh&gt;();
+    register_class&lt;HeightMapInspectorPlugin&gt;();
+}</pre></div>
+<div class="markdown-heading"><h3 class="heading-element">4. Using the HeightMapMesh in Godot</h3><a id="user-content-4-using-the-heightmapmesh-in-godot" class="anchor" aria-label="Permalink: 4. Using the HeightMapMesh in Godot" href="#4-using-the-heightmapmesh-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Now you can use the <code>HeightMapMesh</code> in a <code>MeshInstance</code> in Godot. Here’s an example GDScript to set it up:</p>
+<div class="markdown-heading"><h4 class="heading-element">Example GDScript</h4><a id="user-content-example-gdscript-1" class="anchor" aria-label="Permalink: Example GDScript" href="#example-gdscript-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-gdscript"><pre><span class="pl-k">extends</span> <span class="pl-en">Spatial</span>
+
+<span class="pl-k">func</span> <span class="pl-en">_ready</span>():
+    <span class="pl-k">var</span> <span class="pl-smi">height_map_mesh</span> <span class="pl-k">=</span> <span class="pl-k">preload</span>(<span class="pl-s">"res://height_map_mesh.gdns"</span>).<span class="pl-c1">new</span>()
+    <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">set_heightmap_path</span>(<span class="pl-s">"res://path_to_your_heightmap_image.png"</span>)
+    <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">generate_mesh_from_heightmap</span>(<span class="pl-c1">10.0</span>)
+    
+    <span class="pl-k">var</span> <span class="pl-smi">mesh_instance</span> <span class="pl-k">=</span> <span class="pl-en">MeshInstance</span>.<span class="pl-c1">new</span>()
+    <span class="pl-smi">mesh_instance</span>.<span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">height_map_mesh</span>
+    <span class="pl-c1">add_child</span>(<span class="pl-smi">mesh_instance</span>)</pre></div>
+<p>Make sure to replace <code>"res://path_to_your_heightmap_image.png"</code> with the actual path to your heightmap image.</p>
+<p>This setup allows you to treat <code>HeightMapMesh</code> as a regular <code>ArrayMesh</code>, which can be used directly in a <code>MeshInstance</code> in the Godot scene.</p>
+<p>Yes, <code>HeightMapMesh</code> can be designed to be selected as a mesh for <code>MeshInstance</code> directly in the Godot editor GUI. To achieve this, you'll need to ensure that the <code>HeightMapMesh</code> class inherits from <code>ArrayMesh</code> and is properly registered so that it appears as a resource that can be selected in the editor.</p>
+<p>Here’s how you can do it:</p>
+<ol>
+<li>
+<p><strong>Ensure <code>HeightMapMesh</code> Inherits from <code>ArrayMesh</code></strong>: We have already done this in the previous step.</p>
+</li>
+<li>
+<p><strong>Register <code>HeightMapMesh</code> as a Resource</strong>: Ensure that <code>HeightMapMesh</code> is registered correctly so that it can be created and saved as a resource in the Godot editor.</p>
+</li>
+<li>
+<p><strong>Create a Resource File</strong>: Create an instance of <code>HeightMapMesh</code> as a <code>.tres</code> resource file that can be selected in the <code>MeshInstance</code> node.</p>
+</li>
+</ol>
+<div class="markdown-heading"><h3 class="heading-element">Step-by-Step Guide</h3><a id="user-content-step-by-step-guide-3" class="anchor" aria-label="Permalink: Step-by-Step Guide" href="#step-by-step-guide-3"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="markdown-heading"><h4 class="heading-element">1. Register <code>HeightMapMesh</code> as a Resource</h4><a id="user-content-1-register-heightmapmesh-as-a-resource" class="anchor" aria-label="Permalink: 1. Register HeightMapMesh as a Resource" href="#1-register-heightmapmesh-as-a-resource"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Make sure <code>HeightMapMesh</code> is registered properly in the GDNative initialization code. Here’s a reiteration:</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>gdexample.cpp</code></h4><a id="user-content-gdexamplecpp-2" class="anchor" aria-label="Permalink: gdexample.cpp" href="#gdexamplecpp-2"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>height_map_mesh.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_init</span>(godot_gdnative_init_options *o) {
+    <span class="pl-c1">Godot::gdnative_init</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_gdnative_terminate</span>(godot_gdnative_terminate_options *o) {
+    <span class="pl-c1">Godot::gdnative_terminate</span>(o);
+}
+
+<span class="pl-k">extern</span> <span class="pl-s"><span class="pl-pds">"</span>C<span class="pl-pds">"</span></span> <span class="pl-k">void</span> GDN_EXPORT <span class="pl-en">godot_nativescript_init</span>(<span class="pl-k">void</span> *handle) {
+    <span class="pl-c1">Godot::nativescript_init</span>(handle);
+
+    register_class&lt;HeightMapMesh&gt;();
+}</pre></div>
+<div class="markdown-heading"><h4 class="heading-element">2. Create the <code>.gdnlib</code> and <code>.gdns</code> Files</h4><a id="user-content-2-create-the-gdnlib-and-gdns-files" class="anchor" aria-label="Permalink: 2. Create the .gdnlib and .gdns Files" href="#2-create-the-gdnlib-and-gdns-files"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Ensure you have the <code>.gdnlib</code> and <code>.gdns</code> files set up for <code>HeightMapMesh</code>.</p>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.gdnlib</code></h4><a id="user-content-height_map_meshgdnlib-1" class="anchor" aria-label="Permalink: height_map_mesh.gdnlib" href="#height_map_meshgdnlib-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[general]</span>
+
+<span class="pl-k">singleton</span>=false
+<span class="pl-k">load_once</span>=true
+<span class="pl-k">symbol_prefix</span>=<span class="pl-s"><span class="pl-pds">"</span>godot_<span class="pl-pds">"</span></span>
+<span class="pl-k">reloadable</span>=true
+
+<span class="pl-en">[entry]</span>
+
+<span class="pl-k">OSX.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_mesh.dylib<span class="pl-pds">"</span></span>
+<span class="pl-k">Windows.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/height_map_mesh.dll<span class="pl-pds">"</span></span>
+<span class="pl-k">X11.64</span>=<span class="pl-s"><span class="pl-pds">"</span>res://bin/libheight_map_mesh.so<span class="pl-pds">"</span></span>
+
+<span class="pl-en">[dependencies]</span>
+
+<span class="pl-k">OSX.64</span>=[  ]
+<span class="pl-k">Windows.64</span>=[  ]
+<span class="pl-k">X11.64</span>=[  ]</pre></div>
+<div class="markdown-heading"><h4 class="heading-element"><code>height_map_mesh.gdns</code></h4><a id="user-content-height_map_meshgdns-1" class="anchor" aria-label="Permalink: height_map_mesh.gdns" href="#height_map_meshgdns-1"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<div class="highlight highlight-source-ini"><pre><span class="pl-en">[gd_resource type="NativeScript" load_steps=2 format=2]</span>
+
+<span class="pl-en">[ext_resource path="res://height_map_mesh.gdnlib" type="GDNativeLibrary" id=1]</span>
+
+<span class="pl-en">[resource]</span>
+
+<span class="pl-k">resource_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapMesh<span class="pl-pds">"</span></span>
+<span class="pl-k">class_name</span> = <span class="pl-s"><span class="pl-pds">"</span>HeightMapMesh<span class="pl-pds">"</span></span>
+<span class="pl-k">library</span> = ExtResource( 1 )</pre></div>
+<div class="markdown-heading"><h4 class="heading-element">3. Create a HeightMapMesh Resource in Godot</h4><a id="user-content-3-create-a-heightmapmesh-resource-in-godot" class="anchor" aria-label="Permalink: 3. Create a HeightMapMesh Resource in Godot" href="#3-create-a-heightmapmesh-resource-in-godot"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ol>
+<li>
+<p><strong>Open the Godot Editor</strong>.</p>
+</li>
+<li>
+<p><strong>Create a New Resource</strong>:</p>
+<ul>
+<li>Right-click in the <code>FileSystem</code> panel.</li>
+<li>Select <code>New Resource</code>.</li>
+<li>In the new resource dialog, search for <code>HeightMapMesh</code> and select it.</li>
+<li>Save the new resource as <code>height_map_mesh.tres</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Edit the Resource</strong>:</p>
+<ul>
+<li>Select the newly created <code>height_map_mesh.tres</code>.</li>
+<li>Set the heightmap path and other properties as needed (this may need the custom editor plugin if you want to set it via the editor).</li>
+</ul>
+</li>
+</ol>
+<div class="markdown-heading"><h4 class="heading-element">4. Use the Resource in a MeshInstance</h4><a id="user-content-4-use-the-resource-in-a-meshinstance" class="anchor" aria-label="Permalink: 4. Use the Resource in a MeshInstance" href="#4-use-the-resource-in-a-meshinstance"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ol>
+<li>
+<p><strong>Create a MeshInstance</strong>:</p>
+<ul>
+<li>In your scene, add a <code>MeshInstance</code> node.</li>
+</ul>
+</li>
+<li>
+<p><strong>Assign the HeightMapMesh Resource</strong>:</p>
+<ul>
+<li>In the Inspector panel for the <code>MeshInstance</code>, find the <code>Mesh</code> property.</li>
+<li>Click the down arrow next to <code>Mesh</code> and select <code>Load</code>.</li>
+<li>Choose the <code>height_map_mesh.tres</code> resource you created.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generate the Mesh (Optional)</strong>:</p>
+<ul>
+<li>If you have the custom editor plugin or script, you can trigger mesh generation directly in the editor.</li>
+<li>Alternatively, you might need to call the generation method in <code>_ready()</code> or via a tool script.</li>
+</ul>
+</li>
+</ol>
+<div class="markdown-heading"><h3 class="heading-element">Example Tool Script to Generate Mesh in Editor (Optional)</h3><a id="user-content-example-tool-script-to-generate-mesh-in-editor-optional" class="anchor" aria-label="Permalink: Example Tool Script to Generate Mesh in Editor (Optional)" href="#example-tool-script-to-generate-mesh-in-editor-optional"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>If you need to generate the mesh from the heightmap in the editor, you might use a tool script. Here’s a simple example:</p>
+<div class="highlight highlight-source-gdscript"><pre><span class="pl-k">tool</span>
+<span class="pl-k">extends</span> <span class="pl-en">MeshInstance</span>
+
+<span class="pl-k">onready</span> <span class="pl-k">var</span> <span class="pl-smi">height_map_mesh</span> <span class="pl-k">=</span> <span class="pl-k">preload</span>(<span class="pl-s">"res://height_map_mesh.gdns"</span>).<span class="pl-c1">new</span>()
+
+<span class="pl-k">func</span> <span class="pl-en">_ready</span>():
+    <span class="pl-k">if</span> <span class="pl-en">Engine</span>.<span class="pl-c1">is_editor_hint</span>():
+        <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">set_heightmap_path</span>(<span class="pl-s">"res://path_to_your_heightmap_image.png"</span>)
+        <span class="pl-smi">height_map_mesh</span>.<span class="pl-c1">generate_mesh_from_heightmap</span>(<span class="pl-c1">10.0</span>)
+        <span class="pl-smi">mesh</span> <span class="pl-k">=</span> <span class="pl-smi">height_map_mesh</span></pre></div>
+<div class="markdown-heading"><h3 class="heading-element">Conclusion</h3><a id="user-content-conclusion" class="anchor" aria-label="Permalink: Conclusion" href="#conclusion"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>By following these steps, you can ensure that <code>HeightMapMesh</code> can be selected and used directly in the Godot editor GUI as a mesh resource for <code>MeshInstance</code>. This integration allows for a seamless workflow where you can create, edit, and apply custom meshes directly within the editor.</p>
+</article></body></html>
