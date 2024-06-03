@@ -3,8 +3,6 @@
 // https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html
 
 // Don't forget to update the following #include statements after adding in new classes.
-#include "ball.h"
-#include "main.h"
 #include "height_map_mesh.h"
 #include "height_map_static_body.h"
 
@@ -19,7 +17,6 @@ extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_opt
 extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	godot::Godot::nativescript_init(handle);
 
-	godot::register_class<godot::Ball>();
 	godot::register_tool_class<godot::HeightMapMesh>();
 	godot::register_tool_class<godot::HeightMapStaticBody>();
 }
