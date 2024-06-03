@@ -5,10 +5,10 @@
 using namespace godot;
 
 void HeightMapMesh::_register_methods() {
-	register_method("generate_mesh_from_heightmap", &HeightMapMesh::generate_mesh_from_heightmap);
-	register_method("set_heightmap_path", &HeightMapMesh::set_heightmap_path);
+	register_method("generateMeshFromHeightmap", &HeightMapMesh::generateMeshFromHeightmap);
+	register_method("setHeightmapPath", &HeightMapMesh::setHeightmapPath);
 
-	register_property<HeightMapMesh, String>("heightmap_path", &HeightMapMesh::heightmap_path, String(""));
+	register_property<HeightMapMesh, String>("heightmapPath", &HeightMapMesh::heightmapPath, String(""));
 }
 
 HeightMapMesh::HeightMapMesh() {}
@@ -16,12 +16,12 @@ HeightMapMesh::~HeightMapMesh() {}
 
 void HeightMapMesh::_init() {}
 
-void HeightMapMesh::set_heightmap_path(String path) {
-	heightmap_path = path;
+void HeightMapMesh::setHeightmapPath(String path) {
+	heightmapPath = path;
 }
 
-bool HeightMapMesh::generate_mesh_from_heightmap(float max_height, float mapSize) {
-	Ref<Image> heightmap = ResourceLoader::get_singleton()->load(heightmap_path);
+bool HeightMapMesh::generateMeshFromHeightmap(float maxHeight, float mapSize) {
+	Ref<Image> heightmap = ResourceLoader::get_singleton()->load(heightmapPath);
 
 	if (!heightmap.is_valid()) {
 		Godot::print("Invalid heightmap image.");
@@ -38,8 +38,8 @@ bool HeightMapMesh::generate_mesh_from_heightmap(float max_height, float mapSize
 	int width = heightmap->get_width();
 	int height = heightmap->get_height();
 
-	generate_vertices(heightmap, vertices, normals, max_height, mapSize);
-	generate_indices(width, height, indices);
+	generateVertices(heightmap, vertices, normals, maxHeight, mapSize);
+	generateIndices(width, height, indices);
 	heightmap->unlock();
 
 	for(int i = 0; i < 10; ++i) {
@@ -63,7 +63,7 @@ bool HeightMapMesh::generate_mesh_from_heightmap(float max_height, float mapSize
 	return true;
 }
 
-void HeightMapMesh::generate_vertices(Ref<Image> heightmap, PoolVector3Array &vertices, PoolVector3Array &normals, float max_height, float mapSize) {
+void HeightMapMesh::generateVertices(Ref<Image> heightmap, PoolVector3Array &vertices, PoolVector3Array &normals, float maxHeight, float mapSize) {
 	int width = heightmap->get_width();
 	int height = heightmap->get_height();
 
@@ -74,48 +74,48 @@ void HeightMapMesh::generate_vertices(Ref<Image> heightmap, PoolVector3Array &ve
 
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
-			float height_value = heightmap->get_pixel(x, y).r * max_height;
-			Vector3 vertex(x * pixelSize, height_value, y * pixelSize);
+			float heightValue = heightmap->get_pixel(x, y).r * maxHeight;
+			Vector3 vertex(x * pixelSize, heightValue, y * pixelSize);
 			vertices.set(y * width + x, vertex);
 		}
 	}
 
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
-			Vector3 normal = calculate_normal(heightmap, x, y, max_height, pixelSize);
+			Vector3 normal = calculateNormal(heightmap, x, y, maxHeight, pixelSize);
 			normals.set(y * width + x, normal);
 		}
 	}
 }
 
-Vector3 HeightMapMesh::calculate_normal(Ref<Image> heightmap, int x, int y, float max_height, float pixelSize) {
+Vector3 HeightMapMesh::calculateNormal(Ref<Image> heightmap, int x, int y, float maxHeight, float pixelSize) {
 	int width = heightmap->get_width();
 	int height = heightmap->get_height();
 
-	float heightL = (x > 0) ? heightmap->get_pixel(x - 1, y).r * max_height : heightmap->get_pixel(x, y).r * max_height;
-	float heightR = (x < width - 1) ? heightmap->get_pixel(x + 1, y).r * max_height : heightmap->get_pixel(x, y).r * max_height;
-	float heightD = (y > 0) ? heightmap->get_pixel(x, y - 1).r * max_height : heightmap->get_pixel(x, y).r * max_height;
-	float heightU = (y < height - 1) ? heightmap->get_pixel(x, y + 1).r * max_height : heightmap->get_pixel(x, y).r * max_height;
+	float heightL = (x > 0) ? heightmap->get_pixel(x - 1, y).r * maxHeight : heightmap->get_pixel(x, y).r * maxHeight;
+	float heightR = (x < width - 1) ? heightmap->get_pixel(x + 1, y).r * maxHeight : heightmap->get_pixel(x, y).r * maxHeight;
+	float heightD = (y > 0) ? heightmap->get_pixel(x, y - 1).r * maxHeight : heightmap->get_pixel(x, y).r * maxHeight;
+	float heightU = (y < height - 1) ? heightmap->get_pixel(x, y + 1).r * maxHeight : heightmap->get_pixel(x, y).r * maxHeight;
 
 	Vector3 normal(heightL - heightR, 2.0 * pixelSize, heightD - heightU);
 	return normal.normalized();
 }
 
-void HeightMapMesh::generate_indices(int width, int height, PoolIntArray &indices) {
+void HeightMapMesh::generateIndices(int width, int height, PoolIntArray &indices) {
 	for (int y = 0; y < height - 1; ++y) {
 		for (int x = 0; x < width - 1; ++x) {
-			int top_left = y * width + x;
-			int bottom_left = (y + 1) * width + x;
-			int top_right = y * width + (x + 1);
-			int bottom_right = (y + 1) * width + (x + 1);
+			int topLeft = y * width + x;
+			int bottomLeft = (y + 1) * width + x;
+			int topRight = y * width + (x + 1);
+			int bottomRight = (y + 1) * width + (x + 1);
 
-			indices.append(top_left);
-			indices.append(top_right);
-			indices.append(bottom_left);
+			indices.append(topLeft);
+			indices.append(topRight);
+			indices.append(bottomLeft);
 
-			indices.append(top_right);
-			indices.append(bottom_right);
-			indices.append(bottom_left);
+			indices.append(topRight);
+			indices.append(bottomRight);
+			indices.append(bottomLeft);
 		}
 	}
 }

@@ -14,12 +14,12 @@ namespace godot {
 		GODOT_CLASS(HeightMapStaticBody, StaticBody)
 
 	private:
-		String heightmap_path;
-		float max_height;
+		String heightmapPath;
+		float maxHeight;
 		float mapSize;
 
-		MeshInstance* mesh_instance;
-		CollisionShape* collision_shape;
+		MeshInstance* meshInstance;
+		CollisionShape* collisionShape;
 		bool ready = false;
 
 	public:
@@ -31,16 +31,16 @@ namespace godot {
 		void _init();
 		void _ready();
 
-		void set_heightmap_path(String path);
-		String get_heightmap_path() const;
+		void setHeightmapPath(String path);
+		String getHeightmapPath() const;
 
-		void set_max_height(float height);
-		float get_max_height() const;
+		void setMaxHeight(float height);
+		float getMaxHeight() const;
 
 		void setMapSize(float size);
 		float getMapSize() const;
 
-		void generate_heightmap_mesh();
+		void generateHeightmapMesh();
 	};
 
 }
