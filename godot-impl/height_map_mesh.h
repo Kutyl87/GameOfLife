@@ -17,7 +17,7 @@ namespace godot {
 		HeightMapMesh();
 		~HeightMapMesh();
 
-		void _init(); // Our initializer called by Godot
+		void _init();
 
 		void setHeightmapPath(String path);
 		bool generateMeshFromHeightmap(float maxHeight, float mapSize);

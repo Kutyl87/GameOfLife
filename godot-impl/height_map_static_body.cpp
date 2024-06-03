@@ -2,10 +2,13 @@
 
 using namespace godot;
 
+const float defaultMaxHeight = 10.0;
+const float defaultMapSize = 100.0;
+
 void HeightMapStaticBody::_register_methods() {
 	register_property<HeightMapStaticBody, String>("heightmapPath", &HeightMapStaticBody::setHeightmapPath, &HeightMapStaticBody::getHeightmapPath, String(""));
-	register_property<HeightMapStaticBody, float>("maxHeight", &HeightMapStaticBody::setMaxHeight, &HeightMapStaticBody::getMaxHeight, 10.0);
-	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize, &HeightMapStaticBody::getMapSize, 100.0);
+	register_property<HeightMapStaticBody, float>("maxHeight", &HeightMapStaticBody::setMaxHeight, &HeightMapStaticBody::getMaxHeight, defaultMaxHeight);
+	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize, &HeightMapStaticBody::getMapSize, defaultMapSize);
 
 	register_method("_ready", &HeightMapStaticBody::_ready);
 }
@@ -15,13 +18,11 @@ HeightMapStaticBody::~HeightMapStaticBody() {}
 
 void HeightMapStaticBody::_init() {
 	heightmapPath = "";
-	maxHeight = 10.0;
-	mapSize = 100.0;
-	Godot::print("init.");
+	maxHeight = defaultMaxHeight;
+	mapSize = defaultMapSize;
 }
 
 void HeightMapStaticBody::_ready() {
-	Godot::print("ready.");
 	meshInstance = MeshInstance::_new();
 	add_child(meshInstance);
 
@@ -61,7 +62,6 @@ float HeightMapStaticBody::getMapSize() const {
 void HeightMapStaticBody::generateHeightmapMesh() {
 	if (!ready) return;
 	if (heightmapPath.empty()) {
-		Godot::print("Heightmap path is empty.");
 		return;
 	}
 
@@ -77,10 +77,6 @@ void HeightMapStaticBody::generateHeightmapMesh() {
 		PoolVector3Array vertices = surfaceArrays[Mesh::ARRAY_VERTEX];
 		PoolIntArray indices = surfaceArrays[Mesh::ARRAY_INDEX];
 
-		Godot::print("Vertices count: " + String::num_int64(vertices.size()));
-		Godot::print("Indices count: " + String::num_int64(indices.size()));
-
-		// Convert indices to faces
 		PoolVector3Array faces;
 		for (int i = 0; i < indices.size(); i += 3) {
 			faces.append(vertices[indices[i]]);

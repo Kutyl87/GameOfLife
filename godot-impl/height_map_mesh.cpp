@@ -3,6 +3,7 @@
 #include <ResourceLoader.hpp>
 
 using namespace godot;
+const int smoothingSteps = 10;
 
 void HeightMapMesh::_register_methods() {
 	register_method("generateMeshFromHeightmap", &HeightMapMesh::generateMeshFromHeightmap);
@@ -24,7 +25,6 @@ bool HeightMapMesh::generateMeshFromHeightmap(float maxHeight, float mapSize) {
 	Ref<Image> heightmap = ResourceLoader::get_singleton()->load(heightmapPath);
 
 	if (!heightmap.is_valid()) {
-		Godot::print("Invalid heightmap image.");
 		return false;
 	}
 
@@ -42,7 +42,7 @@ bool HeightMapMesh::generateMeshFromHeightmap(float maxHeight, float mapSize) {
 	generateIndices(width, height, indices);
 	heightmap->unlock();
 
-	for(int i = 0; i < 10; ++i) {
+	for(int i = 0; i < smoothingSteps; ++i) {
 		smoothNormals = normals;
 		for (int y = 1; y < height-1; ++y) {
 			for (int x = 1; x < width-1; ++x) {
