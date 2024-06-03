@@ -10,34 +10,34 @@
 
 namespace godot {
 
-class HeightMapStaticBody : public StaticBody {
-    GODOT_CLASS(HeightMapStaticBody, StaticBody)
+	class HeightMapStaticBody : public StaticBody {
+		GODOT_CLASS(HeightMapStaticBody, StaticBody)
 
-private:
-    String heightmap_path;
-    float max_height;
+	private:
+		String heightmap_path;
+		float max_height;
 
-    MeshInstance* mesh_instance;
-    CollisionShape* collision_shape;
-    bool ready = false;
+		MeshInstance* mesh_instance;
+		CollisionShape* collision_shape;
+		bool ready = false;
 
-public:
-    static void _register_methods();
+	public:
+		static void _register_methods();
 
-    HeightMapStaticBody();
-    ~HeightMapStaticBody();
+		HeightMapStaticBody();
+		~HeightMapStaticBody();
 
-    void _init();
-    void _ready();
+		void _init();
+		void _ready();
 
-    void set_heightmap_path(String path);
-    String get_heightmap_path() const;
+		void set_heightmap_path(String path);
+		String get_heightmap_path() const;
 
-    void set_max_height(float height);
-    float get_max_height() const;
+		void set_max_height(float height);
+		float get_max_height() const;
 
-    void generate_heightmap_mesh();
-};
+		void generate_heightmap_mesh();
+	};
 
 }
 

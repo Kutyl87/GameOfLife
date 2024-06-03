@@ -9,17 +9,17 @@
 #include "height_map_static_body.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options * o) {
-    godot::Godot::gdnative_init(o);
+	godot::Godot::gdnative_init(o);
 }
 
 extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_options * o) {
-    godot::Godot::gdnative_terminate(o);
+	godot::Godot::gdnative_terminate(o);
 }
 
 extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
-    godot::Godot::nativescript_init(handle);
+	godot::Godot::nativescript_init(handle);
 
-    godot::register_class<godot::Ball>();
-    godot::register_tool_class<godot::HeightMapMesh>();
-    godot::register_tool_class<godot::HeightMapStaticBody>();
+	godot::register_class<godot::Ball>();
+	godot::register_tool_class<godot::HeightMapMesh>();
+	godot::register_tool_class<godot::HeightMapStaticBody>();
 }
