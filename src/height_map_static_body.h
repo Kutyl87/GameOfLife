@@ -16,6 +16,7 @@ namespace godot {
 	private:
 		String heightmap_path;
 		float max_height;
+		float mapSize;
 
 		MeshInstance* mesh_instance;
 		CollisionShape* collision_shape;
@@ -35,6 +36,9 @@ namespace godot {
 
 		void set_max_height(float height);
 		float get_max_height() const;
+
+		void setMapSize(float size);
+		float getMapSize() const;
 
 		void generate_heightmap_mesh();
 	};

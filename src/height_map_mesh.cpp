@@ -20,7 +20,7 @@ void HeightMapMesh::set_heightmap_path(String path) {
 	heightmap_path = path;
 }
 
-bool HeightMapMesh::generate_mesh_from_heightmap(float max_height) {
+bool HeightMapMesh::generate_mesh_from_heightmap(float max_height, float mapSize) {
 	Ref<Image> heightmap = ResourceLoader::get_singleton()->load(heightmap_path);
 
 	if (!heightmap.is_valid()) {
@@ -38,7 +38,7 @@ bool HeightMapMesh::generate_mesh_from_heightmap(float max_height) {
 	int width = heightmap->get_width();
 	int height = heightmap->get_height();
 
-	generate_vertices(heightmap, vertices, normals, max_height);
+	generate_vertices(heightmap, vertices, normals, max_height, mapSize);
 	generate_indices(width, height, indices);
 	heightmap->unlock();
 
@@ -63,14 +63,14 @@ bool HeightMapMesh::generate_mesh_from_heightmap(float max_height) {
 	return true;
 }
 
-void HeightMapMesh::generate_vertices(Ref<Image> heightmap, PoolVector3Array &vertices, PoolVector3Array &normals, float max_height) {
+void HeightMapMesh::generate_vertices(Ref<Image> heightmap, PoolVector3Array &vertices, PoolVector3Array &normals, float max_height, float mapSize) {
 	int width = heightmap->get_width();
 	int height = heightmap->get_height();
 
 	vertices.resize(width * height);
 	normals.resize(width * height);
 
-	float pixelSize = 100.0 / width;
+	float pixelSize = mapSize / width;
 
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {

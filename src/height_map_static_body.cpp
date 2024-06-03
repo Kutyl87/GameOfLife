@@ -5,6 +5,7 @@ using namespace godot;
 void HeightMapStaticBody::_register_methods() {
 	register_property<HeightMapStaticBody, String>("heightmap_path", &HeightMapStaticBody::set_heightmap_path, &HeightMapStaticBody::get_heightmap_path, String(""));
 	register_property<HeightMapStaticBody, float>("max_height", &HeightMapStaticBody::set_max_height, &HeightMapStaticBody::get_max_height, 10.0);
+	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize, &HeightMapStaticBody::getMapSize, 10.0);
 
 	register_method("_ready", &HeightMapStaticBody::_ready);
 }
@@ -15,6 +16,7 @@ HeightMapStaticBody::~HeightMapStaticBody() {}
 void HeightMapStaticBody::_init() {
 	heightmap_path = "";
 	max_height = 10.0;
+	mapSize = 100.0;
 	Godot::print("init.");
 }
 
@@ -47,6 +49,15 @@ float HeightMapStaticBody::get_max_height() const {
 	return max_height;
 }
 
+void HeightMapStaticBody::setMapSize(float size) {
+	mapSize = size;
+	generate_heightmap_mesh();
+}
+
+float HeightMapStaticBody::getMapSize() const {
+	return mapSize;
+}
+
 void HeightMapStaticBody::generate_heightmap_mesh() {
 	if(!ready) return;
 	if (heightmap_path.empty()) {
@@ -57,7 +68,7 @@ void HeightMapStaticBody::generate_heightmap_mesh() {
 	Ref<HeightMapMesh> height_map_mesh;
 	height_map_mesh.instance();
 	height_map_mesh->set_heightmap_path(heightmap_path);
-	if(height_map_mesh->generate_mesh_from_heightmap(max_height)) {
+	if(height_map_mesh->generate_mesh_from_heightmap(max_height, mapSize)) {
 		mesh_instance->set_mesh(height_map_mesh);
 
 		Ref<ConcavePolygonShape> shape;

@@ -17,6 +17,7 @@ physics_material_override = SubResource( 1 )
 script = ExtResource( 3 )
 heightmap_path = "res://heightmap.png"
 max_height = 20.0
+mapSize = 100.0
 
 [node name="CameraPosition3D" type="Position3D" parent="."]
 transform = Transform( -0.996661, 0, 0.0816425, 0.0766381, 0.344725, 0.93557, -0.0281442, 0.938704, -0.343574, 6.00006, 55.6798, -27.5007 )
