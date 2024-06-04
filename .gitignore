@@ -7,4 +7,5 @@ build
 **/.scons*
 **/*.so
 src/**/*.os
+godot-impl/**/*.os
 ArtifficalInteligenceModels/libtorch
