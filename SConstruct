@@ -109,8 +109,8 @@ env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
 env.Append(LIBS=[cpp_library])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=['src/'])
-sources = Glob('src/*.cpp')
+env.Append(CPPPATH=['godot-impl/'])
+sources = Glob('godot-impl/*.cpp')
 
 godot_library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
 Default(main, tests, nn, godot_library)

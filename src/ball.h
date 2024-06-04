@@ -8,28 +8,28 @@
 
 
 namespace godot {
-    class Ball : public RigidBody {
-        GODOT_CLASS(Ball, RigidBody)
+	class Ball : public RigidBody {
+		GODOT_CLASS(Ball, RigidBody)
 
-        godot::Input* _input;
-        godot::CollisionShape* _collision_shape; 
+		godot::Input* _input;
+		godot::CollisionShape* _collision_shape; 
 
-    public:
-        real_t ball_speed = 50;
-        real_t fall_acceleration = 75;
+	public:
+		real_t ball_speed = 50;
+		real_t fall_acceleration = 75;
 
 
-        Ball();
-        ~Ball();
+		Ball();
+		~Ball();
 
-        void _init();
+		void _init();
 
-        void _ready();
+		void _ready();
 
-        void _physics_process(float delta);
+		void _physics_process(float delta);
 
-        static void _register_methods();
-    };
+		static void _register_methods();
+	};
 }
 
 #endif
