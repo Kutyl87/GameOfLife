@@ -18,14 +18,6 @@ jobs:
       - name: Build Application
         run: |
           scons platform=linux
-      - name: Upload artiffact
-        uses: actions/upload-artifact@v2
-        with:
-            name: test_artifact
-            path: tests/build/tests
-      - name: Train Neural Network
-        run: |
-            cd  ArtifficalInteligenceModels && cd build && sudo chmod +x ai && ./ai
   test:
     needs: build
     runs-on : ubuntu-latest
