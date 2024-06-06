@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "EditorInspectorPlugin",
+"class": "CameraInspectorPlugin",
+"language": "GDScript",
+"path": "res://addons/qol-camera/inspector_plugin.gd"
+}, {
+"base": "EditorProperty",
+"class": "ViewLockProperty",
+"language": "GDScript",
+"path": "res://addons/qol-camera/view_lock_property.gd"
+} ]
+_global_script_class_icons={
+"CameraInspectorPlugin": "",
+"ViewLockProperty": ""
+}
+
 [application]
 
 config/name="3D Evolution"
 run/main_scene="res://MainScene.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/qol-camera/plugin.cfg" )
 
 [gdnative]
 

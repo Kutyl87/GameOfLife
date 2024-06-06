@@ -1,5 +1,7 @@
 #include "height_map_mesh.h"
 #include "height_map_static_body.h"
+#include "godot_organism.h"
+#include "godot_limb.h"
 
 using namespace godot;
 
@@ -16,4 +18,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 
 	register_tool_class<HeightMapMesh>();
 	register_tool_class<HeightMapStaticBody>();
+	register_tool_class<GodotOrganism>();
+	register_tool_class<GodotLimb>();
 }

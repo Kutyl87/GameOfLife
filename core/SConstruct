@@ -2,7 +2,7 @@ import os
 import shutil
 env = Environment()
 include_dir = 'include/'
-env.Append(CXXFLAGS=['-std=c++17','-D_GLIBCXX_USE_CXX11_ABI=0'], CPPPATH=[include_dir])
+env.Append(CXXFLAGS=['-std=c++17','-D_GLIBCXX_USE_CXX11_ABI=0', '-fPIC'], CPPPATH=[include_dir])
 src_dir = 'src/'
 target_dir = 'build/'
 os.makedirs(target_dir, exist_ok=True)
@@ -12,6 +12,6 @@ def copy_source_files(target, source, env):
         shutil.copy(file.abspath, target_dir)
 env.Command(target_dir, src_dir, copy_source_files)
 src_files = Glob(target_dir + '*.cpp')
-lib = env.StaticLibrary(target='lib/lib.a', source=src_files)
+lib = env.StaticLibrary(target='lib/libcore.a', source=src_files)
 Default(lib)
 Return('lib')

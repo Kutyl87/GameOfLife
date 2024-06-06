@@ -1,3 +1,5 @@
+#pragma once
+
 class Food {
 public:
 	Food(float size, float valuePerUnit, float toxinLevel)
