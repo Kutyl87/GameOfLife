@@ -6,6 +6,10 @@ Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation,
 	: Object(position, rotation, parent) {
 	this->children = std::vector<std::unique_ptr<Limb>>();
 	this->organs = std::vector<std::unique_ptr<Organ>>();
+	critic_optimizer =
+		std::make_unique<torch::optim::Adam>(critic->parameters(), torch::optim::AdamOptions(learning_rate));
+	actor_optimizer =
+		std::make_unique<torch::optim::Adam>(actor->parameters(), torch::optim::AdamOptions(learning_rate));
 }
 
 void Organism::addChild(std::unique_ptr<Limb> child) {
@@ -49,17 +53,60 @@ std::array<float, 2> Organism::getDirection() const {
 
 std::array<float, 8> Organism::getJointForces() {
 	float reward = getReward(direction[0], direction[1]);
-	rewards.push_back(reward);
+	torch::Tensor reward_tensor = torch::tensor({reward});
+	rewards = torch::cat({rewards, reward_tensor});
 	auto state = getState();
+	torch::Tensor state_tensor = torch::from_blob(state.data(), {1, state.size()});
+	actions = torch::cat({states, state_tensor});
 	auto action = predict();
-	states.push_back(state);
-	actions.push_back(action);
-	rewards.push_back(reward);
+	torch::Tensor action_tensor = torch::from_blob(action.data(), {1, action.size()});
+	actions = torch::cat({actions, action_tensor});
+	positions.push_back({getPosition()[0], getPosition()[2]});
+	++step;
+	if (step > maxSteps) {
+		update();
+		step = 0;
+		actions = torch::empty({0});
+		rewards = torch::empty({0});
+		states = torch::empty({0});
+	}
+	return action;
+}
 
+void Organism::update() {
+	torch::Tensor discounted_rewards = torch::empty(rewards.size(0));
+	double cumulative = 0;
+	double gamma = 0.99;
+	for (int64_t i = rewards.size(0) - 1; i >= 0; --i) {
+		cumulative = rewards[i].item<double>() + gamma * cumulative;
+		discounted_rewards[i] = cumulative;
+	}
+	auto critic_loss = torch::nn::functional::mse_loss(critic->forward(states), discounted_rewards);
+	auto values = critic->forward(states);
+	auto advantages = discounted_rewards - values;
+	auto actor_loss = torch::nn::functional::mse_loss(
+		actor->forward(states), actions, torch::nn::functional::MSELossFuncOptions().reduction(torch::kNone));
+	actor_loss = actor_loss * advantages;
+	actor_loss = torch::mean(actor_loss);
+	critic_loss.backward();
+	actor_loss.backward();
+	critic_optimizer->step();
+	actor_optimizer->step();
+}
+
+std::array<float, 8> Organism::predict() {
+	auto state = getState();
+	torch::Tensor state_tensor = torch::from_blob(state.data(), {1, state.size()});
+	torch::Tensor action_tensor = actor->forward(state_tensor);
+	std::array<float, 8> action;
+	std::memcpy(action.data(), action_tensor.data_ptr<float>(), sizeof(float) * action_tensor.numel());
 	return action;
 }
 
 float Organism::getReward(float dirX, float dirZ) {
+	if (positions.size() == 0) {
+		return 0;
+	}
 	std::array<float, 2> lastPos = positions[positions.size() - 1];
 	std::array<float, 2> currentPos = {getPosition()[0], getPosition()[2]};
 	std::array<float, 2> positionDifference = {currentPos[0] - lastPos[0], currentPos[1] - lastPos[1]};
