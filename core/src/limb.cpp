@@ -16,18 +16,18 @@ void Limb::setWidth(float width) {
 	this->width = width;
 }
 
-std::weak_ptr<Limb> Limb::getChildLimb() const {
+std::shared_ptr<Limb> Limb::getChildLimb() const {
 	return childLimb;
 }
 
-void Limb::setChildLimb(std::weak_ptr<Limb> childLimb) {
+void Limb::setChildLimb(std::shared_ptr<Limb> childLimb) {
 	this->childLimb = childLimb;
 }
 
-std::shared_ptr<Object> Limb::getParentObject() const {
+std::weak_ptr<Object> Limb::getParentObject() const {
 	return parentObject;
 }
 
-void Limb::setParentObject(std::shared_ptr<Object> parentObject) {
+void Limb::setParentObject(std::weak_ptr<Object> parentObject) {
 	this->parentObject = parentObject;
 }

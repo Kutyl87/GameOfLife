@@ -11,21 +11,24 @@
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.1389, -7.23535, -45.5246 )
+input_capture_on_drag = true
 physics_material_override = SubResource( 1 )
 script = ExtResource( 3 )
 heightmapPath = "res://heightmap.png"
 maxHeight = 20.0
 
 [node name="CameraPosition3D" type="Position3D" parent="."]
-transform = Transform( -0.996661, 0, 0.0816425, 0.0766381, 0.344725, 0.93557, -0.0281442, 0.938704, -0.343574, 6.00006, 55.6798, -27.5007 )
+transform = Transform( -0.996661, 0, 0.0816425, 0.0766381, 0.344725, 0.93557, -0.0281442, 0.938704, -0.343574, 14.0911, 27.7727, -3.45331 )
 
 [node name="Camera" type="Camera" parent="CameraPosition3D"]
-transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0 )
+transform = Transform( -0.0567494, -0.0661999, 0.996192, 0.938317, 0.33735, 0.0758704, -0.341088, 0.939049, 0.042972, 56.5406, -0.103791, -35.8004 )
+far = 291.9
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7326, 32.9933, 0 )
-omni_range = 1000.0
+light_energy = 0.201
+omni_range = 1574.12
 
 [node name="FallingBall" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.10798, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.10798, 8.78237 )
 physics_material_override = SubResource( 2 )

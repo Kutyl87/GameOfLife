@@ -1,3 +1,5 @@
+#pragma once
+
 #include <array>
 #include <memory>
 
@@ -13,6 +15,7 @@ public:
 	void setRotation(std::array<float, 3> rotation);
 	void setParent(std::weak_ptr<Object> parent);
 	bool operator==(const Object& other) const;
+	virtual ~Object();
 
 private:
 	std::array<float, 3> position;

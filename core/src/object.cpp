@@ -27,3 +27,5 @@ void Object::setParent(std::weak_ptr<Object> parent) {
 bool Object::operator==(const Object& other) const {
 	return position == other.position && rotation == other.rotation && parent.lock() == other.parent.lock();
 }
+
+Object::~Object() {}
