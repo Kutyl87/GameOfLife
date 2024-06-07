@@ -21,6 +21,6 @@ def copy_source_files(target, source, env):
     for file in source:
         shutil.copy(file.abspath, target_dir)
 src_files = Glob(target_dir + '*.cpp')
-lib = env.StaticLibrary(target='lib/lib.a', source=src_files)
+lib = env.StaticLibrary(target='lib/libai.a', source=src_files)
 Default(lib)
 Return('lib')
