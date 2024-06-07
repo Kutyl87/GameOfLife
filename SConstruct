@@ -71,7 +71,7 @@ elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     env.Append(CCFLAGS=['-fPIC'])
-    env.Append(CXXFLAGS=['-std=c++17'])
+    env.Append(CXXFLAGS=['-std=c++17', "-D_GLIBCXX_USE_CXX11_ABI=0"])
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-g3', '-Og'])
     else:
@@ -105,9 +105,9 @@ cpp_library += '.' + str(bits)
 os.makedirs(env['target_path'], exist_ok=True)
 
 # make sure our binding library is properly includes
-env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/', 'core/include'])
-env.Append(LIBPATH=[cpp_bindings_path + 'bin/', 'core/lib'])
-env.Append(LIBS=[cpp_library, "core"])
+env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/', 'core/include','ArtifficalInteligenceModels/include' ,'ArtifficalInteligenceModels/libtorch/include', 'ArtifficalInteligenceModels/libtorch/include/torch/csrc/api/include'])
+env.Append(LIBPATH=[cpp_bindings_path + 'bin/', 'core/lib', 'ArtifficalInteligenceModels/libtorch/lib','ArtifficalInteligenceModels/lib'])
+env.Append(LIBS=[cpp_library, "core", 'torch', 'torch_cpu', 'c10', 'ai'])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=['godot-impl/'])
