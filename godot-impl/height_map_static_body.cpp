@@ -1,6 +1,6 @@
 #include "height_map_static_body.h"
-#include <organism.h>
 #include <godot_organism.h>
+#include <organism.h>
 
 using namespace godot;
 
@@ -8,14 +8,18 @@ const float defaultMaxHeight = 10.0;
 const float defaultMapSize = 100.0;
 
 void HeightMapStaticBody::_register_methods() {
-	register_property<HeightMapStaticBody, String>("heightmapPath", &HeightMapStaticBody::setHeightmapPath, &HeightMapStaticBody::getHeightmapPath, String(""));
-	register_property<HeightMapStaticBody, float>("maxHeight", &HeightMapStaticBody::setMaxHeight, &HeightMapStaticBody::getMaxHeight, defaultMaxHeight);
-	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize, &HeightMapStaticBody::getMapSize, defaultMapSize);
+	register_property<HeightMapStaticBody, String>("heightmapPath", &HeightMapStaticBody::setHeightmapPath,
+												   &HeightMapStaticBody::getHeightmapPath, String(""));
+	register_property<HeightMapStaticBody, float>("maxHeight", &HeightMapStaticBody::setMaxHeight,
+												  &HeightMapStaticBody::getMaxHeight, defaultMaxHeight);
+	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize,
+												  &HeightMapStaticBody::getMapSize, defaultMapSize);
 
 	register_method("_ready", &HeightMapStaticBody::_ready);
 }
 
 HeightMapStaticBody::HeightMapStaticBody() {}
+
 HeightMapStaticBody::~HeightMapStaticBody() {}
 
 void HeightMapStaticBody::_init() {
@@ -34,52 +38,30 @@ void HeightMapStaticBody::_ready() {
 	generateHeightmapMesh();
 
 	std::vector<std::unique_ptr<Limb>> limbs;
-	limbs.emplace_back(
-        std::make_unique<Limb>(
-            std::array<float, 3>{1, 0, 1.5},
-            std::array<float, 3>{0, 0, 0},
-            std::weak_ptr<::Object>(),
-            2.0f,
-            0.2f,
-            std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.f, 0.15f)
-        )
-    );
-	limbs.emplace_back(
-        std::make_unique<Limb>(
-            std::array<float, 3>{-1, 0, 1.5},
-            std::array<float, 3>{0, 0, 0},
-            std::weak_ptr<::Object>(),
-            2.0f,
-            0.2f,
-            std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.f, 0.15f)
-        )
-    );
-	limbs.emplace_back(
-        std::make_unique<Limb>(
-            std::array<float, 3>{1, 0, -1.5},
-            std::array<float, 3>{0, 0, 0},
-            std::weak_ptr<::Object>(),
-            2.0f,
-            0.2f,
-            std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.f, 0.15f)
-        )
-    );
-	limbs.emplace_back(
-        std::make_unique<Limb>(
-            std::array<float, 3>{-1, 0, -1.5},
-            std::array<float, 3>{0, 0, 0},
-            std::weak_ptr<::Object>(),
-            2.0f,
-            0.2f,
-            std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.f, 0.15f)
-        )
-    );
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   2.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   2.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   2.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 2.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -2, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   2.f, 0.15f)));
 
-    Organism* test_organism = new Organism(std::move(limbs), std::vector<std::unique_ptr<Organ>> {} );
-    GodotOrganism *godot_organism = GodotOrganism::_new();
-    add_child(godot_organism);
-    godot_organism->setOrganism(test_organism);
-    godot_organism->set_translation(Vector3(50, 20, 50));
+	Organism* test_organism =
+		new Organism(std::array<float, 3>{50, 20, 50}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+					 std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
+	GodotOrganism* godot_organism = GodotOrganism::_new();
+	add_child(godot_organism);
+	godot_organism->setOrganism(test_organism);
+	godot_organism->set_translation(Vector3(50, 20, 50));
 }
 
 void HeightMapStaticBody::setHeightmapPath(String path) {
@@ -110,7 +92,8 @@ float HeightMapStaticBody::getMapSize() const {
 }
 
 void HeightMapStaticBody::generateHeightmapMesh() {
-	if (!ready) return;
+	if (!ready)
+		return;
 	if (heightmapPath.empty()) {
 		return;
 	}
