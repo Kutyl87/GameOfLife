@@ -37,6 +37,18 @@ void SimulationManager::createObjects() {
 	organisms.push_back(test_organism);
 }
 
+void SimulationManager::manage() {
+	train();
+	for (auto& organism : organisms) {
+		if (organism->getPosition()[1] < 0) {
+			deleteOnDie(organism);
+		}
+	}
+	 if (foods.size() < 2) {
+		 // stwórz sobie jedzonko wladku
+	 }
+}
+
 void SimulationManager::spawn(std::shared_ptr<Organism> organism) {
 	organisms.push_back(organism);
 	spawnFunction_(organism);
