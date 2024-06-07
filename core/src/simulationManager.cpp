@@ -1,17 +1,52 @@
 #include "simulationManager.h"
 
-SimulationManager::SimulationManager(std::vector<std::shared_ptr<Food>> food,
-									 std::vector<std::shared_ptr<Organism>> organisms,
-									 std::shared_ptr<Autoencoder> autoencoder,
-									 std::function<void(std::shared_ptr<Object>)> spawnFunction,
+SimulationManager::SimulationManager(std::function<void(std::shared_ptr<Object>)> spawnFunction,
 									 std::function<void(std::shared_ptr<Object>)> deleteFunction)
-	: foods(std::move(food)),
-	  organisms(std::move(organisms)),
-	  autoencoder(std::move(autoencoder)),
-	  spawnFunction_(spawnFunction),
-	  deleteFunction_(deleteFunction) {
+	: spawnFunction_(spawnFunction), deleteFunction_(deleteFunction) {
+	createObjects();
 	optimizer =
 		std::make_unique<torch::optim::Adam>(autoencoder->parameters(), torch::optim::AdamOptions(learningRate));
+}
+
+void SimulationManager::createObjects() {
+	foods.push_back(std::make_shared<Food>(std::array<float, 3>{0, 0, 0}, std::array<float, 3>{0, 0, 0},
+										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+	foods.push_back(std::make_shared<Food>(std::array<float, 3>{1, 1, 1}, std::array<float, 3>{0, 0, 0},
+										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+	std::vector<std::unique_ptr<Limb>> limbs;
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   1.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   1.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   1.f, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   1.f, 0.15f)));
+
+	std::shared_ptr<Organism> test_organism =
+		std::make_shared<Organism>(std::array<float, 3>{50, 20, 50}, std::array<float, 3>{0, 0, 0},
+								   std::weak_ptr<Object>(), std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
+	organisms.push_back(test_organism);
+}
+
+void SimulationManager::manage() {
+	train();
+	for (auto& organism : organisms) {
+		if (organism->getPosition()[1] < 0) {
+			deleteOnDie(organism);
+		}
+	}
+	 if (foods.size() < 2) {
+		 // stwórz sobie jedzonko wladku
+	 }
 }
 
 void SimulationManager::spawn(std::shared_ptr<Organism> organism) {
