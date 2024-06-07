@@ -6,6 +6,7 @@
 #include <CollisionShape.hpp>
 #include <ConcavePolygonShape.hpp>
 #include <ResourceLoader.hpp>
+#include <PhysicsMaterial.hpp>
 #include "height_map_mesh.h"
 
 namespace godot {
@@ -21,6 +22,7 @@ namespace godot {
 		MeshInstance* meshInstance;
 		CollisionShape* collisionShape;
 		bool ready = false;
+		Ref<PhysicsMaterial> physicsMaterial;
 
 	public:
 		static void _register_methods();

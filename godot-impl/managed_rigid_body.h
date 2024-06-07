@@ -5,6 +5,7 @@
 #include <RigidBody.hpp>
 #include <vector>
 #include <functional>
+#include <PhysicsMaterial.hpp>
 
 
 namespace godot {
@@ -26,6 +27,7 @@ namespace godot {
 		static void _register_methods();
 	private:
 		std::function<void(float)> physicsProcess;
+		Ref<PhysicsMaterial> physicsMaterial;
 	};
 }
 

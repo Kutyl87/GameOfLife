@@ -80,19 +80,27 @@ void GodotOrganism::setOrganism(Organism *organism) {
 }
 	
 void GodotOrganism::physicsProcess(float delta) {
-	auto pos = body->get_translation();
-	auto rot = body->get_rotation();
+	auto transform = get_transform() * body->get_transform();
+	auto pos = transform.origin;
+	auto rot = transform.basis.get_euler();
 	Godot::print(pos);
 	organism->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
 	organism->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
 	for(auto i = 0; i < 4; ++i) {
-		auto pos = limbs[i].first->body->get_translation();
-		auto rot = limbs[i].first->body->get_rotation();
+		transform = limbs[i].first->get_transform() * limbs[i].first->body->get_transform();
+		pos = transform.origin;
+		rot = transform.basis.get_euler();
 		organism->getChildren()[i]->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
 		organism->getChildren()[i]->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
-		pos = limbs[i].first->child->body->get_translation();
-		rot = limbs[i].first->child->body->get_rotation();
+		transform = limbs[i].first->child->get_transform() * limbs[i].first->child->body->get_transform();
+		pos = transform.origin;
+		rot = transform.basis.get_euler();
 		organism->getChildren()[i]->getChildLimb()->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
 		organism->getChildren()[i]->getChildLimb()->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
+	}
+	auto forces = organism->getJointForces();
+	for(auto i = 0; i < 4; ++i) {
+		limbs[i].first->body->add_torque(Vector3(1000*forces[2*i], 0, 0));
+		limbs[i].first->child->body->add_torque(Vector3(1000*forces[2*i+1], 0, 0));
 	}
 }

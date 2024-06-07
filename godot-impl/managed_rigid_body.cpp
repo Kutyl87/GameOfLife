@@ -16,6 +16,9 @@ ManagedRigidBody::~ManagedRigidBody() {
 }
 
 void ManagedRigidBody::_init() {
+	physicsMaterial.instance();
+	physicsMaterial->set_friction(1.0);
+	set_physics_material_override(physicsMaterial);
 }
 
 void ManagedRigidBody::setPhysicsProcessFunction(std::function<void (float)> func) {
@@ -23,7 +26,6 @@ void ManagedRigidBody::setPhysicsProcessFunction(std::function<void (float)> fun
 }
 	
 void ManagedRigidBody::_physics_process(float delta) {
-	Godot::print("managed physicsProcess");
 	if(physicsProcess) {
 		physicsProcess(delta);
 	}

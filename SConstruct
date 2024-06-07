@@ -109,6 +109,7 @@ os.makedirs(env['target_path'], exist_ok=True)
 # make sure our binding library is properly includes
 env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/', 'core/include','ArtifficalInteligenceModels/include' ,'ArtifficalInteligenceModels/libtorch/include', 'ArtifficalInteligenceModels/libtorch/include/torch/csrc/api/include'])
 env.Append(LIBPATH=[cpp_bindings_path + 'bin/', 'core/lib', 'ArtifficalInteligenceModels/libtorch/lib','ArtifficalInteligenceModels/lib'])
+env.Append(LINKFLAGS=['-Wl,-rpath=\'$$ORIGIN\'/../../../ArtifficalInteligenceModels/libtorch/lib'])
 env.Append(LIBS=[cpp_library, "core", 'torch', 'torch_cpu', 'c10', 'ai'])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
