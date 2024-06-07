@@ -9,14 +9,13 @@
 
 class SimulationManager {
 public:
-	SimulationManager(std::vector<std::shared_ptr<Food>> food, std::vector<std::shared_ptr<Organism>> organisms,
-					  std::shared_ptr<Autoencoder> autoencoder,
-					  std::function<void(std::shared_ptr<Object> organism)> spawnFunction,
+	SimulationManager(std::function<void(std::shared_ptr<Object> organism)> spawnFunction,
 					  std::function<void(std::shared_ptr<Object> object)> deleteFunction);
 	void spawn(std::shared_ptr<Organism> organism);
 	void spawn(std::shared_ptr<Food> food);
 	void train();
 	void deleteOnDie(std::shared_ptr<Organism> organism);
+	void createObjects();
 
 private:
 	std::vector<std::shared_ptr<Food>> foods;
