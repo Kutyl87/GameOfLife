@@ -71,6 +71,8 @@ elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     env.Append(CCFLAGS=['-fPIC'])
+    env['CXXFLAGS'] = [flag for flag in env.get('CXXFLAGS', []) if not flag.startswith('-std=')]
+    env['CCFLAGS'] = [flag for flag in env.get('CCFLAGS', []) if not flag.startswith('-std=')]
     env.Append(CXXFLAGS=['-std=c++17', "-D_GLIBCXX_USE_CXX11_ABI=0"])
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-g3', '-Og'])
