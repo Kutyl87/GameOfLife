@@ -20,4 +20,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	register_tool_class<HeightMapStaticBody>();
 	register_tool_class<GodotOrganism>();
 	register_tool_class<GodotLimb>();
+	register_tool_class<ManagedRigidBody>();
 }

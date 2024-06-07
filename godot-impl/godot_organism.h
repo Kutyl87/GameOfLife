@@ -3,13 +3,13 @@
 
 #include <organism.h>
 #include "godot_limb.h"
+#include "managed_rigid_body.h"
 
 #include <Godot.hpp>
 #include <Spatial.hpp>
 #include <CollisionShape.hpp>
 #include <MeshInstance.hpp>
 #include <Generic6DOFJoint.hpp>
-#include <RigidBody.hpp>
 #include <vector>
 
 
@@ -22,7 +22,7 @@ namespace godot {
 		CollisionShape *collisionShape;
 		std::vector<std::pair<GodotLimb*, Generic6DOFJoint*>> limbs;
 		Organism* organism;
-		RigidBody* body;
+		ManagedRigidBody* body;
 
 	public:
 		GodotOrganism();
@@ -34,7 +34,7 @@ namespace godot {
 
 		void _ready();
 
-		void _physics_process(float delta);
+		void physicsProcess(float delta);
 
 		static void _register_methods();
 	};

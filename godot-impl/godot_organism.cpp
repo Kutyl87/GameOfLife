@@ -9,6 +9,7 @@ const float bodyLength = 2.0;
 const float bodyRadius = 1.0;
 
 void GodotOrganism::_register_methods() {
+	register_method("physicsProcess", &GodotOrganism::physicsProcess);
 }
 
 void GodotOrganism::_ready() {
@@ -28,12 +29,14 @@ void GodotOrganism::_init() {
     mesh = capsuleMesh;
 	meshInstance = MeshInstance::_new();
 	meshInstance->set_mesh(mesh);
-	body = RigidBody::_new();
+	body = ManagedRigidBody::_new();
 	add_child(body);
-
+	Godot::print("3");
 	body->add_child(meshInstance);
+	Godot::print("4");
 	body->set_mass(50);
 	body->set_gravity_scale(1);
+	body->setPhysicsProcessFunction([this](float delta){this->physicsProcess(delta);});
 	auto capsuleShape = CapsuleShape::_new();
 	capsuleShape->set_radius(bodyRadius);
 	capsuleShape->set_height(bodyLength);
@@ -76,5 +79,20 @@ void GodotOrganism::setOrganism(Organism *organism) {
 	}
 }
 	
-void GodotOrganism::_physics_process(float delta) {
+void GodotOrganism::physicsProcess(float delta) {
+	auto pos = body->get_translation();
+	auto rot = body->get_rotation();
+	Godot::print(pos);
+	organism->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
+	organism->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
+	for(auto i = 0; i < 4; ++i) {
+		auto pos = limbs[i].first->body->get_translation();
+		auto rot = limbs[i].first->body->get_rotation();
+		organism->getChildren()[i]->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
+		organism->getChildren()[i]->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
+		pos = limbs[i].first->child->body->get_translation();
+		rot = limbs[i].first->child->body->get_rotation();
+		organism->getChildren()[i]->getChildLimb()->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
+		organism->getChildren()[i]->getChildLimb()->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
+	}
 }
