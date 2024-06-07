@@ -63,8 +63,8 @@ void GodotLimb::setLimb(Limb *limb) {
 
 
         // Configure the joint angular limits
-        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, Math::deg2rad(90.0));
-        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, -Math::deg2rad(90.0));
+        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_UPPER_LIMIT, Math::deg2rad(90.0));
+        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, -Math::deg2rad(20.0));
 		joint->set_exclude_nodes_from_collision(true);
 		add_child(joint);
 	}

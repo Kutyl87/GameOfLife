@@ -1,5 +1,6 @@
 #include "organism.h"
 #include <random>
+#include <iomanip>
 
 Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation, std::weak_ptr<Object> parent,
                    std::vector<std::unique_ptr<Limb>> children, std::vector<std::unique_ptr<Organ>> organs)
@@ -7,10 +8,14 @@ Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation,
 
     actor = std::make_shared<Actor>(18, 8);
     critic = std::make_shared<Critic>(18, 1);
+    auto criticOptimizerOptions = torch::optim::AdamOptions(learning_rate);
+    criticOptimizerOptions.weight_decay(0.01);
+    auto actorOptimizerOptions = torch::optim::AdamOptions(learning_rate);
+    actorOptimizerOptions.weight_decay(0.01);
     critic_optimizer =
-        std::make_unique<torch::optim::Adam>(critic->parameters(), torch::optim::AdamOptions(learning_rate));
+        std::make_unique<torch::optim::Adam>(critic->parameters(), criticOptimizerOptions);
     actor_optimizer =
-        std::make_unique<torch::optim::Adam>(actor->parameters(), torch::optim::AdamOptions(learning_rate));
+        std::make_unique<torch::optim::Adam>(actor->parameters(), actorOptimizerOptions);
 
     // Move the models to the device
     actor->to(device);
@@ -20,7 +25,7 @@ Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation,
     actions = torch::empty({0}).to(device);
     rewards = torch::empty({0}).to(device);
     states = torch::empty({0}).to(device);
-    direction = {1, 0};
+    direction = {0, 1};
 }
 
 void Organism::addChild(std::unique_ptr<Limb> child) {
@@ -141,6 +146,20 @@ std::array<float, 8> Organism::predict() {
     torch::Tensor action_tensor = actor->forward(state_tensor);
     std::array<float, 8> action;
     std::memcpy(action.data(), action_tensor.data_ptr<float>(), sizeof(float) * action_tensor.numel());
+    for(auto& force : action) {
+        if(generateRandomNumber() > 0.5) {
+            force = generateRandomNumber();
+        }
+    }
+    // for(int i = 0; i < 8; ++i) {
+    //     action[i] = -state[i];
+    // }
+    std::cerr << "forces: ";
+    for(auto& force : action) {
+        std::cerr << std::fixed << std::setprecision(4) << std::setw(7) << force << ' ';
+    }
+    std::cerr << '\n';
+
     return action;
 }
 
@@ -169,12 +188,10 @@ float Organism::getReward(float dirX, float dirZ) {
     // Get the latest state from the states tensor
     torch::Tensor latestState = states[-1];
 
-    // Calculate the mean difference between the current state and the latest state
-    torch::Tensor difference = torch::abs(currentState - latestState);
-    float meanDifference = difference.mean().item<float>();
-
     // Subtract the mean difference from the original reward
-    return originalReward + meanDifference;
+    return -(
+        5*originalReward + 0*getPosition()[1] - 20*latestState.index({torch::indexing::Slice(0, 8)}).dot(actions[-1]).item<float>() + 50 * torch::mean(torch::square(actions[-1])).item<float>()
+    );
 }
 
 float Organism::dotProduct(const std::array<float, 2>& a, const std::array<float, 2>& b) {
@@ -193,5 +210,9 @@ std::array<float, 18> Organism::getState() {
     }
     state[state.size() - 2] = direction[0];
     state[state.size() - 1] = direction[1];
+    // for(auto s : state) {
+    //     std::cerr << s << ' ';
+    // }
+    // std::cerr << '\n';
     return state;
 }

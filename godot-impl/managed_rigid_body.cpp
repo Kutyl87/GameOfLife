@@ -17,8 +17,9 @@ ManagedRigidBody::~ManagedRigidBody() {
 
 void ManagedRigidBody::_init() {
 	physicsMaterial.instance();
-	physicsMaterial->set_friction(1.0);
+	physicsMaterial->set_friction(10.0);
 	set_physics_material_override(physicsMaterial);
+	set("continuous_cd", true);
 }
 
 void ManagedRigidBody::setPhysicsProcessFunction(std::function<void (float)> func) {

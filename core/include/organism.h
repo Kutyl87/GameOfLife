@@ -42,6 +42,6 @@ private:
 	int step = 0;
 	std::unique_ptr<torch::optim::Optimizer> critic_optimizer;
 	std::unique_ptr<torch::optim::Optimizer> actor_optimizer;
-	float learning_rate = 0.027;
+	float learning_rate = 0.003;
 	torch::Device device;
 };

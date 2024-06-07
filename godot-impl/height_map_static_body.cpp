@@ -28,7 +28,7 @@ void HeightMapStaticBody::_init() {
 	mapSize = defaultMapSize;
 
 	physicsMaterial.instance();
-	physicsMaterial->set_friction(1.0);
+	physicsMaterial->set_friction(10.0);
 	set_physics_material_override(physicsMaterial);
 }
 
@@ -65,7 +65,7 @@ void HeightMapStaticBody::_ready() {
 	GodotOrganism* godot_organism = GodotOrganism::_new();
 	add_child(godot_organism);
 	godot_organism->setOrganism(test_organism);
-	godot_organism->set_translation(Vector3(50, 17, 50));
+	godot_organism->set_translation(Vector3(50, 5, 50));
 }
 
 void HeightMapStaticBody::setHeightmapPath(String path) {
