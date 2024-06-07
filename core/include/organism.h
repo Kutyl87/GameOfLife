@@ -38,7 +38,7 @@ private:
 	std::array<float, 2> direction;
 	static float generateRandomNumber();
 	static float dotProduct(const std::array<float, 2>& a, const std::array<float, 2>& b);
-	const int maxSteps = 20;
+	static const int maxSteps = 20;
 	int step = 0;
 	std::unique_ptr<torch::optim::Optimizer> critic_optimizer;
 	std::unique_ptr<torch::optim::Optimizer> actor_optimizer;

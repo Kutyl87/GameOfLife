@@ -1,9 +1,11 @@
 #pragma once
+#include "object.h"
 
-class Food {
+class Food : public Object {
 public:
-	Food(float size, float valuePerUnit, float toxinLevel)
-		: size(size), valuePerUnit(valuePerUnit), toxinLevel(toxinLevel) {}
+	Food(std::array<float, 3> position, std::array<float, 3> rotation, std::weak_ptr<Object> parent, float size,
+		 float valuePerUnit, float toxinLevel)
+		: Object(position, rotation, parent), size(size), valuePerUnit(valuePerUnit), toxinLevel(toxinLevel) {}
 
 	float getSize() const;
 	float getValuePerUnit() const;
