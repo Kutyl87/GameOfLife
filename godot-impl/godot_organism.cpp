@@ -88,13 +88,13 @@ void GodotOrganism::physicsProcess(float delta) {
     organism->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
 
     for (auto i = 0; i < 4; ++i) {
-        transform = limbs[i].first->get_transform() * limbs[i].first->body->get_transform();
+        transform = body->get_transform().affine_inverse() * limbs[i].first->get_transform() * limbs[i].first->body->get_transform();
         pos = transform.origin;
         rot = transform.basis.get_euler();
         organism->getChildren()[i]->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
         organism->getChildren()[i]->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
         
-        transform = limbs[i].first->child->get_transform() * limbs[i].first->child->body->get_transform();
+        transform = body->get_transform().affine_inverse() * limbs[i].first->child->get_transform() * limbs[i].first->child->body->get_transform();
         pos = transform.origin;
         rot = transform.basis.get_euler();
         organism->getChildren()[i]->getChildLimb()->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});

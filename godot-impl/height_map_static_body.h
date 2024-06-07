@@ -8,6 +8,7 @@
 #include <ResourceLoader.hpp>
 #include <PhysicsMaterial.hpp>
 #include "height_map_mesh.h"
+#include <simulationManager.h>
 
 namespace godot {
 
@@ -23,7 +24,7 @@ namespace godot {
 		CollisionShape* collisionShape;
 		bool ready = false;
 		Ref<PhysicsMaterial> physicsMaterial;
-
+		std::unique_ptr<SimulationManager> manager;
 	public:
 		static void _register_methods();
 

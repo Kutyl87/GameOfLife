@@ -30,6 +30,7 @@ void HeightMapStaticBody::_init() {
 	physicsMaterial.instance();
 	physicsMaterial->set_friction(10.0);
 	set_physics_material_override(physicsMaterial);
+	// manager = std::make_unique<SimulationManager>();
 }
 
 void HeightMapStaticBody::_ready() {
@@ -60,12 +61,12 @@ void HeightMapStaticBody::_ready() {
 							   1.f, 0.15f)));
 
 	Organism* test_organism =
-		new Organism(std::array<float, 3>{50, 20, 50}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+		new Organism(std::array<float, 3>{500, 20, 500}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
 					 std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
 	GodotOrganism* godot_organism = GodotOrganism::_new();
 	add_child(godot_organism);
 	godot_organism->setOrganism(test_organism);
-	godot_organism->set_translation(Vector3(50, 5, 50));
+	godot_organism->set_translation(Vector3(500, 5, 500));
 }
 
 void HeightMapStaticBody::setHeightmapPath(String path) {

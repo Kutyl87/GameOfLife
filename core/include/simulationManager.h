@@ -26,5 +26,5 @@ private:
 	std::function<void(std::shared_ptr<Object> object)> deleteFunction_;
 	torch::Tensor createOrganismDataset();
 	std::unique_ptr<torch::optim::Optimizer> optimizer;
-	const int learningRate = 0.001;
+	const float learningRate = 0.001;
 };
