@@ -16,8 +16,9 @@ extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_opt
 extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	Godot::nativescript_init(handle);
 
-	register_tool_class<HeightMapMesh>();
-	register_tool_class<HeightMapStaticBody>();
-	register_tool_class<GodotOrganism>();
-	register_tool_class<GodotLimb>();
+	register_class<HeightMapMesh>();
+	register_class<HeightMapStaticBody>();
+	register_class<GodotOrganism>();
+	register_class<GodotLimb>();
+	register_class<ManagedRigidBody>();
 }

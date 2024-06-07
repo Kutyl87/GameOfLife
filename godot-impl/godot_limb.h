@@ -1,6 +1,7 @@
 #ifndef GODOT_ORGANISM_H
 #define GODOT_ORGANISM_H
 
+#include "managed_rigid_body.h"
 #include <limb.h>
 
 #include <Godot.hpp>
@@ -19,12 +20,12 @@ namespace godot {
 		MeshInstance *meshInstance;
 		Ref<Mesh> mesh;
 		CollisionShape *collisionShape;
-		GodotLimb *child = nullptr;
 		Generic6DOFJoint *joint;
 		Limb *limb;
 
 	public:
-		RigidBody *body;
+		GodotLimb *child = nullptr;
+		ManagedRigidBody *body;
 		GodotLimb();
 		~GodotLimb();
 
@@ -34,7 +35,7 @@ namespace godot {
 
 		void _ready();
 
-		void _physics_process(float delta);
+		void physicsProcess(float delta);
 
 		static void _register_methods();
 	};

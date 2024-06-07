@@ -6,6 +6,7 @@
 using namespace godot;
 
 void GodotLimb::_register_methods() {
+	register_method("physicsProcess", &GodotLimb::physicsProcess);
 }
 
 void GodotLimb::_ready() {
@@ -31,11 +32,12 @@ void GodotLimb::setLimb(Limb *limb) {
 	meshInstance->set_mesh(mesh);
 	meshInstance->set_rotation(Vector3(M_PI/2, 0, 0));
 	meshInstance->set_translation(Vector3(0, -this->limb->getLength()/2, 0));
-	body = RigidBody::_new();
+	body = ManagedRigidBody::_new();
 	add_child(body);
 	body->add_child(meshInstance);
 	body->set_mass(5);
 	body->set_gravity_scale(1);
+	// body->setPhysicsProcessFunction([this](float delta){this->physicsProcess(delta);});
 	auto capsuleShape = CapsuleShape::_new();
 	capsuleShape->set_radius(this->limb->getWidth());
 	capsuleShape->set_height(this->limb->getLength());
@@ -61,12 +63,13 @@ void GodotLimb::setLimb(Limb *limb) {
 
 
         // Configure the joint angular limits
-        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, Math::deg2rad(90.0));
-        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, -Math::deg2rad(90.0));
+        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_UPPER_LIMIT, Math::deg2rad(90.0));
+        joint->set_param_x(Generic6DOFJoint::PARAM_ANGULAR_LOWER_LIMIT, -Math::deg2rad(20.0));
 		joint->set_exclude_nodes_from_collision(true);
 		add_child(joint);
 	}
 }
 	
-void GodotLimb::_physics_process(float delta) {
+void GodotLimb::physicsProcess(float delta) {
+	Godot::print("limb physicsProcess");
 }

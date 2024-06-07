@@ -10,6 +10,7 @@ torch::Tensor Actor::forward(torch::Tensor x) {
 	x = torch::relu(fc1->forward(x));
 	x = torch::relu(fc2->forward(x));
 	x = torch::sigmoid(fc3->forward(x));
+	x = x * 2 - 1;
 	return x;
 }
 
