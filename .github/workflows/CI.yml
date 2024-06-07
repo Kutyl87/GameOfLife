@@ -2,11 +2,11 @@ name: CI
 on:
   push:
     branches:
-        - "**"
+      - "**"
   pull_request:
     branches:
-        - main
-        - develop
+      - main
+      - develop
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,17 +18,22 @@ jobs:
       - name: Build Application
         run: |
           scons platform=linux
+      - name: Upload artiffact
+        uses: actions/upload-artifact@v2
+        with:
+          name: test_artifact
+          path: tests/build/tests
   test:
     needs: build
-    runs-on : ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-        - name: Download artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: test_artifact
-            path: /tmp
-        - name: Tests
-          run: |
-            cd /tmp && sudo chmod +x tests && ./tests
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: test_artifact
+          path: /tmp
+      - name: Tests
+        run: |
+          cd /tmp && sudo chmod +x tests && ./tests
 
         
