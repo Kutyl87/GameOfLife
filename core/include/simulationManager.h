@@ -17,6 +17,12 @@ public:
 	void deleteOnDie(std::shared_ptr<Organism> organism);
 	void createObjects();
 	void manage();
+	std::vector<std::pair<Organism&, Organism&>> getPairs();
+	std::vector<torch::Tensor> createLatentSpaceVector();
+	std::multimap<float, std::pair<Organism&, Organism&>, std::greater<>> createDistanceMap(
+		const std::vector<torch::Tensor>& latentSpaceVec);
+	std::vector<std::pair<Organism&, Organism&>> createPairs(
+		const std::multimap<float, std::pair<Organism&, Organism&>, std::greater<>>& distanceMap);
 
 private:
 	void spawnNewOrganism();
