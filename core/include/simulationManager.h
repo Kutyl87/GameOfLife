@@ -6,6 +6,7 @@
 #include "food.h"
 #include "object.h"
 #include "organism.h"
+#include "utils.h"
 
 class SimulationManager {
 public:
@@ -23,6 +24,9 @@ public:
 		const std::vector<torch::Tensor>& latentSpaceVec);
 	std::vector<std::pair<Organism&, Organism&>> createPairs(
 		const std::multimap<float, std::pair<Organism&, Organism&>, std::greater<>>& distanceMap);
+	float crossover(float minLength, float maxLength);
+	float mutate(float minLength, float maxLength);
+	std::shared_ptr<Organism> breed(std::pair<Organism&, Organism&>);
 
 private:
 	void spawnNewOrganism();
