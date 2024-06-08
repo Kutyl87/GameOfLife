@@ -17,7 +17,7 @@ input_capture_on_drag = true
 physics_material_override = SubResource( 1 )
 script = ExtResource( 3 )
 heightmapPath = "res://heightmap.png"
-maxHeight = 0.0
+maxHeight = 5.0
 mapSize = 1000.0
 
 [node name="OmniLight" type="OmniLight" parent="."]

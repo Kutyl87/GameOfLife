@@ -1,6 +1,7 @@
 #include "height_map_static_body.h"
 #include <godot_organism.h>
 #include <organism.h>
+#include <typeinfo>
 
 using namespace godot;
 
@@ -30,7 +31,6 @@ void HeightMapStaticBody::_init() {
 	physicsMaterial.instance();
 	physicsMaterial->set_friction(10.0);
 	set_physics_material_override(physicsMaterial);
-	// manager = std::make_unique<SimulationManager>();
 }
 
 void HeightMapStaticBody::_ready() {
@@ -41,32 +41,7 @@ void HeightMapStaticBody::_ready() {
 	add_child(collisionShape);
 	ready = true;
 	generateHeightmapMesh();
-
-	std::vector<std::unique_ptr<Limb>> limbs;
-	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
-	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
-	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
-	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
-
-	Organism* test_organism =
-		new Organism(std::array<float, 3>{500, 20, 500}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-					 std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
-	GodotOrganism* godot_organism = GodotOrganism::_new();
-	add_child(godot_organism);
-	godot_organism->setOrganism(test_organism);
-	godot_organism->set_translation(Vector3(500, 5, 500));
+	manager = std::make_unique<SimulationManager>([this](std::shared_ptr<::Object> organism){spawn(organism);}, [this](std::shared_ptr<::Object> organism){despawn(organism);});
 }
 
 void HeightMapStaticBody::setHeightmapPath(String path) {
@@ -103,7 +78,6 @@ void HeightMapStaticBody::generateHeightmapMesh() {
 		return;
 	}
 
-	Ref<HeightMapMesh> heightMapMesh;
 	heightMapMesh.instance();
 	heightMapMesh->setHeightmapPath(heightmapPath);
 	if (heightMapMesh->generateMeshFromHeightmap(maxHeight, mapSize)) {
@@ -112,7 +86,7 @@ void HeightMapStaticBody::generateHeightmapMesh() {
 		Ref<ConcavePolygonShape> shape;
 		shape.instance();
 		Array surfaceArrays = heightMapMesh->surface_get_arrays(0);
-		PoolVector3Array vertices = surfaceArrays[Mesh::ARRAY_VERTEX];
+		vertices = surfaceArrays[Mesh::ARRAY_VERTEX];
 		PoolIntArray indices = surfaceArrays[Mesh::ARRAY_INDEX];
 
 		PoolVector3Array faces;
@@ -127,5 +101,34 @@ void HeightMapStaticBody::generateHeightmapMesh() {
 		Godot::print(shape->get_faces().size());
 		collisionShape->set_shape(shape);
 		Godot::print(collisionShape->get_shape()->get_debug_mesh()->get_aabb());
+	}
+}
+
+void HeightMapStaticBody::spawn(std::shared_ptr<::Object> object) {
+	auto organism = std::dynamic_pointer_cast<Organism>(object);
+	if(organism) {
+		GodotOrganism* godot_organism = GodotOrganism::_new();
+		organisms.push_back(godot_organism);
+		add_child(godot_organism);
+		godot_organism->setOrganism(organism.get());
+		auto pos = organism->getPosition();
+		int iX = static_cast<int>(pos[0]);
+		int iZ = static_cast<int>(pos[2]);
+		float verticalOffset = 0;
+		if(iX >= 0 && iX < heightMapMesh->width && iZ >= 0 && iZ < heightMapMesh->height) {
+			verticalOffset = vertices[iZ*heightMapMesh->width+iX].y;
+		}
+		godot_organism->set_translation(Vector3(pos[0], pos[1] + verticalOffset, pos[2]));
+	}
+}
+void HeightMapStaticBody::despawn(std::shared_ptr<::Object> object) {
+	auto organism = std::dynamic_pointer_cast<Organism>(object);
+	if(organism) {
+		for(auto& organism_node : organisms) {
+			if(organism_node->organism == organism.get()) {
+				remove_child(organism_node);
+				organisms.erase(std::remove(organisms.begin(), organisms.end(), organism_node), organisms.end());
+			}
+		}
 	}
 }

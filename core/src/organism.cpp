@@ -1,5 +1,5 @@
 #include "organism.h"
-#include <random>
+#include "utils.h"
 #include <iomanip>
 
 Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation, std::weak_ptr<Object> parent,
@@ -52,15 +52,8 @@ std::vector<std::unique_ptr<Organ>>& Organism::getOrgans() {
     return organs;
 }
 
-float Organism::generateRandomNumber() {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    static std::uniform_real_distribution<> dis(-1.0, 1.0);
-    return dis(gen);
-}
-
 std::array<float, 2> Organism::getDirection() const {
-    std::array<float, 2> direction = {generateRandomNumber(), generateRandomNumber()};
+    std::array<float, 2> direction = {generateRandomNumber(-1, 1), generateRandomNumber(-1, 1)};
     float magnitude = std::sqrt(direction[0] * direction[0] + direction[1] * direction[1]);
     direction[0] /= magnitude;
     direction[1] /= magnitude;
@@ -85,7 +78,7 @@ std::array<float, 8> Organism::getJointForces() {
         actions = torch::empty({0}).to(device);
         rewards = torch::empty({0}).to(device);
         states = torch::empty({0}).to(device);
-        if(generateRandomNumber() < -0.99)
+        if(generateRandomNumber(-1, 1) < -0.99)
         	direction = getDirection();
     }
     return action;
@@ -147,8 +140,8 @@ std::array<float, 8> Organism::predict() {
     std::array<float, 8> action;
     std::memcpy(action.data(), action_tensor.data_ptr<float>(), sizeof(float) * action_tensor.numel());
     for(auto& force : action) {
-        if(generateRandomNumber() > 0.5) {
-            force = generateRandomNumber();
+        if(generateRandomNumber(-1, 1) > 0.5) {
+            force = generateRandomNumber(-1, 1);
         }
     }
     // for(int i = 0; i < 8; ++i) {

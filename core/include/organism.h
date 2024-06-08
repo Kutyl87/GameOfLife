@@ -36,7 +36,6 @@ private:
 	std::vector<std::array<float, 2>> positions;
 	torch::Tensor states;
 	std::array<float, 2> direction;
-	static float generateRandomNumber();
 	static float dotProduct(const std::array<float, 2>& a, const std::array<float, 2>& b);
 	static const int maxSteps = 20;
 	int step = 0;

@@ -3,7 +3,7 @@ extends Camera
 # Sensitivity for mouse movement
 var mouse_sensitivity : float = 0.3
 # Speed for camera movement
-var move_speed : float = 5.0
+var move_speed : float = 50.0
 
 # Rotation angles
 var yaw : float = 0.0

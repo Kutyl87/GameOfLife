@@ -35,8 +35,8 @@ bool HeightMapMesh::generateMeshFromHeightmap(float maxHeight, float mapSize) {
 
 	heightmap->lock();
 
-	int width = heightmap->get_width();
-	int height = heightmap->get_height();
+	width = heightmap->get_width();
+	height = heightmap->get_height();
 
 	generateVertices(heightmap, vertices, normals, maxHeight, mapSize);
 	generateIndices(width, height, indices);
