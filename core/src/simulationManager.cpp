@@ -11,10 +11,12 @@ SimulationManager::SimulationManager(std::function<void(std::shared_ptr<Object>)
 }
 
 void SimulationManager::createObjects() {
-	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
-										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
-	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
-										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+	for(int i = 0; i < 1000; ++i) {
+		spawnNewFood();
+	}
+	spawnNewOrganism();
+	spawnNewOrganism();
+	spawnNewOrganism();
 	spawnNewOrganism();
 	spawnNewOrganism();
 }
@@ -41,9 +43,14 @@ void SimulationManager::spawnNewOrganism() {
 							   childLimbLength, 0.15f)));
 
 	std::shared_ptr<Organism> test_organism =
-		std::make_shared<Organism>(std::array<float, 3>{generateRandomNumber(50, 950), limbLength + childLimbLength + 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
+		std::make_shared<Organism>(std::array<float, 3>{generateRandomNumber(15, 285), limbLength + childLimbLength + 1, generateRandomNumber(15, 285)}, std::array<float, 3>{0, 0, 0},
 								   std::weak_ptr<Object>(), std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
 	spawn(test_organism);
+}
+
+void SimulationManager::spawnNewFood() {
+	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(15, 285), 0.2, generateRandomNumber(15, 285)}, std::array<float, 3>{0, 0, 0},
+										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
 }
 
 void SimulationManager::manage() {

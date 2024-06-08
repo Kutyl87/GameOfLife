@@ -2,6 +2,7 @@
 #include "height_map_static_body.h"
 #include "godot_organism.h"
 #include "godot_limb.h"
+#include "godot_food.h"
 
 using namespace godot;
 
@@ -21,4 +22,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	register_class<GodotOrganism>();
 	register_class<GodotLimb>();
 	register_class<ManagedRigidBody>();
+	register_class<GodotFood>();
 }

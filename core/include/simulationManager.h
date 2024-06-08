@@ -20,6 +20,7 @@ public:
 
 private:
 	void spawnNewOrganism();
+	void spawnNewFood();
 	std::vector<std::shared_ptr<Food>> foods;
 	std::vector<std::shared_ptr<Organism>> organisms;
 	std::shared_ptr<Autoencoder> autoencoder;
