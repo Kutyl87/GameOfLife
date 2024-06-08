@@ -102,10 +102,10 @@ std::shared_ptr<Organism> SimulationManager::breed(std::pair<Organism&, Organism
 		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
 		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0},
 							   std::weak_ptr<::Object>(), limbLength, 0.15f)));
-	std::shared_ptr<Organism> newOrganism = std::make_shared<Organism>(
-		std::array<float, 3>{generateRandomNumber(50, 950), 2 * limbLength + 1, generateRandomNumber(50, 950)},
-		std::array<float, 3>{0, 0, 0}, std::shared_ptr<Object>(), std::move(limbs),
-		std::vector<std::unique_ptr<Organ>>{});
+	std::array<float, 3> midPoint = calculateMidpoint(pair.first.getPosition(), pair.second.getPosition());
+	std::shared_ptr<Organism> newOrganism =
+		std::make_shared<Organism>(midPoint, std::array<float, 3>{0, 0, 0}, std::shared_ptr<Object>(), std::move(limbs),
+								   std::vector<std::unique_ptr<Organ>>{});
 	return newOrganism;
 }
 
