@@ -83,7 +83,6 @@ void GodotOrganism::physicsProcess(float delta) {
     auto transform = get_transform() * body->get_transform();
     auto pos = transform.origin;
     auto rot = transform.basis.get_euler();
-    Godot::print(pos);
     organism->setPosition(std::array<float, 3>{pos.x, pos.y, pos.z});
     organism->setRotation(std::array<float, 3>{rot.x, rot.y, rot.z});
 

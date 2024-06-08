@@ -17,11 +17,9 @@ Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation,
     actor_optimizer =
         std::make_unique<torch::optim::Adam>(actor->parameters(), actorOptimizerOptions);
 
-    // Move the models to the device
     actor->to(device);
     critic->to(device);
 
-    // Initialize tensors on the correct device
     actions = torch::empty({0}).to(device);
     rewards = torch::empty({0}).to(device);
     states = torch::empty({0}).to(device);
@@ -79,7 +77,7 @@ std::array<float, 8> Organism::getJointForces() {
         rewards = torch::empty({0}).to(device);
         states = torch::empty({0}).to(device);
         if(generateRandomNumber(-1, 1) < -0.99)
-        	direction = getDirection();
+            direction = getDirection();
     }
     return action;
 }
@@ -92,43 +90,32 @@ void Organism::update() {
         cumulative = (1 - gamma) * rewards[i].item<double>() + gamma * cumulative;
         discounted_rewards[i] = cumulative;
     }
-    
-    std::cerr << "Discounted Rewards Dimensions: " << discounted_rewards.sizes() << std::endl;
 
     discounted_rewards = discounted_rewards.unsqueeze(1); // Make it [21, 1]
-    std::cerr << "Discounted Rewards Reshaped Dimensions: " << discounted_rewards.sizes() << std::endl;
-    
+
     auto values = critic->forward(states);
-    std::cerr << "Values Dimensions: " << values.sizes() << std::endl;
-    
+
     auto critic_loss = torch::nn::functional::mse_loss(values, discounted_rewards);
-    std::cerr << "Critic Loss Dimensions: " << critic_loss.sizes() << std::endl;
-    
+
     auto advantages = discounted_rewards - values;
-    std::cerr << "Advantages Dimensions: " << advantages.sizes() << std::endl;
-    
+
     auto actor_output = actor->forward(states);
-    std::cerr << "Actor Output Dimensions: " << actor_output.sizes() << std::endl;
-    
+
     auto actor_loss = torch::nn::functional::mse_loss(
         actor_output, actions, torch::nn::functional::MSELossFuncOptions().reduction(torch::kNone));
-    std::cerr << "Actor Loss Before Mean Dimensions: " << actor_loss.sizes() << std::endl;
-    
+
     actor_loss = actor_loss.mean(1);
-    std::cerr << "Actor Loss After Mean Dimensions: " << actor_loss.sizes() << std::endl;
-    
+
     actor_loss = actor_loss * advantages.squeeze(1);
-    std::cerr << "Actor Loss After Multiplying with Advantages Dimensions: " << actor_loss.sizes() << std::endl;
-    
+
     actor_loss = actor_loss.mean();
-    std::cerr << "Actor Loss After Final Mean Dimensions: " << actor_loss.sizes() << std::endl;
 
     critic_optimizer->zero_grad();
     actor_optimizer->zero_grad();
-    
+
     critic_loss.backward({}, true);
     actor_loss.backward();
-    
+
     critic_optimizer->step();
     actor_optimizer->step();
 }
@@ -144,15 +131,9 @@ std::array<float, 8> Organism::predict() {
             force = generateRandomNumber(-1, 1);
         }
     }
-    // for(int i = 0; i < 8; ++i) {
-    //     action[i] = -state[i];
-    // }
-    std::cerr << "forces: ";
     for(int i = 0; i < 8; ++i) {
         action[i] = action[i] - state[i];
-        std::cerr << std::fixed << std::setprecision(4) << std::setw(7) << action[i] << ' ';
     }
-    std::cerr << '\n';
 
     return action;
 }
@@ -162,7 +143,6 @@ float Organism::getReward(float dirX, float dirZ) {
         return 0;
     }
 
-    // Get the last and current positions
     std::array<float, 2> lastPos = positions.back();
     std::array<float, 2> currentPos = {getPosition()[0], getPosition()[2]};
     std::array<float, 2> positionDifference = {currentPos[0] - lastPos[0], currentPos[1] - lastPos[1]};
@@ -175,29 +155,24 @@ float Organism::getReward(float dirX, float dirZ) {
         sin_angle * positionDifference[0] + cos_angle * positionDifference[1]
     };
 
-    // Calculate the original reward based on direction
     float originalReward = dotProduct(rotatedPositionDifference, direction);
 
-    // Get the current state and convert it to a tensor
     std::array<float, 18> currentStateArray = getState();
     torch::Tensor currentState = torch::from_blob(currentStateArray.data(), {18}, torch::kFloat32).to(device);
 
-    // If there are no previous states, return the original reward
     if (states.size(0) == 0) {
         return originalReward;
     }
     
-    // Get the latest state from the states tensor
     torch::Tensor latestState = states[-1];
 
-    // Subtract the mean difference from the original reward
     auto rotation = getRotation();
     float reward = 5*originalReward;
     rewards += 3*getPosition()[1];
     reward -= 10*latestState.index({torch::indexing::Slice(0, 8)}).sign().dot(actions[-1]).item<float>();
     reward += 0 * torch::mean(torch::square(actions[-1])).item<float>();
     reward -= 5*(std::abs(rotation[0])+std::abs(rotation[2]));
-    std::cerr << "reward: " << reward << '\n';
+
     return -reward;
 }
 
@@ -217,10 +192,6 @@ std::array<float, 18> Organism::getState() {
     }
     state[state.size() - 2] = direction[0];
     state[state.size() - 1] = direction[1];
-    // for(auto s : state) {
-    //     std::cerr << s << ' ';
-    // }
-    // std::cerr << '\n';
     return state;
 }
 
