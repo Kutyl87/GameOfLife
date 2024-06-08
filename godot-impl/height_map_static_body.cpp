@@ -136,6 +136,7 @@ void HeightMapStaticBody::spawn(std::shared_ptr<::Object> object) {
 			verticalOffset = heightMapMesh->vertices[1024*iZ+iX].y;
 		}
 		godotFood->set_translation(Vector3(pos[0], pos[1] + verticalOffset, pos[2]));
+		food->setPosition(std::array<float, 3>{pos[0], pos[1] + verticalOffset, pos[2]});
 	}
 }
 void HeightMapStaticBody::despawn(std::shared_ptr<::Object> object) {
@@ -152,6 +153,7 @@ void HeightMapStaticBody::despawn(std::shared_ptr<::Object> object) {
 	if(food) {
 		for(auto& food_node : foods) {
 			if(food_node->food == food) {
+				Godot::print("remove food");
 				remove_child(food_node);
 				foods.erase(std::remove(foods.begin(), foods.end(), food_node), foods.end());
 			}

@@ -26,6 +26,8 @@ public:
 	void update();
 	void setDirection(std::array<float, 2> direction);
 	int breedingCooldown = 1200;
+	float food = 50;
+	float hp = 50;
 
 private:
 	std::shared_ptr<Actor> actor;

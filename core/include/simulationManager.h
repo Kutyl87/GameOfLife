@@ -16,6 +16,7 @@ public:
 	void spawn(std::shared_ptr<Food> food);
 	void train();
 	void deleteOnDie(std::shared_ptr<Organism> organism);
+	void deleteFood(std::shared_ptr<Food> food);
 	void createObjects();
 	void manage();
 	std::vector<std::pair<Organism&, Organism&>> getPairs();
