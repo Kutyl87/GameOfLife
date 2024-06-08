@@ -29,14 +29,14 @@ namespace godot {
 
 		void _init();
 
-		void setOrganism(Organism *organism);
+		void setOrganism(std::shared_ptr<Organism> organism);
 
 		void _ready();
 
 		void physicsProcess(float delta);
 
 		static void _register_methods();
-		Organism* organism;
+		std::shared_ptr<Organism> organism;
 	};
 }
 

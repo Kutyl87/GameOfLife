@@ -23,6 +23,7 @@ namespace godot {
 		bool generateMeshFromHeightmap(float maxHeight, float mapSize);
 		int width;
 		int height;
+		PoolVector3Array vertices;
 
 	private:
 		void generateVertices(Ref<Image> heightmap, PoolVector3Array &vertices, PoolVector3Array &normals, float maxHeight, float mapSize);

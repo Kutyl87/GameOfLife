@@ -223,3 +223,7 @@ std::array<float, 18> Organism::getState() {
     // std::cerr << '\n';
     return state;
 }
+
+void Organism::setDirection(std::array<float, 2> direction) {
+    this->direction = direction;
+}

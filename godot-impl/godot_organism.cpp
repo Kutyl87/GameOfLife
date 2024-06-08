@@ -46,7 +46,7 @@ void GodotOrganism::_init() {
 	body->add_child(collisionShape);
 }
 
-void GodotOrganism::setOrganism(Organism *organism) {
+void GodotOrganism::setOrganism(std::shared_ptr<Organism> organism) {
 	this->organism = organism;
 	auto& coreLimbs = this->organism->getChildren();
 	for(auto& limb : limbs) {

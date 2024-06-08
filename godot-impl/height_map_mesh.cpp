@@ -28,7 +28,6 @@ bool HeightMapMesh::generateMeshFromHeightmap(float maxHeight, float mapSize) {
 		return false;
 	}
 
-	PoolVector3Array vertices;
 	PoolVector3Array normals;
 	PoolVector3Array smoothNormals;
 	PoolIntArray indices;

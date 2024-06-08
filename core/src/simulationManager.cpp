@@ -11,10 +11,9 @@ SimulationManager::SimulationManager(std::function<void(std::shared_ptr<Object>)
 }
 
 void SimulationManager::createObjects() {
-	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)},
-								 std::array<float, 3>{0, 0, 0}, std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
-	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)},
-								 std::array<float, 3>{0, 0, 0}, std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+	for(int i = 0; i < 1000; ++i) {
+		spawnNewFood();
+	}
 	spawnNewOrganism();
 	spawnNewOrganism();
 }
@@ -41,31 +40,73 @@ void SimulationManager::spawnNewOrganism() {
 							   std::weak_ptr<::Object>(), childLimbLength, 0.15f)));
 
 	std::shared_ptr<Organism> test_organism =
-		std::make_shared<Organism>(std::array<float, 3>{generateRandomNumber(50, 950), limbLength + childLimbLength + 1,
-														generateRandomNumber(50, 950)},
+		std::make_shared<Organism>(std::array<float, 3>{generateRandomNumber(200, 210), limbLength + childLimbLength + 1,
+														generateRandomNumber(200, 210)},
 								   std::array<float, 3>{0, 0, 0}, std::weak_ptr<Object>(), std::move(limbs),
 								   std::vector<std::unique_ptr<Organ>>{});
 	spawn(test_organism);
 }
 
+void SimulationManager::spawnNewFood() {
+	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(15, 285), 0.2, generateRandomNumber(15, 285)}, std::array<float, 3>{0, 0, 0},
+										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+}
+
 void SimulationManager::manage() {
 	train();
-	std::vector<std::pair<Organism&, Organism&>> pairs = getPairs();
-	for (auto& pair : pairs) {
-		float distanceBetweenOrganisms = calculateDistance(pair.first.getPosition(), pair.second.getPosition());
-		if (distanceBetweenOrganisms <= 5) {
-			std::shared_ptr<Organism> newOrganism = breed(pair);
-			spawn(newOrganism);
-			organisms.push_back(newOrganism);
-		}
-	}
 	for (auto& organism : organisms) {
+		if(organism->breedingCooldown > 0) {
+			--organism->breedingCooldown;
+		}
 		if (organism->getPosition()[1] < 0) {
 			deleteOnDie(organism);
 		}
 	}
+	std::vector<std::pair<Organism&, Organism&>> pairs = getPairs();
+	for (auto& pair : pairs) {
+		auto pos1 = pair.first.getPosition();
+		auto pos2 = pair.second.getPosition();
+		float distanceBetweenOrganisms = calculateDistance(pos1, pos2);
+		if (distanceBetweenOrganisms <= 10 && pair.first.breedingCooldown == 0 && pair.second.breedingCooldown == 0) {
+			std::shared_ptr<Organism> newOrganism = breed(pair);
+			pair.first.breedingCooldown = 1200;
+			pair.second.breedingCooldown = 1200;
+			spawn(newOrganism);
+			continue;
+		}
+		std::array<float, 2> direction = {pos2[0] - pos1[0], pos2[2] - pos1[2]};
+
+	    float magnitude = std::sqrt(direction[0] * direction[0] + direction[1] * direction[1]);
+	    direction[0] /= magnitude;
+	    direction[1] /= magnitude;
+
+	    float angle = -pair.first.getRotation()[1];
+	    float cos_angle = std::cos(angle);
+	    float sin_angle = std::sin(angle);
+
+	    std::array<float, 2> direction1 = {
+	        cos_angle * direction[0] - sin_angle * direction[1],
+	        sin_angle * direction[0] + cos_angle * direction[1]
+	    };
+
+	    pair.first.setDirection(direction1);
+
+	    angle = -pair.second.getRotation()[1];
+	    cos_angle = std::cos(angle);
+	    sin_angle = std::sin(angle);
+
+	    std::array<float, 2> direction2 = {
+	        cos_angle * -direction[0] - sin_angle * -direction[1],
+	        sin_angle * -direction[0] + cos_angle * -direction[1]
+	    };
+
+	    pair.second.setDirection(direction2);
+	}
 	if (organisms.size() < 2) {
 		spawnNewOrganism();
+	}
+	if (foods.size() < 2) {
+		spawnNewFood();
 	}
 }
 
@@ -143,6 +184,7 @@ std::vector<std::pair<Organism&, Organism&>> SimulationManager::createPairs(
 			pairedOrganisms.insert(&org2);
 		}
 	}
+	std::cerr << pairs.size() << "pairs \n";
 	return pairs;
 }
 
@@ -187,6 +229,7 @@ torch::Tensor SimulationManager::createOrganismDataset() {
 		auto& children = organism->getChildren();
 		for (const auto& limb : children) {
 			lengths.push_back(limb->getLength());
+			lengths.push_back(limb->getChildLimb()->getLength());
 		}
 		data.push_back(torch::tensor(lengths));
 	}

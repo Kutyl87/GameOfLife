@@ -24,6 +24,8 @@ public:
 	float getReward(float dirX, float dirZ);
 	std::array<float, 18> getState();
 	void update();
+	void setDirection(std::array<float, 2> direction);
+	int breedingCooldown = 1200;
 
 private:
 	std::shared_ptr<Actor> actor;
