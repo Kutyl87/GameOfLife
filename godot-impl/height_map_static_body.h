@@ -10,6 +10,8 @@
 #include "height_map_mesh.h"
 #include <simulationManager.h>
 #include <godot_organism.h>
+#include "godot_food.h"
+#include <food.h>
 
 namespace godot {
 
@@ -27,7 +29,7 @@ namespace godot {
 		Ref<PhysicsMaterial> physicsMaterial;
 		std::unique_ptr<SimulationManager> manager;
 		std::vector<GodotOrganism*> organisms;
-		// std::vector<GodotFood*> food;
+		std::vector<GodotFood*> foods;
 		void spawn(std::shared_ptr<::Object> object);
 		void despawn(std::shared_ptr<::Object> object);
 		PoolVector3Array vertices;

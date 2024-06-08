@@ -1,43 +1,37 @@
-#ifndef GODOT_ORGANISM_H
-#define GODOT_ORGANISM_H
+#ifndef GODOT_FOOD_H
+#define GODOT_FOOD_H
 
-#include <organism.h>
-#include "godot_limb.h"
-#include "managed_rigid_body.h"
+#include <food.h>
 
 #include <Godot.hpp>
-#include <Spatial.hpp>
-#include <CollisionShape.hpp>
+#include <StaticBody.hpp>
 #include <MeshInstance.hpp>
-#include <Generic6DOFJoint.hpp>
+#include <CollisionShape.hpp>
+#include <PackedScene.hpp>
 #include <vector>
 
 
 namespace godot {
-	class GodotOrganism : public Spatial {
-		GODOT_CLASS(GodotOrganism, Spatial)
+	class GodotFood : public StaticBody {
+		GODOT_CLASS(GodotFood, StaticBody)
 
-		MeshInstance *meshInstance;
-		Ref<Mesh> mesh;
+		Ref<PackedScene> scene;
+
 		CollisionShape *collisionShape;
-		std::vector<std::pair<GodotLimb*, Generic6DOFJoint*>> limbs;
-		ManagedRigidBody* body;
 
 	public:
-		GodotOrganism();
-		~GodotOrganism();
+		GodotFood();
+		~GodotFood();
 
 		void _init();
 
-		void setOrganism(Organism *organism);
+		void setFood(Food *food);
 
 		void _ready();
 
-		void physicsProcess(float delta);
-
 		static void _register_methods();
-		Organism* organism;
+		Food* food;
 	};
 }
 
-#endif // GODOT_ORGANISM_H
+#endif // GODOT_FOOD_H
