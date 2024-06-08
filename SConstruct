@@ -20,7 +20,7 @@ opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r
 opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
 opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx']))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
-opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'project/bin/'))
+opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'godot-project/bin/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libevolution3d', PathVariable.PathAccept))
 
 # Local dependency paths, adapt them to your setup
@@ -33,6 +33,7 @@ bits = 64
 
 # Updates the environment with the option variables.
 opts.Update(env)
+
 
 # Process some arguments
 if env['use_llvm']:
@@ -70,7 +71,9 @@ elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     env.Append(CCFLAGS=['-fPIC'])
-    env.Append(CXXFLAGS=['-std=c++17'])
+    env['CXXFLAGS'] = [flag for flag in env.get('CXXFLAGS', []) if not flag.startswith('-std=')]
+    env['CCFLAGS'] = [flag for flag in env.get('CCFLAGS', []) if not flag.startswith('-std=')]
+    env.Append(CXXFLAGS=['-std=c++17', "-D_GLIBCXX_USE_CXX11_ABI=0"])
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-g3', '-Og'])
     else:
@@ -104,13 +107,14 @@ cpp_library += '.' + str(bits)
 os.makedirs(env['target_path'], exist_ok=True)
 
 # make sure our binding library is properly includes
-env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
-env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
-env.Append(LIBS=[cpp_library])
+env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/', 'core/include','ArtifficalInteligenceModels/include' ,'ArtifficalInteligenceModels/libtorch/include', 'ArtifficalInteligenceModels/libtorch/include/torch/csrc/api/include'])
+env.Append(LIBPATH=[cpp_bindings_path + 'bin/', 'core/lib', 'ArtifficalInteligenceModels/libtorch/lib','ArtifficalInteligenceModels/lib'])
+env.Append(LINKFLAGS=['-Wl,-rpath=\'$$ORIGIN\'/../../../ArtifficalInteligenceModels/libtorch/lib'])
+env.Append(LIBS=[cpp_library, "core", 'torch', 'torch_cpu', 'c10', 'ai'])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=['src/'])
-sources = Glob('src/*.cpp')
+env.Append(CPPPATH=['godot-impl/'])
+sources = Glob('godot-impl/*.cpp')
 
 godot_library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
 Default(main, tests, nn, godot_library)

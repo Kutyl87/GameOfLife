@@ -1,16 +1,26 @@
 import os
 import platform
+include_dir = 'include/'
 arch = platform.machine()
 if not os.path.exists('libtorch'):
     os.system('wget https://download.pytorch.org/libtorch/nightly/cpu/libtorch-shared-with-deps-latest.zip')
     os.system('unzip libtorch-shared-with-deps-latest.zip')
     os.system('rm -rf libtorch-shared-with-deps-latest.zip*')
 env = Environment(
-    CXXFLAGS=['-std=c++17','-D_GLIBCXX_USE_CXX11_ABI=0'],
+    CXXFLAGS=['-std=c++17','-D_GLIBCXX_USE_CXX11_ABI=0', '-fPIC'],
     LINKFLAGS=['-Wl,-rpath=./../libtorch/lib'],
-    CPPPATH= ['libtorch/include', 'libtorch/include/torch/csrc/api/include'],
+    CPPPATH= ['libtorch/include', 'libtorch/include/torch/csrc/api/include', 'include/', '../core/include/'],
     LIBPATH=['libtorch/lib'],
     LIBS=['torch', 'torch_cpu', 'c10'],
 )
-target = env.Program(target='build/ai', source='TorchNN.cpp')
-Return('target')
+src_dir = 'src/'
+target_dir = 'build/'
+os.makedirs(target_dir, exist_ok=True)
+env.VariantDir(target_dir, src_dir, duplicate=False)
+def copy_source_files(target, source, env):
+    for file in source:
+        shutil.copy(file.abspath, target_dir)
+src_files = Glob(target_dir + '*.cpp')
+lib = env.StaticLibrary(target='lib/libai.a', source=src_files)
+Default(lib)
+Return('lib')

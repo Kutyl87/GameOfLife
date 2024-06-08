@@ -3,6 +3,6 @@
 [ext_resource path="res://bin/evolution3d.gdnlib" type="GDNativeLibrary" id=1]
 
 [resource]
-resource_name = "ball"
-class_name = "Ball"
+resource_name = "ManagedRigidBody"
+class_name = "ManagedRigidBody"
 library = ExtResource( 1 )

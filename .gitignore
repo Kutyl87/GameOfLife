@@ -1,8 +1,11 @@
 **/.DS_Store
 **/.vscode/
+**/.idea/
 build
 **/*.o
+**/*.a
 **/.scons*
 **/*.so
 src/**/*.os
+godot-impl/**/*.os
 ArtifficalInteligenceModels/libtorch

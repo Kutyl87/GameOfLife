@@ -1,0 +1,21 @@
+import os
+import shutil
+env = Environment()
+include_dir = 'include/'
+include_ai_dir = '../ArtifficalInteligenceModels/include/'
+env.Append(CXXFLAGS=['-std=c++17','-D_GLIBCXX_USE_CXX11_ABI=0', '-fPIC'], CPPPATH=[include_dir, include_ai_dir,'../ArtifficalInteligenceModels/libtorch/include', '../ArtifficalInteligenceModels/libtorch/include/torch/csrc/api/include' ])
+src_dir = 'src/'
+target_dir = 'build/'
+os.makedirs(target_dir, exist_ok=True)
+env.VariantDir(target_dir, src_dir, duplicate=False)
+def copy_source_files(target, source, env):
+    for file in source:
+        shutil.copy(file.abspath, target_dir)
+env.Command(target_dir, src_dir, copy_source_files)
+src_files = Glob(target_dir + '*.cpp')
+lib = env.StaticLibrary(target='lib/libcore.a', source=src_files)
+lib_ai = SConscript('../ArtifficalInteligenceModels/SConstruct', exports='env')
+env.Append(LIBS=[lib_ai])
+Depends(lib, lib_ai)
+Default(lib)
+Return('lib')
