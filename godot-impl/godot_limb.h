@@ -1,5 +1,5 @@
-#ifndef GODOT_ORGANISM_H
-#define GODOT_ORGANISM_H
+#ifndef GODOT_LIMB_H
+#define GODOT_LIMB_H
 
 #include "managed_rigid_body.h"
 #include <limb.h>
@@ -41,4 +41,4 @@ namespace godot {
 	};
 }
 
-#endif // GODOT_ORGANISM_H
+#endif // GODOT_LIMB_H

@@ -36,12 +36,11 @@ private:
 	std::vector<std::array<float, 2>> positions;
 	torch::Tensor states;
 	std::array<float, 2> direction;
-	static float generateRandomNumber();
 	static float dotProduct(const std::array<float, 2>& a, const std::array<float, 2>& b);
 	static const int maxSteps = 20;
 	int step = 0;
 	std::unique_ptr<torch::optim::Optimizer> critic_optimizer;
 	std::unique_ptr<torch::optim::Optimizer> actor_optimizer;
-	float learning_rate = 0.003;
+	float learning_rate = 0.01;
 	torch::Device device;
 };

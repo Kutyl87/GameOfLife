@@ -1,40 +1,49 @@
 #include "simulationManager.h"
+#include "utils.h"
 
 SimulationManager::SimulationManager(std::function<void(std::shared_ptr<Object>)> spawnFunction,
 									 std::function<void(std::shared_ptr<Object>)> deleteFunction)
 	: spawnFunction_(spawnFunction), deleteFunction_(deleteFunction) {
 	createObjects();
+	autoencoder = std::make_shared<Autoencoder>(8, 2, 8);
 	optimizer =
 		std::make_unique<torch::optim::Adam>(autoencoder->parameters(), torch::optim::AdamOptions(learningRate));
 }
 
 void SimulationManager::createObjects() {
-	foods.push_back(std::make_shared<Food>(std::array<float, 3>{0, 0, 0}, std::array<float, 3>{0, 0, 0},
+	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
 										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
-	foods.push_back(std::make_shared<Food>(std::array<float, 3>{1, 1, 1}, std::array<float, 3>{0, 0, 0},
+	spawn(std::make_shared<Food>(std::array<float, 3>{generateRandomNumber(50, 950), 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
 										   std::weak_ptr<Object>(), 1.0, 1.0, 1.0));
+	spawnNewOrganism();
+	spawnNewOrganism();
+}
+
+void SimulationManager::spawnNewOrganism() {
 	std::vector<std::unique_ptr<Limb>> limbs;
+	float limbLength = generateRandomNumber(0.3, 2);
+	float childLimbLength = generateRandomNumber(0.3, 2);
 	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
+		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   childLimbLength, 0.15f)));
 	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
+		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   childLimbLength, 0.15f)));
 	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
+		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   childLimbLength, 0.15f)));
 	limbs.emplace_back(std::make_unique<Limb>(
-		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), 1.0f, 0.2f,
-		std::make_unique<Limb>(std::array<float, 3>{0, -1, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
-							   1.f, 0.15f)));
+		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(),
+							   childLimbLength, 0.15f)));
 
 	std::shared_ptr<Organism> test_organism =
-		std::make_shared<Organism>(std::array<float, 3>{50, 20, 50}, std::array<float, 3>{0, 0, 0},
+		std::make_shared<Organism>(std::array<float, 3>{generateRandomNumber(50, 950), limbLength + childLimbLength + 1, generateRandomNumber(50, 950)}, std::array<float, 3>{0, 0, 0},
 								   std::weak_ptr<Object>(), std::move(limbs), std::vector<std::unique_ptr<Organ>>{});
-	organisms.push_back(test_organism);
+	spawn(test_organism);
 }
 
 void SimulationManager::manage() {
@@ -44,9 +53,12 @@ void SimulationManager::manage() {
 			deleteOnDie(organism);
 		}
 	}
-	 if (foods.size() < 2) {
-		 // stwórz sobie jedzonko wladku
-	 }
+	if (foods.size() < 2) {
+	 // stwórz sobie jedzonko wladku
+	}
+	if (organisms.size() < 2) {
+		spawnNewOrganism();
+	}
 }
 
 void SimulationManager::spawn(std::shared_ptr<Organism> organism) {

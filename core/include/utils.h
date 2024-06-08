@@ -1,0 +1,1 @@
+float generateRandomNumber(float min, float max);

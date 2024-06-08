@@ -8,6 +8,8 @@
 #include <ResourceLoader.hpp>
 #include <PhysicsMaterial.hpp>
 #include "height_map_mesh.h"
+#include <simulationManager.h>
+#include <godot_organism.h>
 
 namespace godot {
 
@@ -23,7 +25,13 @@ namespace godot {
 		CollisionShape* collisionShape;
 		bool ready = false;
 		Ref<PhysicsMaterial> physicsMaterial;
-
+		std::unique_ptr<SimulationManager> manager;
+		std::vector<GodotOrganism*> organisms;
+		// std::vector<GodotFood*> food;
+		void spawn(std::shared_ptr<::Object> object);
+		void despawn(std::shared_ptr<::Object> object);
+		PoolVector3Array vertices;
+		Ref<HeightMapMesh> heightMapMesh;
 	public:
 		static void _register_methods();
 

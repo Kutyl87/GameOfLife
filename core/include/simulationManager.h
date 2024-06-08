@@ -19,6 +19,7 @@ public:
 	void manage();
 
 private:
+	void spawnNewOrganism();
 	std::vector<std::shared_ptr<Food>> foods;
 	std::vector<std::shared_ptr<Organism>> organisms;
 	std::shared_ptr<Autoencoder> autoencoder;
@@ -26,5 +27,5 @@ private:
 	std::function<void(std::shared_ptr<Object> object)> deleteFunction_;
 	torch::Tensor createOrganismDataset();
 	std::unique_ptr<torch::optim::Optimizer> optimizer;
-	const int learningRate = 0.001;
+	const float learningRate = 0.001;
 };

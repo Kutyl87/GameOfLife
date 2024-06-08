@@ -1,5 +1,5 @@
 #include "organism.h"
-#include <random>
+#include "utils.h"
 #include <iomanip>
 
 Organism::Organism(std::array<float, 3> position, std::array<float, 3> rotation, std::weak_ptr<Object> parent,
@@ -52,15 +52,8 @@ std::vector<std::unique_ptr<Organ>>& Organism::getOrgans() {
     return organs;
 }
 
-float Organism::generateRandomNumber() {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    static std::uniform_real_distribution<> dis(-1.0, 1.0);
-    return dis(gen);
-}
-
 std::array<float, 2> Organism::getDirection() const {
-    std::array<float, 2> direction = {generateRandomNumber(), generateRandomNumber()};
+    std::array<float, 2> direction = {generateRandomNumber(-1, 1), generateRandomNumber(-1, 1)};
     float magnitude = std::sqrt(direction[0] * direction[0] + direction[1] * direction[1]);
     direction[0] /= magnitude;
     direction[1] /= magnitude;
@@ -85,7 +78,7 @@ std::array<float, 8> Organism::getJointForces() {
         actions = torch::empty({0}).to(device);
         rewards = torch::empty({0}).to(device);
         states = torch::empty({0}).to(device);
-        if(generateRandomNumber() < -0.99)
+        if(generateRandomNumber(-1, 1) < -0.99)
         	direction = getDirection();
     }
     return action;
@@ -94,9 +87,9 @@ std::array<float, 8> Organism::getJointForces() {
 void Organism::update() {
     torch::Tensor discounted_rewards = torch::empty(rewards.size(0)).to(device);
     double cumulative = 0;
-    double gamma = 0.99;
+    double gamma = 0.8;
     for (int64_t i = rewards.size(0) - 1; i >= 0; --i) {
-        cumulative = rewards[i].item<double>() + gamma * cumulative;
+        cumulative = (1 - gamma) * rewards[i].item<double>() + gamma * cumulative;
         discounted_rewards[i] = cumulative;
     }
     
@@ -147,16 +140,17 @@ std::array<float, 8> Organism::predict() {
     std::array<float, 8> action;
     std::memcpy(action.data(), action_tensor.data_ptr<float>(), sizeof(float) * action_tensor.numel());
     for(auto& force : action) {
-        if(generateRandomNumber() > 0.5) {
-            force = generateRandomNumber();
+        if(generateRandomNumber(-1, 1) > 0.5) {
+            force = generateRandomNumber(-1, 1);
         }
     }
     // for(int i = 0; i < 8; ++i) {
     //     action[i] = -state[i];
     // }
     std::cerr << "forces: ";
-    for(auto& force : action) {
-        std::cerr << std::fixed << std::setprecision(4) << std::setw(7) << force << ' ';
+    for(int i = 0; i < 8; ++i) {
+        action[i] = action[i] - state[i];
+        std::cerr << std::fixed << std::setprecision(4) << std::setw(7) << action[i] << ' ';
     }
     std::cerr << '\n';
 
@@ -172,9 +166,17 @@ float Organism::getReward(float dirX, float dirZ) {
     std::array<float, 2> lastPos = positions.back();
     std::array<float, 2> currentPos = {getPosition()[0], getPosition()[2]};
     std::array<float, 2> positionDifference = {currentPos[0] - lastPos[0], currentPos[1] - lastPos[1]};
+    float angle = -getRotation()[1];
+    float cos_angle = std::cos(angle);
+    float sin_angle = std::sin(angle);
+
+    std::array<float, 2> rotatedPositionDifference = {
+        cos_angle * positionDifference[0] - sin_angle * positionDifference[1],
+        sin_angle * positionDifference[0] + cos_angle * positionDifference[1]
+    };
 
     // Calculate the original reward based on direction
-    float originalReward = dotProduct(positionDifference, direction);
+    float originalReward = dotProduct(rotatedPositionDifference, direction);
 
     // Get the current state and convert it to a tensor
     std::array<float, 18> currentStateArray = getState();
@@ -189,9 +191,14 @@ float Organism::getReward(float dirX, float dirZ) {
     torch::Tensor latestState = states[-1];
 
     // Subtract the mean difference from the original reward
-    return -(
-        5*originalReward + 0*getPosition()[1] - 20*latestState.index({torch::indexing::Slice(0, 8)}).dot(actions[-1]).item<float>() + 50 * torch::mean(torch::square(actions[-1])).item<float>()
-    );
+    auto rotation = getRotation();
+    float reward = 5*originalReward;
+    rewards += 3*getPosition()[1];
+    reward -= 10*latestState.index({torch::indexing::Slice(0, 8)}).sign().dot(actions[-1]).item<float>();
+    reward += 0 * torch::mean(torch::square(actions[-1])).item<float>();
+    reward -= 5*(std::abs(rotation[0])+std::abs(rotation[2]));
+    std::cerr << "reward: " << reward << '\n';
+    return -reward;
 }
 
 float Organism::dotProduct(const std::array<float, 2>& a, const std::array<float, 2>& b) {
