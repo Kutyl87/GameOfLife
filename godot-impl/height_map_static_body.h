@@ -53,6 +53,8 @@ namespace godot {
 		float getMapSize() const;
 
 		void generateHeightmapMesh();
+		
+		void _physics_process(float delta);
 	};
 
 }

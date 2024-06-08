@@ -16,6 +16,7 @@ void HeightMapStaticBody::_register_methods() {
 												  &HeightMapStaticBody::getMaxHeight, defaultMaxHeight);
 	register_property<HeightMapStaticBody, float>("mapSize", &HeightMapStaticBody::setMapSize,
 												  &HeightMapStaticBody::getMapSize, defaultMapSize);
+	register_method("_physics_process", &HeightMapStaticBody::_physics_process);
 
 	register_method("_ready", &HeightMapStaticBody::_ready);
 }
@@ -112,7 +113,7 @@ void HeightMapStaticBody::spawn(std::shared_ptr<::Object> object) {
 		GodotOrganism* godot_organism = GodotOrganism::_new();
 		organisms.push_back(godot_organism);
 		add_child(godot_organism);
-		godot_organism->setOrganism(organism.get());
+		godot_organism->setOrganism(organism);
 		auto pos = organism->getPosition();
 		int iX = static_cast<int>(pos[0]*heightMapMesh->width/mapSize);
 		int iZ = static_cast<int>(pos[2]*heightMapMesh->height/mapSize);
@@ -126,7 +127,7 @@ void HeightMapStaticBody::spawn(std::shared_ptr<::Object> object) {
 		GodotFood* godotFood = GodotFood::_new();
 		foods.push_back(godotFood);
 		add_child(godotFood);
-		godotFood->setFood(food.get());
+		godotFood->setFood(food);
 		auto pos = food->getPosition();
 		int iX = static_cast<int>(pos[0]*heightMapMesh->width/mapSize);
 		int iZ = static_cast<int>(pos[2]*heightMapMesh->height/mapSize);
@@ -142,7 +143,7 @@ void HeightMapStaticBody::despawn(std::shared_ptr<::Object> object) {
 	auto food = std::dynamic_pointer_cast<Food>(object);
 	if(organism) {
 		for(auto& organism_node : organisms) {
-			if(organism_node->organism == organism.get()) {
+			if(organism_node->organism == organism) {
 				remove_child(organism_node);
 				organisms.erase(std::remove(organisms.begin(), organisms.end(), organism_node), organisms.end());
 			}
@@ -150,10 +151,16 @@ void HeightMapStaticBody::despawn(std::shared_ptr<::Object> object) {
 	}
 	if(food) {
 		for(auto& food_node : foods) {
-			if(food_node->food == food.get()) {
+			if(food_node->food == food) {
 				remove_child(food_node);
 				foods.erase(std::remove(foods.begin(), foods.end(), food_node), foods.end());
 			}
 		}
+	}
+}
+	
+void HeightMapStaticBody::_physics_process(float delta) {
+	if(manager) {
+		manager->manage();
 	}
 }

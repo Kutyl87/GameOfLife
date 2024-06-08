@@ -29,6 +29,6 @@ void GodotFood::_init() {
     }
 }
 
-void GodotFood::setFood(Food *food) {
+void GodotFood::setFood(std::shared_ptr<Food> food) {
 	this->food = food;
 }

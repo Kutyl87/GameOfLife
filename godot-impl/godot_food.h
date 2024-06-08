@@ -25,12 +25,12 @@ namespace godot {
 
 		void _init();
 
-		void setFood(Food *food);
+		void setFood(std::shared_ptr<Food> food);
 
 		void _ready();
 
 		static void _register_methods();
-		Food* food;
+		std::shared_ptr<Food> food;
 	};
 }
 
