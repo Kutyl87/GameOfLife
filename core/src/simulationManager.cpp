@@ -51,17 +51,62 @@ void SimulationManager::spawnNewOrganism() {
 void SimulationManager::manage() {
 	train();
 	std::vector<std::pair<Organism&, Organism&>> pairs = getPairs();
+	for (auto& pair : pairs) {
+		float distanceBetweenOrganisms = calculateDistance(pair.first.getPosition(), pair.second.getPosition());
+		if (distanceBetweenOrganisms <= 5) {
+			std::shared_ptr<Organism> newOrganism = breed(pair);
+			spawn(newOrganism);
+			organisms.push_back(newOrganism);
+		}
+	}
 	for (auto& organism : organisms) {
 		if (organism->getPosition()[1] < 0) {
 			deleteOnDie(organism);
 		}
 	}
-	if (foods.size() < 2) {
-		// stwórz sobie jedzonko wladku
-	}
 	if (organisms.size() < 2) {
 		spawnNewOrganism();
 	}
+}
+
+float SimulationManager::crossover(float minLength, float maxLength) {
+	return generateRandomNumber(minLength, maxLength);
+}
+
+float SimulationManager::mutate(float minLength, float maxLength) {
+	return generateRandomNumber(0.1 * minLength, 0.1 * maxLength);
+}
+
+std::shared_ptr<Organism> SimulationManager::breed(std::pair<Organism&, Organism&> pair) {
+	float minLengthParents =
+		std::min(pair.first.getChildren()[0]->getLength(), pair.second.getChildren()[0]->getLength());
+	float maxLengthParents =
+		std::max(pair.first.getChildren()[0]->getLength(), pair.second.getChildren()[0]->getLength());
+	float crossoverLimbLength = crossover(minLengthParents, maxLengthParents);
+	float mutatedLimbLength = mutate(minLengthParents, maxLengthParents);
+	float limbLength = crossoverLimbLength + mutatedLimbLength;
+	std::vector<std::unique_ptr<Limb>> limbs;
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0},
+							   std::weak_ptr<::Object>(), limbLength, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, 1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0},
+							   std::weak_ptr<::Object>(), limbLength, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0},
+							   std::weak_ptr<::Object>(), limbLength, 0.15f)));
+	limbs.emplace_back(std::make_unique<Limb>(
+		std::array<float, 3>{-1, 0, -1.5}, std::array<float, 3>{0, 0, 0}, std::weak_ptr<::Object>(), limbLength, 0.2f,
+		std::make_unique<Limb>(std::array<float, 3>{0, -limbLength, 0}, std::array<float, 3>{0, 0, 0},
+							   std::weak_ptr<::Object>(), limbLength, 0.15f)));
+	std::shared_ptr<Organism> newOrganism = std::make_shared<Organism>(
+		std::array<float, 3>{generateRandomNumber(50, 950), 2 * limbLength + 1, generateRandomNumber(50, 950)},
+		std::array<float, 3>{0, 0, 0}, std::shared_ptr<Object>(), std::move(limbs),
+		std::vector<std::unique_ptr<Organ>>{});
+	return newOrganism;
 }
 
 std::vector<torch::Tensor> SimulationManager::createLatentSpaceVector() {
